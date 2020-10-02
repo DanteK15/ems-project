@@ -1,0 +1,81 @@
+.reset-btn {
+    color: white;
+    background: rgba(255, 0, 0, 0.712);
+    width: 100px; 
+    height: 40px;
+    border: none; 
+    border-radius: 10px;
+    cursor: pointer; 
+}
+
+.reset-btn:hover {
+    opacity: 0.7; 
+}
+
+.info-page { 
+    padding: 30px; 
+    display: grid;
+    place-items: center; 
+}
+
+.title { 
+    text-transform: uppercase; 
+    font-weight: 600; 
+    letter-spacing: 2px;
+    font-size: 24px;
+}
+
+.reset { 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+    width: 100%
+}
+
+.settings-btn { 
+    color: black;
+    background: lightgray(255, 0, 0, 0.712);
+    width: 100px; 
+    height: 40px;
+    border: none; 
+    border-radius: 10px;
+    cursor: pointer; 
+}
+
+.settings-btn:hover {
+    opacity: 0.7;
+}
+
+.patient-location-section { 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+    width: 100%; 
+}
+
+.map-icon {
+    font-size: 40px !important; 
+    padding-right: 30px; 
+}
+
+input {
+    border: none; 
+    padding-top: 10px; 
+    outline: none; 
+}
+
+label { 
+    color: rgba(255, 0, 0, 0.712);
+    font-weight: 600; 
+    text-transform: capitalize; 
+}
+
+hr {
+    width: 600px; 
+}
+
+.drop-down { 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+}
