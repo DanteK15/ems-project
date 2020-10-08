@@ -54,7 +54,31 @@
     width: 100%; 
 }
 
+.hospital-selection-section { 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+    width: 100%; 
+}
+
+.helicopter-selection-section { 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+    width: 100%; 
+}
+
 .map-icon {
+    font-size: 50px !important; 
+    padding-right: 50px; 
+}
+
+.hospital-icon {
+    font-size: 50px !important; 
+    padding-right: 50px; 
+}
+
+.helicopter-icon {
     font-size: 50px !important; 
     padding-right: 50px; 
 }
