@@ -29,59 +29,41 @@ function Info() {
                 <div className = "patient-location-section">
                     <img src = "../images/map_example.jpg" alt = ""/>
                 </div>
-                <br />
-                <br />
 
                 <div className = "manual-address-input">
                     <button className = "manual-address-btn">Manual Address Input</button>
                 </div>
-
             </div>
 
-            <br />
-            <br />
-            <br />
-
-            <div className = "hospital-section">
+            <div className = "menu-section">
                 <h1 className = "title">Hospital Selection:</h1>
-                <br />
                 <div className = "hospital-selection-section">
-                    <div className = "drop-down-section">
+                    <br />
                         <form>
                             <select>
                                 <option value = "ex1">Providence</option>
                                 <option value = "ex2">Legacy</option>
                             </select>
                         </form>
-                    </div>
                 </div>
             </div>
 
-            <br />
-            <br />
-
-            <div className = "helicopter-section">
+            <div className = "menu-section">
                 <h1 className = "title">Helicopter Site:</h1>
-                <br />
-                <div className = "helicopter-section">
-                    <div className = "drop-down-section">
+                <div className = "hospital-selection-section">
+                    <br />
                         <form>
                             <select>
                                 <option value = "ex1">Site 1</option>
                                 <option value = "ex2">Site 2</option>
                             </select>
                         </form>
-                    </div>
                 </div>
             </div>
 
-            <br />
-            <br />
-
-            <div className = "loading-time-section">
+            <div className = "menu-section">
                 <h1 className = "title">Estimated Patient Loading Time</h1>
                 <br />
-                <div className = "drop-down-section">
                         <form>
                             <select>
                                 <option value = "ex1">5 minutes</option>
@@ -89,37 +71,12 @@ function Info() {
                                 <option value = "ex2">15 minutes</option>
                             </select>
                         </form>
-                </div>
-            </div>
-
-            <br />
-            <br />
-
-            <div className = "estimated-heli-time-section">
-                <h1 className = "title">Estimated Time to Helicopter</h1>
-                <br />
-                <div className = "helicopter-section">
-                    <div className = "input-section">
-                        <input placeholder = "(leave blank if none)" value={address}
-                        onChange={handleChange} type="text"
-                        />
-                        {/* <input type="submit" value={address}
-                        onChange={handleChange} /> */}
-                        <hr />
-                    </div>
-                </div>
-            </div>
-
-            <br />
-            <br />
+            </div> 
 
             <div className = "calculate-section">
                 <br />
-                <br />
-                <div className = "calculate-section">
                         <button className = "calculate-btn">Calculate</button>
-                </div>
-            </div>
+            </div> 
 
         </div>
     )

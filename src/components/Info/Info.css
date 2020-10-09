@@ -6,50 +6,13 @@
     border: none; 
     border-radius: 10px;
     cursor: pointer; 
-    font-weight: 600;
     font-size: 1rem;
+    font-weight: 600;
 }
 
-.reset-btn:hover, .settings-btn:hover {
+.reset-btn:hover, .settings-btn:hover, .manual-address-btn:hover {
     opacity: 0.5; 
     transition: 1s all ease;
-}
-
-.manual-address-btn { 
-    color: white;
-    background: blue; 
-    width: 200px; 
-    height: 40px;
-    border: none; 
-    border-radius: 10px; 
-    cursor: pointer; 
-    font-weight: 600; 
-    font-size: 1rem;
-}
-
-.calculate-btn { 
-    color: white;
-    background: green; 
-    width: 400px; 
-    height: 40px;
-    border: none; 
-    border-radius: 10px; 
-    cursor: pointer; 
-    font-weight: 600; 
-    font-size: 1rem;
-}
-
-.info-page { 
-    padding: 30px; 
-    display: grid;
-    place-items: center; 
-}
-
-.title { 
-    text-transform: uppercase; 
-    font-weight: 600; 
-    letter-spacing: 2px;
-    font-size: 24px;
 }
 
 .reset { 
@@ -71,69 +34,83 @@
     font-size: 1rem;
 }
 
-.patient-location-section { 
-    display: flex; 
-    align-items: center; 
-    justify-content: space-between; 
-    width: 100%; 
+.location-section, .helicopter-section {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
 }
 
-.hospital-selection-section { 
-    display: flex; 
-    align-items: center; 
-    justify-content: space-between; 
-    width: 100%; 
+.menu-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: space-evenly;
+    padding-left: 220px;
+    padding-top: 20px;
 }
 
-.helicopter-site-section { 
-    display: flex; 
-    align-items: center; 
-    justify-content: space-between; 
-    width: 100%; 
-}
-
-.patient-loading-time-section { 
-    display: flex; 
-    align-items: center; 
-    justify-content: space-between; 
-    width: 100%; 
+select {
+    width: 280px;
+    height: 40px;
+    cursor: pointer;
+    text-align: center;
+    font-size: 18px;
+    letter-spacing: 1px;
+    font-weight: 200;
+    text-transform: uppercase;
+    outline: none;
+    border: 1px solid lightgray;
+    text-align-last:center;
 }
 
 .manual-address-input { 
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
-    width: 100%;
+    display: grid;
+    place-items: center;
+    padding-top: 15px;
 }
 
-.calculate-section { 
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
-    width: 100%;
-}
-
-input {
+.manual-address-btn { 
+    color: white;
+    background: rgba(255, 0, 0, 0.712);
+    width: 300px; 
+    height: 50px;
     border: none; 
-    padding-top: 10px; 
-    outline: none; 
-}
-
-label { 
-    color: rgba(255, 0, 0, 0.712);
+    border-radius: 5px; 
+    cursor: pointer; 
     font-weight: 600; 
-    text-transform: capitalize; 
+    font-size: 1.2rem;
 }
 
-hr {
-     width: 600px; 
-    
+.calculate-btn { 
+    color: white;
+    background: rgba(2, 150, 2, 0.795); 
+    width: 400px; 
+    height: 40px;
+    border: none; 
+    border-radius: 10px; 
+    cursor: pointer; 
+    font-weight: 600; 
+    font-size: 1.2rem;
+    /* text-transform: uppercase; */
+    letter-spacing: 2px;
+    font-weight: 600;
 }
 
-.drop-down { 
-    display: flex; 
-    align-items: left; 
-    justify-content: space-between; 
+.info-page { 
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.title { 
+    text-transform: uppercase; 
+    font-weight: 400; 
+    letter-spacing: 2px;
+    font-size: 22px;
 }
 
 img { 
