@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import './Info.css'
+import {Link} from 'react-router-dom'
 
 function Info() {
     const [address, setAddress] = useState();
@@ -27,7 +28,7 @@ function Info() {
     return (
         <div className = "info-page">
             <div className = "reset">
-                <button className = "settings-btn">Settings</button>
+                <button className = "settings-btn"><Link to="/settings">Settings</Link></button>
                 <button className = "reset-btn">Reset</button>
             </div>
 
@@ -93,7 +94,7 @@ function Info() {
             <br />
             <div className = "calculate-section">
                 <br />
-                        <button className = "calculate-btn">Calculate</button>
+                        <button className = "calculate-btn"><Link to="/results">Calculate</Link></button>
             </div> 
 
         </div>

@@ -23,8 +23,6 @@
 }
 
 .settings-btn { 
-    color: black;
-    background: lightgray(255, 0, 0, 0.712);
     width: 100px; 
     height: 40px;
     border: none; 
@@ -32,6 +30,10 @@
     cursor: pointer; 
     font-weight: 600;
     font-size: 1rem;
+}
+
+.settings-btn > a {
+    color: black;
 }
 
 .location-section, .helicopter-section {
@@ -100,6 +102,10 @@ select {
     font-weight: 600;
 }
 
+.calculate-btn > a {
+    color: white;
+}
+
 .info-page { 
     padding: 30px;
     display: flex;
@@ -126,4 +132,8 @@ img {
     width: 100%;
     border: none;
     outline: none;
+}
+
+a {
+    text-decoration: none;
 }
