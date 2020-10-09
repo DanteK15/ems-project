@@ -90,7 +90,7 @@ function Info() {
                             </select>
                         </form>
             </div> 
-
+            <br />
             <div className = "calculate-section">
                 <br />
                         <button className = "calculate-btn">Calculate</button>
