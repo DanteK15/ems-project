@@ -15,6 +15,30 @@
     transition: 1s all ease;
 }
 
+.manual-address-btn { 
+    color: white;
+    background: blue; 
+    width: 200px; 
+    height: 40px;
+    border: none; 
+    border-radius: 10px; 
+    cursor: pointer; 
+    font-weight: 600; 
+    font-size: 1rem;
+}
+
+.calculate-btn { 
+    color: white;
+    background: green; 
+    width: 400px; 
+    height: 40px;
+    border: none; 
+    border-radius: 10px; 
+    cursor: pointer; 
+    font-weight: 600; 
+    font-size: 1rem;
+}
+
 .info-page { 
     padding: 30px; 
     display: grid;
@@ -61,26 +85,32 @@
     width: 100%; 
 }
 
-.helicopter-selection-section { 
+.helicopter-site-section { 
     display: flex; 
     align-items: center; 
     justify-content: space-between; 
     width: 100%; 
 }
 
-.map-icon {
-    font-size: 50px !important; 
-    padding-right: 50px; 
+.patient-loading-time-section { 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+    width: 100%; 
 }
 
-.hospital-icon {
-    font-size: 50px !important; 
-    padding-right: 50px; 
+.manual-address-input { 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    width: 100%;
 }
 
-.helicopter-icon {
-    font-size: 50px !important; 
-    padding-right: 50px; 
+.calculate-section { 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    width: 100%;
 }
 
 input {
@@ -102,6 +132,10 @@ hr {
 
 .drop-down { 
     display: flex; 
-    align-items: center; 
+    align-items: left; 
     justify-content: space-between; 
+}
+
+img { 
+    height: 300px
 }
