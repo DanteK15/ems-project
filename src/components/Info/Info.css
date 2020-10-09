@@ -116,3 +116,12 @@ select {
 img { 
     height: 300px
 }
+
+
+#show {
+    margin-top: 20px;
+    padding-top: 10px;
+    width: 100%;
+    border: none;
+    outline: none;
+}

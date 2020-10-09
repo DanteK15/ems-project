@@ -3,17 +3,25 @@ import './Info.css'
 
 function Info() {
     const [address, setAddress] = useState();
-// setter
+
     useEffect(() => {
         localStorage.setItem('address',address);
     }, [address]);
-//getter
+
     useEffect(() => {
         localStorage.getItem(address);
     }, []);
 
     const handleChange= (e) => {
         setAddress(e.target.value);
+    }
+
+    const showInput = () => {
+        if(document.getElementById('show').style.visibility === 'hidden') {
+            document.getElementById('show').style.visibility = 'visible';
+        } else {
+            document.getElementById('show').style.visibility = 'hidden';
+        }
     }
 
     return (
@@ -31,7 +39,17 @@ function Info() {
                 </div>
 
                 <div className = "manual-address-input">
-                    <button className = "manual-address-btn">Manual Address Input</button>
+                    <button className = "manual-address-btn"
+                    onClick={showInput}
+                    >Manual Address Input</button>
+                    <input 
+                    type="text"
+                    value={address}
+                    id="show" 
+                    placeholder="Enter Address Here ..." 
+                    style={{visibility:'hidden'}}
+                    onChange={handleChange}
+                    />
                 </div>
             </div>
 
