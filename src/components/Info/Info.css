@@ -44,11 +44,13 @@
 
 .menu-section {
     width: 100%;
-    display: flex;
+    display: grid;
+    place-items: center;
+    /*display: flex;
     flex-direction: column;
     align-items: left;
-    justify-content: space-evenly;
-    padding-left: 220px;
+    justify-content: center; */
+    /* padding-left: 220px; */
     padding-top: 20px;
 }
 
@@ -136,4 +138,9 @@ img {
 
 a {
     text-decoration: none;
+}
+
+.centered {
+    display: grid;
+    place-items: center;
 }

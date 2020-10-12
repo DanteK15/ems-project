@@ -1,0 +1,103 @@
+.settings {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.settings-outer {
+    display: flex;
+    flex-direction: column;
+}
+
+.back {
+    margin: 10px;
+    height: 35px;
+    width: 80px;
+    border: none;
+    outline-width: 0;
+    border-radius: 10px;
+    font-weight: 800;
+    font-size: 15px;
+    letter-spacing: 2px;
+    background-color: rgba(255, 0, 0, 0.712);
+    cursor: pointer;
+}
+
+.back > a {
+    color: white;
+}
+
+.back:hover {
+    opacity: 0.75;
+    transition: 1s all ease;
+}
+
+.settings-inputs-top {
+    display: flex;
+    flex-direction: column;
+}
+
+.title {
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.settings-label {
+    margin-bottom: 10px;
+    color: rgba(255, 0, 0, 0.712);
+    font-weight: 600;
+}
+
+.settings-inputs-top > input, .settings-inputs-bottom > input {
+    outline-width: 0;
+    border: none;
+    border-bottom: 1px solid darkgray;
+    width: 600px;
+    margin-bottom: 30px;
+}
+
+.settings-checkbox > .settings-label {
+    margin-left: 20px;
+}
+
+.submit-btn {
+    width: 80px;
+    height: 30px;
+    cursor: pointer;
+    border: none;
+    outline-width: 0;
+    border-radius: 10px;
+    font-weight: 800;
+    background: rgb(40, 114, 160);
+    color: white;
+}
+
+.btn-div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.submit-btn:hover {
+    opacity: 0.75;
+    transition: 1s all ease;
+}
+
+.horizontal {
+    border-bottom: 2px solid black;
+}
+
+.settings-label-bottom {
+    color:rgb(40, 114, 160);
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.settings-inputs-bottom {
+    display: flex;
+    flex-direction: column;
+}
+
+.settings-checkbox > input {
+    cursor: pointer;
+}

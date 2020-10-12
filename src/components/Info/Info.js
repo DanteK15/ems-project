@@ -27,33 +27,28 @@ function Info() {
     }
   };
 
-  const center = {
-    lat: 45.5051,
-    lng: 122.675,
+  const setLocation = (position) => {
+    const coords = {
+      lat: position.coords.latitude,
+      lng: position.coords.longitude,
+    };
+    setAddress(coords);
   };
 
-  const setLocation = (position) => {
-       const coords = {
-           lat: position.coords.latitude,
-           lng: position.coords.longitude
-       }
-      setAddress(coords);
-  }
-
   const getGeolocation = () => {
-      if(!navigator.geolocation) {
-          alert('Geolocation is not supported by your browser');
-      } else {
-          navigator.geolocation.getCurrentPosition(setLocation);
-      }
-  }
+    if (!navigator.geolocation) {
+      alert("Geolocation is not supported by your browser");
+    } else {
+      navigator.geolocation.getCurrentPosition(setLocation);
+    }
+  };
 
   return (
     <div className="info-page">
       <div className="reset">
-        <button className="settings-btn">
-          <Link to="/settings">Settings</Link>
-        </button>
+        <Link to="/settings">
+          <button className="settings-btn">Settings</button>
+        </Link>
         <button className="reset-btn">Reset</button>
       </div>
 
@@ -61,8 +56,8 @@ function Info() {
         <h1 className="title">Patient Location:</h1>
         <br />
         <div className="patient-location-section">
-          {/* <img src = "../images/map_example.jpg" alt = ""/> */}
-          <LocationMap  position={address}/>
+          {/* <img src="../images/map_example.jpg" alt="" /> */}
+          <LocationMap position={address} />
         </div>
 
         <div className="manual-address-input">
@@ -80,49 +75,51 @@ function Info() {
         </div>
       </div>
 
-      <div className="menu-section">
-        <h1 className="title">Hospital Selection:</h1>
-        <div className="hospital-selection-section">
+      <div className="centered">
+        <div className="menu-section">
+          <h1 className="title">Hospital Selection:</h1>
           <br />
           <form>
             <select>
-              <option value="ex1">Providence</option>
-              <option value="ex2">Legacy</option>
+              <option value="providence">Providence</option>
+              <option value="legacy">Legacy</option>
             </select>
           </form>
         </div>
-      </div>
 
-      <div className="menu-section">
-        <h1 className="title">Helicopter Site:</h1>
-        <div className="hospital-selection-section">
+        <br />
+
+        <div className="menu-section">
+          <h1 className="title">Helicopter Site:</h1>
           <br />
           <form>
             <select>
-              <option value="ex1">Site 1</option>
-              <option value="ex2">Site 2</option>
+              <option value="site1">Site 1</option>
+              <option value="site2">Site 2</option>
             </select>
           </form>
         </div>
-      </div>
 
-      <div className="menu-section">
-        <h1 className="title">Estimated Patient Loading Time</h1>
         <br />
-        <form>
-          <select>
-            <option value="ex1">5 minutes</option>
-            <option value="ex2">10 minutes</option>
-            <option value="ex2">15 minutes</option>
-          </select>
-        </form>
-      </div>
-      <br />
-      <div className="calculate-section">
+
+        <div className="menu-section">
+          <h1 className="title">Estimated Patient Loading Time</h1>
+          <br />
+          <form>
+            <select>
+              <option value="ex1">5 minutes</option>
+              <option value="ex2">10 minutes</option>
+              <option value="ex2">15 minutes</option>
+            </select>
+          </form>
+        </div>
         <br />
-        <button className="calculate-btn">
-          <Link to="/results">Calculate</Link>
-        </button>
+        <div className="calculate-section">
+          <br />
+          <Link to="/results">
+            <button className="calculate-btn">Calculate</button>
+          </Link>
+        </div>
       </div>
     </div>
   );
