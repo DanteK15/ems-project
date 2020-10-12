@@ -1,29 +1,36 @@
-import React from 'react'
-import { GoogleMap, LoadScript } from '@react-google-maps/api';
+import React, {useState, useEffect} from 'react'
+import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
 
 const containerStyle = {
-  width: '400px',
-  height: '400px'
+  width: '700px',
+  height: '500px'
 };
 
 const center = {
-  lat: -3.745,
-  lng: -38.523
+  lat: 45.5051,
+  lng: -122.6750
 };
 
-function LocationMap() {
-    console.log(process.env.REACT_APP_MAP_KEY)
+function LocationMap(position) {
+  console.log(position);
+  const [coords, setCoords] = useState(center);
+
+  useEffect(() => {
+    setCoords(position.position);
+  },[position]);
+
   return (
     <LoadScript
       googleMapsApiKey={process.env.REACT_APP_MAP_KEY}
     >
       <GoogleMap
         mapContainerStyle={containerStyle}
-        center={center}
+        center={coords}
         zoom={10}
       >
-        { /* Child components, such as markers, info windows, etc. */ }
-        <></>
+      { /* Child components, such as markers, info windows, etc. */ }
+      <Marker position={coords} title="Patient Location"/>
+
       </GoogleMap>
     </LoadScript>
   )
