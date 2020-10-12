@@ -1,0 +1,80 @@
+.restart {
+    margin: 10px;
+    height: 35px;
+    width: 80px;
+    border: none;
+    outline-width: 0;
+    border-radius: 10px;
+    font-weight: 800;
+    font-size: 15px;
+    letter-spacing: 2px;
+    color: white;
+    background-color: rgba(255, 0, 0, 0.712);
+    cursor: pointer;
+}
+
+.restart:hover {
+    opacity: 0.5; 
+    transition: 1s all ease;
+}
+
+.title {
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.results-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.results {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.results-output-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.ETA-to-patient-label {
+    margin-bottom: 10px;
+    color: rgba(255, 0, 0, 0.712);
+    font-weight: 600;
+}
+
+.ETA-to-hospital-label { 
+    margin-bottom: 10px;
+    color: rgba(255, 0, 0, 0.712);
+    font-weight: 600;
+}
+
+.back-btn { 
+    color: white;
+    background: grey; 
+    width: 400px; 
+    height: 40px;
+    border: none; 
+    border-radius: 10px; 
+    cursor: pointer; 
+    font-weight: 600; 
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    font-weight: 600;
+}
+
+.navigate-section { 
+    width: 100%;
+    display: grid; 
+    place-items: center; 
+    padding-top: 20px;
+}
+
+.back-section { 
+    width: 100%;
+    display: grid; 
+    place-items: center; 
+    padding-top: 20px;
+}

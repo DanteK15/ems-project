@@ -63,6 +63,8 @@ function Info() {
                         </form>
             </div>
 
+            <br />
+
             <div className = "menu-section">
                 <h1 className = "title">Helicopter Site:</h1>
                     <br />
@@ -73,6 +75,8 @@ function Info() {
                             </select>
                         </form>
             </div>
+
+            <br />
 
             <div className = "menu-section">
                 <h1 className = "title">Estimated Patient Loading Time</h1>
@@ -88,7 +92,7 @@ function Info() {
             <br />
             <div className = "calculate-section">
                 <br />
-                        <button className = "calculate-btn"><Link to="/results">Calculate</Link></button>
+                    <button className = "calculate-btn"><Link to="/results">Calculate</Link></button>
             </div> 
             </div>
         </div>
