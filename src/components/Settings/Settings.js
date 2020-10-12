@@ -13,7 +13,7 @@ function Settings() {
                 <input placeholder="Enter name here" />
 
                 <label className="settings-label">Hospital Address:</label>
-                <input placeholder="Enter name here" />       
+                <input placeholder="Enter address here" />       
                 <div className="settings-checkbox">
                     <input type="checkbox"/>
                     <label className="settings-label">Helicopter Access?</label>
@@ -27,9 +27,29 @@ function Settings() {
                 </div>
                 <br />
                 <div className="horizontal"></div>
+                <br />
                 <div className="settings-inputs-bottom">
+                    <h1 className="title">add Helicopter dispatch locations:</h1>
+                    <label className="settings-label-bottom">Helipad name:</label>
+                    <input placeholder="Enter name here" />
 
+                    <label className="settings-label-bottom">Helipad Address:</label>
+                    <input placeholder="Enter name here" />
+
+                    <div className="btn-div">
+                    <div></div>
+                    <button
+                        className="submit-btn"
+                        type="submit">Submit
+                    </button>
+                    </div>
+                    <br />
+                    <div className="horizontal"></div>
+                    <br />
                 </div>
+
+                <h1 className="title">time estimations:</h1>
+
             </div>
         </div>
         </div>

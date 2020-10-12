@@ -10,7 +10,7 @@
 }
 
 .back {
-    margin: 30px;
+    margin: 10px;
     height: 35px;
     width: 80px;
     border: none;
@@ -45,7 +45,7 @@
     font-weight: 600;
 }
 
-.settings-inputs-top > input {
+.settings-inputs-top > input, .settings-inputs-bottom > input {
     outline-width: 0;
     border: none;
     border-bottom: 1px solid darkgray;
@@ -82,4 +82,15 @@
 
 .horizontal {
     border-bottom: 2px solid black;
+}
+
+.settings-label-bottom {
+    color:rgb(40, 114, 160);
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.settings-inputs-bottom {
+    display: flex;
+    flex-direction: column;
 }
