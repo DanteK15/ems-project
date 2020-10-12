@@ -3,15 +3,10 @@ import './Info.css'
 import {Link} from 'react-router-dom'
 
 function Info() {
-    const [address, setAddress] = useState();
-
-    useEffect(() => {
-        localStorage.setItem('address',address);
-    }, [address]);
-
-    useEffect(() => {
-        localStorage.getItem(address);
-    }, []);
+    const [address, setAddress] = useState('');
+    const [hospital, setHospital] = useState('');
+    const [helicopter, setHelicopter] = useState('');
+    const [time, setTime] = useState('');
 
     const handleChange= (e) => {
         setAddress(e.target.value);
@@ -54,30 +49,29 @@ function Info() {
                 </div>
             </div>
 
+            <div className="centered">
             <div className = "menu-section">
                 <h1 className = "title">Hospital Selection:</h1>
-                <div className = "hospital-selection-section">
                     <br />
                         <form>
                             <select>
-                                <option value = "ex1">Providence</option>
-                                <option value = "ex2">Legacy</option>
+                                <option value = "providence"
+                                >Providence</option>
+                                <option value = "legacy"
+                                >Legacy</option>
                             </select>
                         </form>
-                </div>
             </div>
 
             <div className = "menu-section">
                 <h1 className = "title">Helicopter Site:</h1>
-                <div className = "hospital-selection-section">
                     <br />
                         <form>
                             <select>
-                                <option value = "ex1">Site 1</option>
-                                <option value = "ex2">Site 2</option>
+                                <option value = "site1">Site 1</option>
+                                <option value = "site2">Site 2</option>
                             </select>
                         </form>
-                </div>
             </div>
 
             <div className = "menu-section">
@@ -96,7 +90,7 @@ function Info() {
                 <br />
                         <button className = "calculate-btn"><Link to="/results">Calculate</Link></button>
             </div> 
-
+            </div>
         </div>
     )
 }
