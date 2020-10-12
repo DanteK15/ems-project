@@ -1,12 +1,12 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import './Info.css'
 import {Link} from 'react-router-dom'
 
 function Info() {
     const [address, setAddress] = useState('');
-    const [hospital, setHospital] = useState('');
-    const [helicopter, setHelicopter] = useState('');
-    const [time, setTime] = useState('');
+    // const [hospital, setHospital] = useState('');
+    // const [helicopter, setHelicopter] = useState('');
+    // const [time, setTime] = useState('');
 
     const handleChange= (e) => {
         setAddress(e.target.value);
@@ -23,7 +23,7 @@ function Info() {
     return (
         <div className = "info-page">
             <div className = "reset">
-                <button className = "settings-btn"><Link to="/settings">Settings</Link></button>
+            <Link to="/settings"><button className = "settings-btn">Settings</button></Link>
                 <button className = "reset-btn">Reset</button>
             </div>
 
@@ -92,7 +92,7 @@ function Info() {
             <br />
             <div className = "calculate-section">
                 <br />
-                    <button className = "calculate-btn"><Link to="/results">Calculate</Link></button>
+                <Link to="/results"><button className = "calculate-btn">Calculate</button></Link>
             </div> 
             </div>
         </div>

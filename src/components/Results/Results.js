@@ -11,16 +11,18 @@ function Results() {
             <div className="results-output-section">
                 <h1 className="title">Helicopter:</h1>
                 <label className="ETA-to-patient-label">ETA to Patient:</label>
+                <input placehodler=""/>
                 <br />
                 <label className="ETA-to-hospital-label">ETA to Hospital:</label>     
-            
+                <input placehodler=""/>
                 <br />
 
                 <h1 className="title">Ambulance:</h1>
                 <label className="ETA-to-patient-label">ETA to Patient:</label>
+                <input placehodler=""/>
                 <br />
                 <label className="ETA-to-hospital-label">ETA to Hospital:</label>
-
+                <input placehodler=""/>
                 <br />
 
                 <div className = "navigate-section">
@@ -29,7 +31,7 @@ function Results() {
 
                 <div className = "back-section">
                 <br />
-                    <button className = "back-btn">Back</button>
+                    <Link to="/"><button className = "back-btn">Back</button></Link>
                 </div>
 
             </div>

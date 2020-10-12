@@ -19,9 +19,12 @@
     font-weight: 800;
     font-size: 15px;
     letter-spacing: 2px;
-    color: white;
     background-color: rgba(255, 0, 0, 0.712);
     cursor: pointer;
+}
+
+.back > a {
+    color: white;
 }
 
 .back:hover {
@@ -93,4 +96,8 @@
 .settings-inputs-bottom {
     display: flex;
     flex-direction: column;
+}
+
+.settings-checkbox > input {
+    cursor: pointer;
 }

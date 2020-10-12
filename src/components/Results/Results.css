@@ -78,3 +78,11 @@
     place-items: center; 
     padding-top: 20px;
 }
+
+.results-output-section > input {
+    outline-width: 0;
+    border: none;
+    border-bottom: 1px solid darkgray;
+    width: 600px;
+    margin-bottom: 30px;
+}

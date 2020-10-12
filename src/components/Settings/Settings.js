@@ -1,10 +1,11 @@
 import React from 'react'
 import './Settings.css'
+import {Link} from 'react-router-dom'
 
 function Settings() {
     return (
         <div className="settings-outer">
-        <button className="back">Back</button>
+        <Link to="/"><button className="back">Back</button></Link>
 
         <div className="settings">
             <div className="settings-inputs-top">
