@@ -12,7 +12,6 @@ const center = {
 };
 
 function LocationMap(position) {
-  console.log(position);
   const [coords, setCoords] = useState(center);
 
   useEffect(() => {
