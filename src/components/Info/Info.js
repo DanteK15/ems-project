@@ -1,8 +1,12 @@
 import React, {useState} from 'react'
 import './Info.css'
 import {Link} from 'react-router-dom'
+import {useStateValue} from '../../StateProvider';
 
 function Info() {
+
+    const [{term}, dispatch] = useStateValue();
+
     const [address, setAddress] = useState('');
     // const [hospital, setHospital] = useState('');
     // const [helicopter, setHelicopter] = useState('');
@@ -56,7 +60,10 @@ function Info() {
                         <form>
                             <select>
                                 <option value = "providence"
-                                >Providence</option>
+                                >
+                                    {term}
+
+                                </option>
                                 <option value = "legacy"
                                 >Legacy</option>
                             </select>

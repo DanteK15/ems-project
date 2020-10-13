@@ -1,8 +1,25 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './Settings.css'
 import {Link} from 'react-router-dom'
+import {useStateValue} from '../../StateProvider';
+import {actionTypes} from '../../reducer'
 
 function Settings() {
+    const [name, setName] = useState('');
+    // state & dispatch to shoot actions to data layer
+    const [{term}, dispatch] = useStateValue();
+
+    const handleChange = (e) => {
+        // dispatches an action
+        setName(e.target.value);
+
+        dispatch({
+            type: actionTypes.SET_TERM,
+            term: name
+        });
+    }
+
+
     return (
         <div className="settings-outer">
         <Link to="/"><button className="back">Back</button></Link>
@@ -11,7 +28,9 @@ function Settings() {
             <div className="settings-inputs-top">
                 <h1 className="title">add hospital:</h1>
                 <label className="settings-label">Hospital Name:</label>
-                <input placeholder="Enter name here" />
+                <input placeholder="Enter name here"
+                onChange={handleChange}
+                />
 
                 <label className="settings-label">Hospital Address:</label>
                 <input placeholder="Enter address here" />       
@@ -23,7 +42,9 @@ function Settings() {
                     <div></div>
                     <button
                         className="submit-btn"
-                        type="submit">Submit
+                        type="submit"
+                        onClick={handleChange}
+                        >Submit
                     </button>
                 </div>
                 <br />
