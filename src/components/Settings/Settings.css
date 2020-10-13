@@ -48,7 +48,7 @@
     font-weight: 600;
 }
 
-.settings-inputs-top > input, .settings-inputs-bottom > input {
+.settings-inputs-top > input, .settings-inputs-middle, .settings-inputs-bottom > input {
     outline-width: 0;
     border: none;
     border-bottom: 1px solid darkgray;
@@ -87,10 +87,21 @@
     border-bottom: 2px solid black;
 }
 
-.settings-label-bottom {
+.settings-label-middle {
     color:rgb(40, 114, 160);
     font-weight: 600;
     margin-bottom: 10px;
+}
+
+.settings-label-bottom {
+    color:rgba(2, 150, 2, 0.795);
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.settings-inputs-middle {
+    display: flex;
+    flex-direction: column;
 }
 
 .settings-inputs-bottom {
