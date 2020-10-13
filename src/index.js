@@ -17,6 +17,7 @@ ReactDOM.render(
 //be placed where the settings and input code is
 //to create a context object that will make
 //those values global
+/*
 class App extends React.Component {
   constructor(props) {
     super(props)
@@ -34,6 +35,7 @@ class App extends React.Component {
     }
   }
 }
+*/
 
 //This is example code for accessing the settings data
 //via the context API
