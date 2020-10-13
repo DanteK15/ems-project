@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./Info.css";
 import { Link } from "react-router-dom";
 import LocationMap from "../Maps/LocationMap";
+import GoogleReactMap from "../Maps/GoogleReactMap";
 
 function Info() {
   const [address, setAddress] = useState();
@@ -56,8 +57,16 @@ function Info() {
         <h1 className="title">Patient Location:</h1>
         <br />
         <div className="patient-location-section">
+          {/*map image place holder */}
           {/* <img src="../images/map_example.jpg" alt="" /> */}
-          <LocationMap position={address} />
+
+          {/* MAP USING react-google-maps/api}
+          {/* <LocationMap position={address} /> */}
+
+          {/* MAP USING google-react-maps*/}
+          <div className="mapContainer">
+            <GoogleReactMap position={address} />
+          </div>
         </div>
 
         <div className="manual-address-input">
