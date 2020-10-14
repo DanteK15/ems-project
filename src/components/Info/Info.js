@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import './Info.css'
 import {Link} from 'react-router-dom'
 import {useStateValue} from '../../StateProvider';
+import Notifications, {notify} from 'react-notify-toast';
 
 function Info() {
 
