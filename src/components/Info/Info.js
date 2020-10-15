@@ -2,9 +2,12 @@ import React, {useState} from 'react'
 import './Info.css'
 import {Link} from 'react-router-dom'
 import {useStateValue} from '../../StateProvider';
-import Notifications, {notify} from 'react-notify-toast';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastConsumer } from 'react-toast-notifications';
 
 function Info() {
+    const notify = () => toast("Wow so easy !");
 
     const [{term}, dispatch] = useStateValue();
 
@@ -25,8 +28,23 @@ function Info() {
         }
     }
 
+
+    toast.error('ERROR', {
+        position: "top-center",
+        autoClose: false,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        });
+
     return (
         <div className = "info-page">
+            <div>
+                <button className="reset-btn" onClick={notify}>Error Test</button>
+                <ToastContainer />
+            </div>
             <div className = "reset">
             <Link to="/settings"><button className = "settings-btn">Settings</button></Link>
                 <button className = "reset-btn">Reset</button>
