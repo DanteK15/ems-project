@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import "./Info.css";
 import { Link } from "react-router-dom";
 import LocationMap from "../Maps/LocationMap";
-import GoogleReactMap from "../Maps/GoogleReactMap";
 
 function Info() {
   const [address, setAddress] = useState();
@@ -60,12 +59,9 @@ function Info() {
           {/*map image place holder */}
           {/* <img src="../images/map_example.jpg" alt="" /> */}
 
-          {/* MAP USING react-google-maps/api}
-          {/* <LocationMap position={address} /> */}
-
           {/* MAP USING google-react-maps*/}
           <div className="mapContainer">
-            <GoogleReactMap position={address} />
+            <LocationMap position={address} />
           </div>
         </div>
 
