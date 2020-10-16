@@ -144,3 +144,7 @@ a {
     display: grid;
     place-items: center;
 }
+
+.error {
+    display: flex;
+  }
