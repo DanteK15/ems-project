@@ -38,13 +38,16 @@ function Info() {
 
     return (
         <div className = "info-page">
-            <div className="error">
-                <button className ="reset-btn" onClick={notify}>
-                    Error Test
-                </button>
-                <ToastContainer limit={1} autoClose={false} /></div>
             <div className = "reset">
             <Link to="/settings"><button className = "settings-btn">Settings</button></Link>
+
+                <div className="error">
+                    <button className ="reset-btn" onClick={notify}>
+                        Error Test
+                    </button>
+                    <ToastContainer limit={1} autoClose={false} />
+                </div>
+                
                 <button className = "reset-btn">Reset</button>
             </div>
 

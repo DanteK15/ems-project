@@ -3,6 +3,9 @@ import './Settings.css'
 import {Link} from 'react-router-dom'
 import {useStateValue} from '../../StateProvider';
 import {actionTypes} from '../../reducer'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { Slide, Zoom, Flip, Bounce } from 'react-toastify';
 
 function Settings() {
     const [name, setName] = useState('');
@@ -19,11 +22,25 @@ function Settings() {
         });
     }
 
+    const notify = () => {
+        toast.error("ERROR", {
+            transition: Zoom,
+            position: "top-center",
+            autoClose: "false"
+        });
+      }
 
     return (
         <div className="settings-outer">
         <Link to="/"><button className="back">Back</button></Link>
 
+        <div className="error">
+            <button className ="error-button" onClick={notify}>
+                Error Test
+            </button>
+            <ToastContainer limit={1} autoClose={false} />
+        </div>
+        
         <div className="settings">
             <div className="settings-inputs-top">
                 <h1 className="title">add hospital:</h1>
