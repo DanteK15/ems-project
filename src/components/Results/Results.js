@@ -13,14 +13,14 @@ function Results() {
             position: "top-center",
             autoClose: "false"
         });
-      }
+    }
 
     return (
         <div className="results-section">
         <button className="restart">Restart</button>
 
         <div className="error">
-            <button className ="error-button" onClick={notify}>
+            <button className ="error-btn" onClick={notify}>
                 Error Test
             </button>
             <ToastContainer limit={1} autoClose={false} />

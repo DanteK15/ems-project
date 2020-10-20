@@ -42,12 +42,17 @@ function Info() {
             <Link to="/settings"><button className = "settings-btn">Settings</button></Link>
 
                 <div className="error">
-                    <button className ="reset-btn" onClick={notify}>
+                    <button className ="error-btn" onClick={notify}>
                         Error Test
                     </button>
-                    <ToastContainer limit={1} autoClose={false} />
                 </div>
-                
+                <div className="error">
+                    <button className ="error-btn" onClick={notify}>
+                        Error Test
+                    </button>
+                    <ToastContainer limit={3} autoClose={false} />
+                </div>
+
                 <button className = "reset-btn">Reset</button>
             </div>
 

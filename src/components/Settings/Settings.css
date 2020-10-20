@@ -114,9 +114,10 @@
 }
 
 .error {
-  }
+    display:inline
+}
   
-.error-button {
+.error-btn {
     margin: 10px;
     height: 35px;
     width: 120px;
@@ -127,5 +128,6 @@
     font-size: 15px;
     letter-spacing: 2px;
     background-color: rgba(255, 0, 0, 0.712);
+    color: black;
     cursor: pointer;
 }

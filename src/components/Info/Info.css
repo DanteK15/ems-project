@@ -148,3 +148,15 @@ a {
 .error {
     display: inline;
   }
+
+.error-btn {
+    color: white;
+    background: rgba(255, 0, 0, 0.712);
+    width: 100px; 
+    height: 40px;
+    border: none; 
+    border-radius: 10px;
+    cursor: pointer; 
+    font-size: 1rem;
+    font-weight: 600;
+}
