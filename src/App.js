@@ -1,20 +1,15 @@
-import React from 'react';
-import './App.css';
-import Info from './components/Info/Info';
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
-import Settings from './components/Settings/Settings'
+import React from "react";
+import Sidebar from "./Sidebar";
+import InputPage from "./InputPage";
+import Results from "./Results";
+import "./App.css";
 
 function App() {
   return (
-    <div className="App">
-        <Router>
-          <Route exact path = "/">
-            <Info />
-          </Route>
-          <Route path="/settings">
-            <Settings />
-          </Route>
-        </Router>
+    <div className="app">
+      <Sidebar />
+      <InputPage />
+      <Results />
     </div>
   );
 }
