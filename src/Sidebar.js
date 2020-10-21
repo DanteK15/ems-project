@@ -17,12 +17,9 @@ function Sidebar() {
   // on click it's going to open the page 
   return (
     <div className="sidebar">
-      <SettingsIcon className="sidebar__settingsIcon" 
+      <SettingsIcon className="settings-icon" 
       onClick={showModal}
       />
-      {/* <SidebarOption Icon={LocalHospitalIcon} text="Add Hospitals" />
-      <SidebarOption Icon={AddLocationIcon} text="Add Heli Dispatch Locations" />
-      <SidebarOption Icon={CreateIcon} text="Add Estimations" /> */}
 
       <Modal showModal={openSettings} 
       setShowModal={setOpenSettings}

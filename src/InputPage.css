@@ -1,4 +1,4 @@
-.inputpage {
+/* .inputpage {
     flex: 0.4;
     border-right: 1px solid var(--background);
     min-width: fit-content;
@@ -28,9 +28,9 @@
     cursor: pointer; 
     font-size: 1rem;
     font-weight: 600;
-  }
+  } */
   
-  .reset-btn:hover, .settings-btn:hover, .manual-address-btn:hover {
+  /* .reset-btn:hover, .settings-btn:hover, .manual-address-btn:hover {
     opacity: 0.5; 
     transition: 1s all ease;
   }
@@ -53,7 +53,7 @@
     font-weight: 400; 
     letter-spacing: 2px;
     font-size: 22px;
-  }
+  } */
   
   img { 
     height: 300px; 
@@ -63,7 +63,7 @@
   .manual-address-input { 
     display: grid;
     place-items: center;
-    padding-top: 15px;
+    padding-top: 25px;
   }
   
   .manual-address-btn { 
