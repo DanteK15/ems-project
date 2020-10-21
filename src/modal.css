@@ -1,0 +1,15 @@
+.modal {
+    position: fixed;
+    top: 0;
+    height: 800px;
+    width: 400px;
+    background-color: lightsteelblue;
+    border-right: 1px solid lightgray;
+    margin: 0 auto !important;
+}
+
+.MuiSvgIcon-root {
+    cursor: pointer;
+    padding-top: 15px;
+    padding-left: 15px;
+}
