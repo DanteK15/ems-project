@@ -1,3 +1,13 @@
-button {
-    outline-width: 0;
+body {
+  --background: #e6ecf0;
+  --icons-color: #32424d;
+}
+
+.app {
+  display: flex;
+  height: 100vh;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 10px;
 }

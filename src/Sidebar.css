@@ -1,0 +1,14 @@
+.sidebar {
+    border-right: 1px solid var(--background);
+    flex: 0.3;
+    margin-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  
+  .sidebar__settingsIcon {
+    color: var(--icons-color);
+    font-size: 30px !important;
+    margin-left: 20px;
+    margin-bottom: 20px;
+  }
