@@ -8,7 +8,9 @@ function Results() {
   return (
     <div className="results">
         <h2
-        style={{color: 'gray', textTransform:'uppercase', letterSpacing: '2px'}}
+        style={{color: 'gray', textTransform:'uppercase', letterSpacing: '2px',
+      marginBottom:'15px'
+      }}
         >Results</h2>
 
       <div className="results__helicopterResultsContainer">
