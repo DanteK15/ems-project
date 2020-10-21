@@ -20,23 +20,16 @@ function InputPage() {
       }
   }
 
+  //  what does update results do ??
+
   return (
-    <div className="inputpage">
-
-      <div className = "reset"> 
-        <button className = "reset-btn">Update Results</button>
-      </div>
-
+    <div className="input-page">
       <div className = "location-section">
-        <br />
-        <div className = "patient-location-section">
-          <img src = "../images/map_example.png" alt = ""/>
-        </div>
-
+        <img src = "../images/map_example.png" alt = ""/>
         <div className = "manual-address-input">
           <button className = "manual-address-btn"
             onClick = {showInput}
-            >Manual Address Input</button>
+            >Add address manually</button>
           <input 
             type = "text"
             value = {address}
@@ -48,27 +41,18 @@ function InputPage() {
         </div> 
       </div>
 
-      <div className = "center">
-        <div className = "menu-section">
-          <form> 
+      <div className = "dropdown">
             <select>
               <option value = "" disabled selected>Available Hospitals Nearby</option>
               <option value = "legacy">Legacy</option>
             </select>
-          </form>
-        </div>
 
-        <div className = "menu-section">
-          <form> 
             <select> 
               <option value = "" disabled selected>Available Helipads</option>
               <option value = "site1">Site 1</option>
               <option value = "site2">Site 2</option>
             </select>
-          </form>
-        </div>
 
-        <div className = "menu-section">
           <input
             type = "text"
             value = {address}
@@ -76,7 +60,6 @@ function InputPage() {
             placeholder = "Estimated Patient Loading Time (minutes)"
             onChange = {handleChange}
           />
-        </div>
       </div>
     </div>
   );

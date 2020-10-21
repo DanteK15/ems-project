@@ -8,8 +8,8 @@ function App() {
   return (
     <div className="app">
       <Sidebar />
-      {/* <InputPage /> */}
-      {/* <Results /> */}
+      <InputPage />
+      <Results />
     </div>
   );
 }
