@@ -94,27 +94,6 @@ function Modal({showModal, setShowModal}) {
                             onClick={handleClick}
                         />
                     </span>
-                    <span>
-                        <div className="icon-title-1">
-                            <AddLocationIcon className="icon-2" />
-                            <h3
-                                onClick={handleHeli}
-                            >Add Heli Dispatch Locations</h3>
-                        </div>
-                        <ArrowForwardIosIcon className="icon-0"
-                            onClick={handleHeli}
-                        />
-                    </span>
-                    <span>
-                        <div className="icon-title-2">
-                            <CreateIcon  className="icon-3" />
-                            <h3
-                                onClick={handleEstimates}
-                            >Add Estimations</h3>
-                        </div>
-                        <ArrowForwardIosIcon className="icon-0" 
-                        onClick={handleEstimates}/>
-                    </span>
                 </div>
             </div>
             </animated.div>            
