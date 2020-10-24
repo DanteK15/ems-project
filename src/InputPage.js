@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
 import "./InputPage.css";
+import {useStateValue} from './StateProvider';
+
 
 function InputPage() {
+  const [{term}, dispatch] = useStateValue();
 
   const [address, setAddress] = useState('');
     // const [hospital, setHospital] = useState('');
@@ -21,7 +24,6 @@ function InputPage() {
   }
 
   //  what does update results do ??
-
   return (
     <div className="input-page">
       <div className = "location-section">
@@ -44,7 +46,7 @@ function InputPage() {
       <div className = "dropdown">
             <select>
               <option value = "" disabled selected>Available Hospitals Nearby</option>
-              <option value = "legacy">Legacy</option>
+              <option value = "legacy">{term}</option>
             </select>
 
             <select> 

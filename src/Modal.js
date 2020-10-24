@@ -10,8 +10,13 @@ import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import SettingsIcon from '@material-ui/icons/Settings';
 import Results from './Results.js'
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
+import {useStateValue} from './StateProvider'
+import {actionTypes} from './reducer'
 
 function Modal({showModal, setShowModal}) {
+    const [{term}, dispatch] = useStateValue();
+    const [name, setName] = useState('')
+
     const divRef = useRef(null);
     const [hospital, setHospital] = useState(false)
     const [heli, setHeli] = useState(false);
@@ -46,6 +51,13 @@ function Modal({showModal, setShowModal}) {
     const handleEstimates = () => {
         divRef.current.style.display = ''
         setEstimates(true);
+    }
+
+    const pushData = () => {
+        dispatch({
+            type: actionTypes.SET_TERM,
+            term: name
+        });
     }
 
     return (
@@ -119,11 +131,17 @@ function Modal({showModal, setShowModal}) {
                 <div className="modal-2">
                     <h1>Add Hospital</h1> <br /> <br /> <br />
                     <label>Hospital Name</label>
-                    <input type="text" id="name" placeholder="Add hospital name here"/>
+                    <input type="text" id="name" 
+                    placeholder="Add hospital name here"
+                    onChange={(e) => {setName(e.target.value)}}
+                    />
                     <br /> <br /> < br/>
                     <label>Hospital Address</label>
                     <input type="text" id="address" placeholder="Add hospital address here" />
-
+                    <br />
+                    <button 
+                        className="submit-btn"
+                    onClick={pushData}>Submit</button>
                 </div>
                 </div>:
                 heli?

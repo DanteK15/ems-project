@@ -156,3 +156,19 @@ span > div > h3 {
     transform: scale(1.1);
     transition: 1s all ease-in;
 }
+
+.submit-btn {
+    background: transparent;
+    cursor: pointer;
+    border: 1px solid black;
+    margin-top: 20px;
+    width: 100px;
+    display: grid;
+    place-items: center;
+    font-weight: 200;
+}
+
+.submit-btn:hover {
+    opacity: 0.5;
+    transition: 1s all ease;
+}
