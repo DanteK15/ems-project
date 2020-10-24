@@ -23,12 +23,14 @@ function Results() {
 
         <h3>ETA to Patient</h3>
         <div className="results__input">
-          <input placeholder="Estimated Time" type="text" />
+          {/* <input placeholder="Estimated Time" type="text" /> */}
+          <h5>time</h5>
         </div>
 
         <h3>ETA to Hospital</h3>
         <div className="results__input">
-          <input placeholder="Estimated Time" type="text" />
+          {/* <input placeholder="Estimated Time" type="text" /> */}
+          <h5>time</h5>
         </div>
       </div>
 
@@ -42,11 +44,13 @@ function Results() {
 
         <h3>ETA to Patient</h3>
         <div className="results__input">
-          <input placeholder="Estimated Time" type="text" />
+          {/* <input placeholder="Estimated Time" type="text" /> */}
+          <h5>time</h5>
         </div>
         <h3>ETA to Hospital</h3>
         <div className="results__input">
-          <input placeholder="Estimated Time" type="text" />
+          {/* <input placeholder="Estimated Time" type="text" /> */}
+          <h5>time</h5>
         </div>
       </div>
 
