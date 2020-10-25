@@ -39,8 +39,8 @@ function Modal2() {
     }
 
     return (
-        <div className="modal-2">
-            <form onSubmit={handleSubmit}>
+        <div className="container">
+            <form onSubmit={handleSubmit} >
                 {inputs.map((input, index) => (
                     <div key={index} className="form">
                         <div className="inputs">
@@ -59,7 +59,10 @@ function Modal2() {
                                 value={input.location}
                                 onChange={e => handleChangeInput(index, e)}
                             />
+                                                    <br /> <br /> <br />
+
                         </div>
+
                         <div className="edit">
                             <button
                             onClick={()=> handleAdd()}
