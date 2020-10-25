@@ -141,7 +141,9 @@ span > div > h3 {
     justify-content: left;
     padding-top: 80px;
     margin: 20px;
+    overflow: visible !important;
 }
+
 
 .modal-2 > label {
     color: red;
@@ -157,7 +159,7 @@ span > div > h3 {
     transition: 1s all ease-in;
 }
 
-.submit-btn {
+/* .submit-btn {
     background: transparent;
     cursor: pointer;
     border: 1px solid black;
@@ -166,7 +168,7 @@ span > div > h3 {
     display: grid;
     place-items: center;
     font-weight: 200;
-}
+} */
 
 .submit-btn:hover {
     opacity: 0.5;

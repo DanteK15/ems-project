@@ -1,7 +1,7 @@
 // initial state is an object
 // data lives in here, the term will change
 export const initialState = {
-    term: null,
+    term: [],
 }
 
 // whenever we change the data layer, we dispatch an action
@@ -14,12 +14,11 @@ export const actionTypes = {
 // context api
 // reducer's job is to listen to dispatch action, otherwise it returns default
 const reducer = (state, action) => {
-    console.log(action);
     switch(action.type) {
         case actionTypes.SET_TERM:
             return {
                 ...state,
-                term: action.term,
+                term: [...action.term],
             };
             default: 
                 return state;

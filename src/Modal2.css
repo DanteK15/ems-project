@@ -1,0 +1,54 @@
+.form {
+    display: flex;
+    padding-top: 20px;
+}
+
+.inputs {
+    padding-right: 20px;
+    margin-right: 20px;
+}
+
+.inputs > input, .inputs > label {
+    margin: 20px;
+}
+
+.edit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+}
+
+.edit > button {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    font-size: 20px;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.edit > button:hover {
+    opacity: 0.5;
+    transition: 1s all ease;
+}
+
+.edit > button {
+    margin: 10px;
+}
+
+.submit-btn {
+    height: 40px;
+    width: 150px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}

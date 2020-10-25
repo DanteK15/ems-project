@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./InputPage.css";
 import {useStateValue} from './StateProvider';
 
 
 function InputPage() {
-  const [{term}, dispatch] = useStateValue();
-
+  const [{term}] = useStateValue();
   const [address, setAddress] = useState('');
     // const [hospital, setHospital] = useState('');
     // const [helicopter, setHelicopter] = useState('');
@@ -45,9 +44,15 @@ function InputPage() {
 
       <div className = "dropdown">
             <select>
-              <option value = "" disabled selected>Available Hospitals Nearby</option>
-              <option value = "legacy">{term}</option>
+            <option value = "" disabled selected>Available Hospitals Nearby</option>
+            {term[0] ?
+            term.map(e => <option> {e.name}</option>)
+            // <option>{term[0].name}</option>
+            : null}
             </select>
+             {/* {term[0] ? 
+             term.map(e => console.log(e.name))
+              :null} } */}
 
             <select> 
               <option value = "" disabled selected>Available Helipads</option>

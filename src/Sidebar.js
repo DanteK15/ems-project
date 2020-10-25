@@ -20,10 +20,10 @@ function Sidebar() {
       <SettingsIcon className="settings-icon" 
       onClick={showModal}
       />
-
-      <Modal showModal={openSettings} 
-      setShowModal={setOpenSettings}
-      />
+ 
+       <Modal showModal={openSettings} 
+       setShowModal={setOpenSettings}
+       />
     </div>
   );
 }
