@@ -39,7 +39,7 @@ function Modal2() {
     }
 
     return (
-        <div>
+        <div className="modal-2">
             <form onSubmit={handleSubmit}>
                 {inputs.map((input, index) => (
                     <div key={index} className="form">

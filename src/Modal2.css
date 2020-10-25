@@ -1,6 +1,5 @@
 .form {
     display: flex;
-    padding-top: 20px;
 }
 
 .inputs {
@@ -8,8 +7,9 @@
     margin-right: 20px;
 }
 
-.inputs > input, .inputs > label {
-    margin: 20px;
+.inputs > input {
+    margin-right: 20px;
+    margin-bottom: 20px;
 }
 
 .edit {
