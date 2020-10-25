@@ -1,9 +1,8 @@
 import React, {useState} from 'react'
-import Container from '@material-ui/core/Container';
-import TextField from '@material-ui/core/TextField';
 import {useStateValue} from './StateProvider'
 import {actionTypes} from './reducer'
 import './Modal2.css'
+import SettingsIcon from '@material-ui/icons/Settings';
 
 function Modal2() {
     const [{term},dispatch] = useStateValue();
@@ -41,8 +40,13 @@ function Modal2() {
     return (
         <div className="container">
             <form onSubmit={handleSubmit} >
+                <div className="sidebar-top">
+                    <SettingsIcon className="settings-icon-0" />
+                    <h2>Settings</h2>
+                </div>
                 {inputs.map((input, index) => (
                     <div key={index} className="form">
+
                         <div className="inputs">
                             <label>Hospital Name</label>
                             <input
