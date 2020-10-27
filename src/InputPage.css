@@ -1,0 +1,138 @@
+ .input-page {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   padding-top: 10px;
+   flex: 0.7; /* might need to change this */
+    /* flex: 0.4;
+    border-right: 1px solid var(--background);
+    min-width: fit-content; */
+  }
+  
+  /*
+  .inputpage__header {
+    position: sticky;
+    top: 0;
+    background-color: white;
+    z-index: 100;
+    border: 1px solid var(--background);
+    padding: 15px 20px;
+  }
+  
+  .inputpage__header > h2 {
+    font-size: 20px;
+    font-weight: 800;
+  }
+  
+  .reset-btn {
+    color: white;
+    background: #32424d;
+    width: 180px; 
+    height: 40px;
+    border: none; 
+    border-radius: 10px;
+    cursor: pointer; 
+    font-size: 1rem;
+    font-weight: 600;
+  } */
+  
+  button:hover {
+    opacity: 0.8; 
+    transition: 1s all ease;
+  }
+  
+  /*
+  .reset { 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+    width: 100%
+  }
+  .title { 
+    text-transform: uppercase; 
+    font-weight: 400; 
+    letter-spacing: 2px;
+    font-size: 22px;
+  } */
+  
+  img { 
+    height: 350px; 
+    width: 600px; 
+  }
+   
+  .manual-address-input { 
+    display: grid;
+    place-items: center;
+    padding-top: 20px;
+  }
+  
+  .manual-address-btn { 
+    color: white;
+    background: #32424d;
+    width: 600px;
+    height: 35px;
+    border: none; 
+    border-radius: 3px; 
+    cursor: pointer; 
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    margin-bottom: 5px;
+    font-weight: 200;
+  }
+
+  input {
+    border: none;
+    outline: none;
+    width: 100%;
+    border-bottom: 1px solid lightgray;
+   }
+
+  .dropdown {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .dropdown > select {
+    width: 600px;
+    margin-bottom: 18px;
+    border: none;
+    border-bottom: 1px solid lightgray;
+    letter-spacing: 2px;
+    color: gray;
+    cursor: pointer;
+    outline: none;
+    height: 38px;
+  }
+
+  .dropdown > input {
+    margin-top: 20px;
+  }
+
+  /*
+  
+  select {
+    width: 350px;
+    height: 40px;
+    cursor: pointer;
+    text-align: center;
+    font-size: 18px;
+    letter-spacing: 1px;
+    font-weight: 200;
+    text-transform: uppercase;
+    outline: none;
+    border: 1px solid lightgray;
+    text-align-last:center;
+    border: none;
+    background-color: rgba(211, 211, 211, 0.568);
+    border-radius: 10px;
+  } */
+
+  button {
+    border: none;
+    outline-width: none;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: capitalize;
+    /* color: white; */
+  }
