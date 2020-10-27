@@ -43,8 +43,9 @@ function InputPage() {
       </div>
 
       <div className = "dropdown">
-            <select>
-            <option value = "" disabled selected>Available Hospitals Nearby</option>
+            <select id = "available-hospitals-selection">
+            <option value = "" disabled selected 
+              id = "available-hospitals">Available Hospitals Nearby</option>
             {term[0] ?
             term.map(e => <option> {e.name}</option>)
             // <option>{term[0].name}</option>
@@ -54,8 +55,9 @@ function InputPage() {
              term.map(e => console.log(e.name))
               :null} } */}
 
-            <select> 
-              <option value = "" disabled selected>Available Helipads</option>
+            <select id = "available-helipads-dropdown"> 
+              <option value = "" disabled selected
+                id = "available-helipads">Available Helipads</option>
               <option value = "site1">Site 1</option>
               <option value = "site2">Site 2</option>
             </select>
@@ -63,7 +65,7 @@ function InputPage() {
           <input
             type = "text"
             value = {address}
-            id = "show" 
+            id = "estimated-load-time" 
             placeholder = "Estimated Patient Loading Time (minutes)"
             onChange = {handleChange}
           />

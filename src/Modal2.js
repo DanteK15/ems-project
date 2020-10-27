@@ -50,6 +50,7 @@ function Modal2() {
                         <div className="inputs">
                             <label>Hospital Name</label>
                             <input
+                                id = "hospital-name-entry"
                                 name="name"
                                 label="Hospital Name: "
                                 value={input.name}
@@ -58,6 +59,7 @@ function Modal2() {
 
                             <label>Hospital Location</label>
                             <input
+                                id = "hospital-location-entry"
                                 name="location"
                                 label="Hospital Location: "
                                 value={input.location}
