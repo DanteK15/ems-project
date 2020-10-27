@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import "./InputPage.css";
 import {useStateValue} from './StateProvider';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { Slide, Zoom, Flip, Bounce } from 'react-toastify';
 
 
 function InputPage() {
@@ -22,10 +25,139 @@ function InputPage() {
       }
   }
 
+  var errorCount = -1;
+
+  const notify = () => {
+    errorCount++;
+
+    if(errorCount == 3){
+      errorCount = 0;
+      toast.dismiss();
+    }
+
+    toast.error("ERROR", {
+      transition: Zoom,
+      position: "top-center",
+      autoClose: "false"
+    });
+  }
+
+  function getLocation() {
+    if (navigator.geolocation) {
+      toast.dismiss();
+
+      navigator.geolocation.getCurrentPosition(showPosition, showError);
+
+      toast.clearWaitingQueue();
+    } 
+    else { 
+      toast.dismiss();
+
+      toast.error("Location Services Not Supported By This Device", {
+        transition: Zoom,
+        position: "top-center",
+        autoClose: "false"
+      });
+
+      toast.clearWaitingQueue();
+    }
+  }
+
+  function showPosition(position) {
+    toast.dismiss();
+
+    toast.clearWaitingQueue();
+  }
+
+  function showError(error) {
+    switch(error.code) {
+      case error.PERMISSION_DENIED:
+        navigator.permissions.query({name: 'geolocation'}).then(function(permissionStatus){
+          console.log(permissionStatus);
+
+          if(permissionStatus.state == 'prompt'){
+            toast.dismiss();
+            toast.error("Please Allow Location.", {
+              toastId: "ToastPromptPermissionID",
+              transition: Zoom,
+              position: "top-right",
+              autoClose: "false"
+            });
+            toast.clearWaitingQueue();
+            getLocation();
+          }
+
+          else{
+            toast.dismiss();
+            toast.error("Location Access Blocked. Please allow by clicking location icon in search bar and selecting 'Always Allow.'", {
+              toastId: "ToastPermissionDeniedID",
+              transition: Zoom,
+              position: "top-center",
+              autoClose: "false"
+            });
+            errorCount = 0;
+            
+            toast.clearWaitingQueue();
+          }
+          
+        });
+        break;
+
+      case error.POSITION_UNAVAILABLE:
+        toast.dismiss();
+
+        toast.error("Location information is unavailable. Refresh page.", {
+          toastId: "ToastPositionUnavailableID",
+          transition: Zoom,
+          position: "top-center",
+          autoClose: "false"
+        });
+
+        toast.clearWaitingQueue();
+        break;
+
+      case error.TIMEOUT:
+        toast.dismiss();
+
+        toast.error("The request to get user location timed out. Refresh page.", {
+          toastId: "ToastTimeoutID",
+          transition: Zoom,
+          position: "top-center",
+          autoClose: "false"
+        });
+
+        toast.clearWaitingQueue();
+        break;
+
+      case error.UNKNOWN_ERROR:
+        toast.dismiss();
+
+        toast.error("An unknown error occurred. Refresh page.", {
+          toastId: "ToastUnknownErrorID",
+          transition: Zoom,
+          position: "top-center",
+          autoClose: "false"
+        });
+        
+        toast.clearWaitingQueue();
+        break;
+    }
+  }
+
+  getLocation();
+
   //  what does update results do ??
   return (
     <div className="input-page">
       <div className = "location-section">
+
+        <div className="error">
+          <button className = "error-btn" onClick={notify}>
+            Error Test
+          </button>
+          <ToastContainer limit={3} autoClose={false} />
+        </div>
+
         <img src = "../images/map_example.png" alt = ""/>
         <div className = "manual-address-input">
           <button className = "manual-address-btn"
