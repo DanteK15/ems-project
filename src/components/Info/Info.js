@@ -35,6 +35,64 @@ function Info() {
         });
       }
 
+    function getLocation() {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(showPosition, showError);
+        } 
+        else { 
+            toast.error("Location Services Disabled", {
+                transition: Zoom,
+                position: "top-center",
+                autoClose: "false"
+            });
+        }
+    }
+
+    function showPosition(position) {
+        var strPosition = "Latitude: " + position.coords.latitude + 
+        "<br>Longitude: " + position.coords.longitude;
+
+        toast.error(strPosition, {
+            transition: Zoom,
+            position: "top-center",
+            autoClose: "false"
+        });
+    }
+
+    function showError(error) {
+        switch(error.code) {
+          case error.PERMISSION_DENIED:
+            toast.error("User denied the request for Geolocation.", {
+                transition: Zoom,
+                position: "top-center",
+                autoClose: "false"
+            });
+            break;
+          case error.POSITION_UNAVAILABLE:
+            toast.error("Location information is unavailable.", {
+                transition: Zoom,
+                position: "top-center",
+                autoClose: "false"
+            });
+            break;
+          case error.TIMEOUT:
+            toast.error("The request to get user location timed out.", {
+                transition: Zoom,
+                position: "top-center",
+                autoClose: "false"
+            });
+            break;
+          case error.UNKNOWN_ERROR:
+            toast.error("An unknown error occurred.", {
+                transition: Zoom,
+                position: "top-center",
+                autoClose: "false"
+            });
+            break;
+        }
+    }
+      
+    getLocation();
 
     return (
         <div className = "info-page">
