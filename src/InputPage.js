@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./InputPage.css";
 import {useStateValue} from './StateProvider';
+// import LocationMap from "./Maps/LocationMap"
 
 
 function InputPage() {
@@ -26,7 +27,8 @@ function InputPage() {
   return (
     <div className="input-page">
       <div className = "location-section">
-        <img src = "../images/map_example.png" alt = ""/>
+        {/* <img src = "../images/map_example.png" alt = ""/> */}
+        {/* <LocationMap /> */}
         <div className = "manual-address-input">
           <button className = "manual-address-btn"
             onClick = {showInput}
