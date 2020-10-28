@@ -6,12 +6,25 @@ import {useStateValue} from './StateProvider';
 function InputPage() {
   const [{term}] = useStateValue();
   const [address, setAddress] = useState('');
-    // const [hospital, setHospital] = useState('');
-    // const [helicopter, setHelicopter] = useState('');
+  const [hospital, setHospital] = useState('');
+  const [helicopter, setHelicopter] = useState('');
+  const [estimatedtime, setEstimatedTime] = useState('');
     // const [time, setTime] = useState('');
 
   const handleChange= (e) => {
     setAddress(e.target.value);
+  }
+
+  const handleEstimTimeChange = (e) => { 
+    setEstimatedTime(e.target.value); 
+  }
+
+  const handleHospitalSelection = (e) => {
+    setHospital(e.target.value); 
+  }
+
+  const handleHelicopterSelection = (e) => {
+    setHelicopter(e.target.value); 
   }
 
   const showInput = () => {
@@ -41,11 +54,16 @@ function InputPage() {
           />
         </div> 
       </div>
-
+      <br />
       <div className = "dropdown">
-      <select id = "available-hospitals-selection">
+          <select 
+            id = "available-hospitals-selection" 
+            value = {hospital}
+            onChange = {handleHospitalSelection}
+            required>
             <option value = "" disabled selected 
               id = "available-hospitals">Available Hospitals Nearby</option>
+            <option value = "site1">Site 1</option>
             {term[0] ?
             term.map(e => <option> {e.name}</option>)
             // <option>{term[0].name}</option>
@@ -55,7 +73,11 @@ function InputPage() {
              term.map(e => console.log(e.name))
               :null} } */}
 
-            <select id = "available-helipads-dropdown"> 
+            <select 
+              id = "available-helipads-dropdown" 
+              value = {helicopter}
+              onChange = {handleHelicopterSelection}
+              required> 
               <option value = "" disabled selected
                 id = "available-helipads">Available Helipads</option> 
               <option value = "site1">Site 1</option>
@@ -64,11 +86,17 @@ function InputPage() {
 
           <input
             type = "text"
-            value = {address}
+            pattern="[0-9]*"
             id = "estimated-load-time" 
+            value = {estimatedtime}
             placeholder = "Estimated Patient Loading Time (minutes)"
-            onChange = {handleChange}
+            onChange = {handleEstimTimeChange}
+            minlength = "1"
+            required
           />
+          <ul class = "input-requirements">
+              <li>Must only contain numbers.</li>
+          </ul>
       </div>
     </div>
   );
