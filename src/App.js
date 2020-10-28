@@ -3,21 +3,19 @@ import Sidebar from "./Sidebar";
 import InputPage from "./InputPage";
 import Results from "./Results";
 import LocationMap from "./Maps/LocationMap"
+import {useStateValue} from './StateProvider'
+import {actionTypes} from './reducer'
 import "./App.css";
 
 function App() {
-    const [gmaps, setGmaps] = useState(true);
 
-    const mapsHasLoaded = (map, maps) => {
-        setGmaps({ map, maps })
-    }
 
     return (
         <div className="app">
-            {gmaps && (<Sidebar />)}
+            <Sidebar />
             <div className="input-page">
-                <LocationMap mapsHasLoaded={mapsHasLoaded}/>
-                <InputPage gmaps={gmaps}/>
+                <LocationMap />
+                <InputPage />
             </div>
             <Results />
         </div>

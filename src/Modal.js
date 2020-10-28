@@ -7,6 +7,7 @@ import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import SettingsIcon from '@material-ui/icons/Settings';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import {useStateValue} from './StateProvider'
+import AutoComplete from './Maps/AutoComplete'
 import Modal2 from './Modal2';
 
 
@@ -39,6 +40,10 @@ function Modal({showModal, setShowModal}) {
 
     const handleChange =(e) =>{}
     const pushData = (e) => {}
+
+    const newHospital = (place) => {
+        console.log(place);
+    }
 
     return (
         <>
