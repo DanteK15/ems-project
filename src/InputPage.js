@@ -5,6 +5,7 @@ import {useStateValue} from './StateProvider';
 
 function InputPage() {
   const [{term}] = useStateValue();
+  const [{locations}] = useStateValue();
   const [address, setAddress] = useState('');
     // const [hospital, setHospital] = useState('');
     // const [helicopter, setHelicopter] = useState('');
@@ -43,7 +44,7 @@ function InputPage() {
       </div>
 
       <div className = "dropdown">
-      <select id = "available-hospitals-selection">
+            <select id = "available-hospitals-selection">
             <option value = "" disabled selected 
               id = "available-hospitals">Available Hospitals Nearby</option>
             {term[0] ?
@@ -55,11 +56,19 @@ function InputPage() {
              term.map(e => console.log(e.name))
               :null} } */}
 
-            <select id = "available-helipads-dropdown"> 
+            {/* <select id = "available-helipads-dropdown"> 
               <option value = "" disabled selected
                 id = "available-helipads">Available Helipads</option> 
               <option value = "site1">Site 1</option>
               <option value = "site2">Site 2</option>
+            </select> */}
+
+            <select id = "available-helipads-dropdown">
+              <option value = "" disabled selected 
+                id = "available-helipads">Available Helipads Location</option>
+              {locations[0] ?
+                locations.map(e => <option> {e.location}</option>)
+              : null}
             </select>
 
           <input
