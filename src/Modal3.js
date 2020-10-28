@@ -48,14 +48,24 @@ function Modal3() {
                     <div key={index} className="form">
 
                         <div className="inputs">
-                            <label>Location</label>
+                            <label>Name</label>
                             <input
-                                id = "hospital-location-entry"
-                                name="location"
-                                label="Hospital Location: "
+                                id = "helipad-name-entry"
+                                name="helipad-name"
+                                label="Location Name: "
                                 value={input.location}
                                 onChange={e => handleChangeInput(index, e)}
                             />
+
+                            <label>Location</label>
+                            <input
+                                id = "helipad-location-entry"
+                                name="helipad-location"
+                                label="Location Address: "
+                                value={input.location}
+                                onChange={e => handleChangeInput(index, e)}
+                            />
+
                             <br /> <br /> <br />
 
                         </div>

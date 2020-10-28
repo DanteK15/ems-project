@@ -3,6 +3,7 @@ import {useSpring, animated} from 'react-spring'
 import './modal.css'
 import CloseIcon from '@material-ui/icons/Close';
 import LocalHospitalIcon from '@material-ui/icons/LocalHospital';
+import AddLocationIcon from '@material-ui/icons/AddLocation';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import SettingsIcon from '@material-ui/icons/Settings';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
@@ -67,8 +68,8 @@ function Modal({showModal, setShowModal}) {
                 {/* helicopters */}
                     <span>
                         <div className="icon-title">
-                            <LocalHospitalIcon className="icon-1"/>
-                            <h3 onClick={handleHeliClick}>Add Heli</h3>
+                            <AddLocationIcon className="icon-2"/>
+                            <h3 onClick={handleHeliClick}>Add Helicopter Dispatch Locations</h3>
                         </div>
                         <ArrowForwardIosIcon className="icon-0" onClick={handleClick} />
                     </span>
