@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import isEmpty from 'lodash/isEmpty';
 import "./InputPage.css";
-import { useStateValue } from './StateProvider';
-import AutoComplete from "./Maps/AutoComplete"
-import { actionTypes } from "./reducer";
+import { useStateValue } from '../Context/StateProvider';
+import AutoComplete from "../Maps/AutoComplete"
+import { actionTypes } from "../Context/reducer";
 
 
 function InputPage() {

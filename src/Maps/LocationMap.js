@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import GoogleMapReact from 'google-map-react';
 import isEmpty from 'lodash/isEmpty';
-import { LocationPin, HospitalPin, HelicopterPin } from '../Icons'
-import { useStateValue } from '../StateProvider'
-import { actionTypes } from '../reducer'
+import { LocationPin, HospitalPin, HelicopterPin } from './Icons'
+import { useStateValue } from '../Context/StateProvider'
+import { actionTypes } from '../Context/reducer'
 import './LocationMap.css';
 
 // Initial map location

@@ -1,10 +1,8 @@
 import React, { useState } from "react";
-import Sidebar from "./Sidebar";
-import InputPage from "./InputPage";
-import Results from "./Results";
+import Sidebar from "./Settings/Sidebar";
+import InputPage from "./Input/InputPage";
+import Results from "./Results/Results";
 import LocationMap from "./Maps/LocationMap"
-import {useStateValue} from './StateProvider'
-import {actionTypes} from './reducer'
 import "./App.css";
 
 function App() {

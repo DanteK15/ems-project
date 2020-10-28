@@ -6,8 +6,8 @@ import LocalHospitalIcon from '@material-ui/icons/LocalHospital';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import SettingsIcon from '@material-ui/icons/Settings';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
-import {useStateValue} from './StateProvider'
-import AutoComplete from './Maps/AutoComplete'
+import {useStateValue} from '../Context/StateProvider'
+import AutoComplete from '../Maps/AutoComplete'
 import Modal2 from './Modal2';
 
 
