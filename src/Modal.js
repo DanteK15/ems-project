@@ -8,13 +8,14 @@ import SettingsIcon from '@material-ui/icons/Settings';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import {useStateValue} from './StateProvider'
 import Modal2 from './Modal2';
+import Modal3 from './Modal3'
 
 
 function Modal({showModal, setShowModal}) {
     const [{term},dispatch] = useStateValue();
-    const [name, setName] = useState([])
     const divRef = useRef(null);
     const [hospital, setHospital] = useState(false);
+    const [heli, setHeli] = useState(false);
     // trying something new 
     const [inputFields, setInputFields] = useState([{name: ''}]);
 
@@ -32,13 +33,16 @@ function Modal({showModal, setShowModal}) {
         setHospital(true);
     }
 
+    const handleHeliClick = () => {
+        divRef.current.style.display = 'none'
+        setHeli(true);
+    }
+
     const goBack = () => {
         divRef.current.style.display = ''
         setHospital(false)
+        setHeli(false)
     }
-
-    const handleChange =(e) =>{}
-    const pushData = (e) => {}
 
     return (
         <>
@@ -51,6 +55,7 @@ function Modal({showModal, setShowModal}) {
                     <SettingsIcon className="settings-icon-0" />
                     <h2>Settings</h2>
                 </div>
+                {/* hospitals */}
                 <div ref={divRef} className={`modal-icons ${"modal-icons--active"}`} id="inputs">
                     <span>
                         <div className="icon-title">
@@ -59,10 +64,18 @@ function Modal({showModal, setShowModal}) {
                         </div>
                         <ArrowForwardIosIcon className="icon-0" onClick={handleClick} />
                     </span>
+                {/* helicopters */}
+                    <span>
+                        <div className="icon-title">
+                            <LocalHospitalIcon className="icon-1"/>
+                            <h3 onClick={handleHeliClick}>Add Heli</h3>
+                        </div>
+                        <ArrowForwardIosIcon className="icon-0" onClick={handleClick} />
+                    </span>
                 </div>
             </div>
             </animated.div>            
-            : null
+            :null
         }
         </div>
 
@@ -89,7 +102,11 @@ function Modal({showModal, setShowModal}) {
                 </div> */}
 
                 </div> 
-                : null
+                : heli ? 
+                <div className="modal">
+                    <ArrowBackIosIcon onClick={goBack} />
+                    <Modal3 />
+                </div> : null
                 
             }
         </div>

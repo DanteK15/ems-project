@@ -2,12 +2,14 @@
 // data lives in here, the term will change
 export const initialState = {
     term: [],
+    locations: []
 }
 
 // whenever we change the data layer, we dispatch an action
 // that changes/sets the serch term
 export const actionTypes = {
     SET_TERM: 'SET_TERM',
+    SET_LOCATION: 'SET_LOCATION'
 }
 
 // state is state of data layer, action is whatever we're dispatching to 
@@ -19,6 +21,11 @@ const reducer = (state, action) => {
             return {
                 ...state,
                 term: [...action.term],
+            };
+        case actionTypes.SET_LOCATION:
+            return {
+                ...state,
+                locations: [...action.locations]
             };
             default: 
                 return state;
