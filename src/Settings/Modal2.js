@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
-import {useStateValue} from './StateProvider'
-import {actionTypes} from './reducer'
+import {useStateValue} from '../Context/StateProvider'
+import {actionTypes} from '../Context/reducer'
 import './Modal2.css'
 import SettingsIcon from '@material-ui/icons/Settings';
 

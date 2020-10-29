@@ -1,14 +1,11 @@
- .input-page {
+ /* .input-page {
    display: flex;
    flex-direction: column;
    align-items: center;
    justify-content: center;
    padding-top: 10px;
-   flex: 0.7; /* might need to change this */
-    /* flex: 0.4;
-    border-right: 1px solid var(--background);
-    min-width: fit-content; */
-  }
+   flex: 0.7; 
+  } */
   
   /*
   .inputpage__header {
