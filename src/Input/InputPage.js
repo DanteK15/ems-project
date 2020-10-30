@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import "./InputPage.css";
+import isEmpty from 'lodash/isEmpty';
 import { useStateValue } from '../Context/StateProvider';
 import AutoComplete from "../Maps/AutoComplete"
 import { actionTypes } from "../Context/reducer";
 
 
 function InputPage() {
-  const [{ term, gmaps }, dispatch] = useStateValue();
+  const [{ hospitals, gmaps }, dispatch] = useStateValue();
   const [address, setAddress] = useState('');
   const [displayInput, setDisplayInput] = useState(false)
   // const [hospital, setHospital] = useState('');
@@ -50,10 +51,10 @@ function InputPage() {
         <select id="available-hospitals-selection">
           <option value="" disabled selected
             id="available-hospitals">Available Hospitals Nearby</option>
-          {term[0] ?
-            term.map(e => <option> {e.name}</option>)
+          {!isEmpty(hospitals) && 
+            hospitals.map(e => <option> {e.name}</option>)
             // <option>{term[0].name}</option>
-            : null}
+           }
         </select>
         {/* {term[0] ? 
              term.map(e => console.log(e.name))
