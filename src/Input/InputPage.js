@@ -65,12 +65,13 @@ function InputPage() {
         <div className="manual-address-input">
           <button className="manual-address-btn"
             onClick={() => setDisplayInput(!displayInput)}
-          >Add address manually</button>
+          >Edit Address</button>
           {displayInput &&
             (gmaps && <AutoComplete map={gmaps.map} mapApi={gmaps.maps} newPlace={newPatientLoc} />
           )}
         </div>
       </div>
+      <br />
 
       <div className="dropdown">
         <select id="available-hospitals-selection">
