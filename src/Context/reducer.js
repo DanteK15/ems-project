@@ -1,6 +1,5 @@
 // initial state is an object
 // data lives in here, the term will change
-// TODO: See arrow suggestions
 export const initialState = {
     hospitals: [],
     helicopters: [],

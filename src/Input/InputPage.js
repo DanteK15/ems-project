@@ -6,6 +6,7 @@ import { useStateValue } from '../Context/StateProvider';
 import AutoComplete from "../Maps/AutoComplete"
 import { actionTypes } from "../Context/reducer";
 import * as errorMessage from './error.js';
+import renderDirections from "../Maps/Directions";
 
 function InputPage() {
   const [{ hospitals, gmaps }, dispatch] = useStateValue();
@@ -27,7 +28,7 @@ function InputPage() {
   //   }
   // }
 
-  const newPatientLoc= (place) => {
+  const newPatientLoc = (place) => {
     dispatch({
       type: actionTypes.SET_LOC,
       patientLocal: place
@@ -60,16 +61,16 @@ function InputPage() {
       <div className="location-section">
 
         {/*ToastContainer is placed anywhere to initialize error popups*/}
-        <errorMessage.ToastContainer limit={7} autoClose={false} 
-        transition={errorMessage.Zoom} position={"top-center"}/>
-        
+        <errorMessage.ToastContainer limit={7} autoClose={false}
+          transition={errorMessage.Zoom} position={"top-center"} />
+
         <div className="manual-address-input">
           <button className="manual-address-btn"
             onClick={() => setDisplayInput(!displayInput)}
           >Edit Current Address</button>
           {displayInput &&
             (gmaps && <AutoComplete map={gmaps.map} mapApi={gmaps.maps} newPlace={newPatientLoc} />
-          )}
+            )}
         </div>
       </div>
       <br />
@@ -78,10 +79,10 @@ function InputPage() {
         <select id="available-hospitals-selection">
           <option value="" disabled selected
             id="available-hospitals">Available Hospitals Nearby</option>
-          {!isEmpty(hospitals) && 
+          {!isEmpty(hospitals) &&
             hospitals.map(e => <option> {e.name}</option>)
             // <option>{term[0].name}</option>
-           }
+          }
         </select>
         {/* {term[0] ? 
              term.map(e => console.log(e.name))
@@ -100,8 +101,11 @@ function InputPage() {
           id="estimated-load-time"
           placeholder="Estimated Patient Loading Time (minutes)"
           onChange={handleChange}
-        />  
-
+        />
+        <br />
+        {gmaps ? 
+            <btn style={{margin:'5px', border:'2px solid black', textAlign: 'center'}} onClick={() => renderDirections(gmaps)}>render directions</btn> 
+            : (<p>Loading... </p>)}
       </div>
     </div>
   );

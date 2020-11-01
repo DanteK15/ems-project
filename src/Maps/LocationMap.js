@@ -47,6 +47,7 @@ const LocationMap = (props) => {
     };
 
     // Reverse geocode user location to get place object
+    // TODO: consider just using Lat/Lng for patient instead of Place object. Will need to change context
     const reverseGeocode = (maps) => {
         const geocoder = new maps.Geocoder();
         geocoder.geocode({ location: position }, (results, status) => {
