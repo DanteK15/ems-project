@@ -1,5 +1,5 @@
-// import React, { useState } from "react";
-import React, { useState, Component } from 'react'; 
+import React, { useState } from "react";
+// import React, { useState, Component } from 'react'; 
 import "./InputPage.css";
 import { useStateValue } from '../Context/StateProvider';
 import AutoComplete from "../Maps/AutoComplete"
@@ -102,8 +102,6 @@ function InputPage() {
           placeholder="Estimated Patient Loading Time (minutes)"
           onChange={handleChange}
         />  
-
-        
 
       </div>
     </div>
