@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+// import React, { useState } from "react";
+import React, { useState, Component } from 'react'; 
 import "./InputPage.css";
 import { useStateValue } from '../Context/StateProvider';
 import AutoComplete from "../Maps/AutoComplete"
 import { actionTypes } from "../Context/reducer";
 import * as errorMessage from './error.js';
-
 
 function InputPage() {
   const [{ term, gmaps }, dispatch] = useStateValue();
@@ -17,6 +17,8 @@ function InputPage() {
   const handleChange = (e) => {
     setAddress(e.target.value);
   }
+
+  
 
   // const showInput = () => {
   //   if (document.getElementById('show').style.visibility === 'hidden') {
@@ -65,7 +67,7 @@ function InputPage() {
         <div className="manual-address-input">
           <button className="manual-address-btn"
             onClick={() => setDisplayInput(!displayInput)}
-          >Edit Address</button>
+          >Edit Current Address</button>
           {displayInput &&
             (gmaps && <AutoComplete map={gmaps.map} mapApi={gmaps.maps} newPlace={newPatientLoc} />
           )}
@@ -88,7 +90,7 @@ function InputPage() {
 
         <select id="available-helipads-dropdown">
           <option value="" disabled selected
-            id="available-helipads">Available Helipads</option>
+            id="available-helipads">Helicopter Location</option>
           <option value="site1">Site 1</option>
           <option value="site2">Site 2</option>
         </select>
@@ -99,7 +101,10 @@ function InputPage() {
           id="estimated-load-time"
           placeholder="Estimated Patient Loading Time (minutes)"
           onChange={handleChange}
-        />
+        />  
+
+        
+
       </div>
     </div>
   );
