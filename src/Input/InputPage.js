@@ -18,8 +18,6 @@ function InputPage() {
     setAddress(e.target.value);
   }
 
-  
-
   // const showInput = () => {
   //   if (document.getElementById('show').style.visibility === 'hidden') {
   //     document.getElementById('show').style.visibility = 'visible';
