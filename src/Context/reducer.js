@@ -16,7 +16,9 @@ export const initialState = {
 // TODO: Add clear action to reset patientLocal, destination, heliOrigin
 export const actionTypes = {
     SET_HOSP: 'SET_HOSP',
+    DEL_HOSP: 'DEL_HOSP',
     SET_HELIS: 'SET_HELIS',
+    DEL_HELI: 'DEL_HELI',
     SET_MAPS: 'SET_MAPS',
     SET_LOC: 'SET_LOC',
     SET_DEST: 'SET_DEST',
@@ -33,11 +35,21 @@ const reducer = (state, action) => {
                 ...state,
                 hospitals: [...state.hospitals, action.hospital],
             };
+        case actionTypes.DEL_HOSP:
+            return {
+                ...state,
+                hospitals: state.hospitals.filter((_,index) => index != action.index)
+            }
         case actionTypes.SET_HELIS:
             return {
                 ...state,
                 helicopters: [...state.helicopters, action.helicopter],
-            };
+            }
+        case actionTypes.DEL_HELI:
+            return {
+                ...state,
+                helicopters: state.helicopters.filter((_,index) => index != action.index)
+            }
         case actionTypes.SET_MAPS:
             return {
                 ...state,
