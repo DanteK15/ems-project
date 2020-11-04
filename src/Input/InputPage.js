@@ -1,14 +1,21 @@
 import React, { useState } from "react";
 // import React, { useState, Component } from 'react'; 
 import "./InputPage.css";
+import isEmpty from 'lodash/isEmpty';
 import { useStateValue } from '../Context/StateProvider';
 import AutoComplete from "../Maps/AutoComplete"
 import { actionTypes } from "../Context/reducer";
 import * as errorMessage from './error.js';
+import renderDirections from "../Maps/Directions";
 
 function InputPage() {
+<<<<<<< HEAD
   const [{ /*term,*/ gmaps }, dispatch] = useStateValue();
   // const [address, setAddress] = useState('');
+=======
+  const [{ hospitals, gmaps }, dispatch] = useStateValue();
+  const [address, setAddress] = useState('');
+>>>>>>> dev-merge-map
   const [displayInput, setDisplayInput] = useState(false)
   // const [hospital, setHospital] = useState('');
   // const [helicopter, setHelicopter] = useState('');
@@ -32,7 +39,7 @@ function InputPage() {
   //   }
   // }
 
-  const newPatientLoc= (place) => {
+  const newPatientLoc = (place) => {
     dispatch({
       type: actionTypes.SET_LOC,
       patientLocal: place
@@ -86,16 +93,16 @@ const showInput = () => {
       <div className="location-section">
 
         {/*ToastContainer is placed anywhere to initialize error popups*/}
-        <errorMessage.ToastContainer limit={7} autoClose={false} 
-        transition={errorMessage.Zoom} position={"top-center"}/>
-        
+        <errorMessage.ToastContainer limit={7} autoClose={false}
+          transition={errorMessage.Zoom} position={"top-center"} />
+
         <div className="manual-address-input">
           <button className="manual-address-btn"
             onClick={() => setDisplayInput(!displayInput)}
           >Edit Current Address</button>
           {displayInput &&
             (gmaps && <AutoComplete map={gmaps.map} mapApi={gmaps.maps} newPlace={newPatientLoc} />
-          )}
+            )}
         </div>
       </div>
       <br />
@@ -104,9 +111,16 @@ const showInput = () => {
         <select id="available-hospitals-selection">
           <option value="" disabled selected
             id="available-hospitals">Available Hospitals Nearby</option>
+<<<<<<< HEAD
           {term[0] ?
             term.map(e => <option> {e.name}</option>)
             : null}
+=======
+          {!isEmpty(hospitals) &&
+            hospitals.map(e => <option> {e.name}</option>)
+            // <option>{term[0].name}</option>
+          }
+>>>>>>> dev-merge-map
         </select>
 
         <select id="available-helipads-dropdown">
@@ -122,6 +136,7 @@ const showInput = () => {
           id="estimated-load-time"
           placeholder="Estimated Patient Loading Time (minutes)"
           onChange={handleChange}
+<<<<<<< HEAD
         />  
 
       </div> */}
@@ -196,6 +211,13 @@ const showInput = () => {
               backgroundColor="#fff"
             /> */}
 
+=======
+        />
+        <br />
+        {gmaps ? 
+            <btn style={{margin:'5px', border:'2px solid black', textAlign: 'center'}} onClick={() => renderDirections(gmaps)}>render directions</btn> 
+            : (<p>Loading... </p>)}
+>>>>>>> dev-merge-map
       </div>
     </div>
   );

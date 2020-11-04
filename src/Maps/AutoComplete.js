@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import {useStateValue} from '../StateProvider'
 
 class AutoComplete extends Component {
   constructor(props) {
