@@ -64,9 +64,9 @@ function InputPage() {
               required>
             <option value = "" disabled selected 
               id = "available-hospitals">Available Hospitals Nearby</option>
-            <option value = "site1">Site 1</option>
+            {/* <option value = "site1">Site 1</option> */}
             {term[0] ?
-            term.map(e => <option> {e.name}</option>)
+            term.map(e => <option> {e[0].location}</option>)
             // <option>{term[0].name}</option>
             : null}
             </select>

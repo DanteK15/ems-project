@@ -92,3 +92,12 @@ form {
     align-items: center;
     justify-content: center;
 }
+
+.input-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-list > button {
+    margin: 10px;
+}

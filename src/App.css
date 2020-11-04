@@ -13,3 +13,7 @@ body {
   padding: 0 10px; */
   height: 100vh;
 }
+
+* {
+  transition: 1s all ease;
+}

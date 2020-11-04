@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useRef, useEffect} from 'react'
 import {useStateValue} from './StateProvider'
 import {actionTypes} from './reducer'
 import './Modal2.css'
@@ -6,9 +6,12 @@ import SettingsIcon from '@material-ui/icons/Settings';
 
 function Modal2() {
     const [{term},dispatch] = useStateValue();
+    const [array, setArray] = useState([]);
     const [inputs, setInputs] = useState([
-        {name: '', location: ''}
+        {location: ''}
     ]);
+
+    const btnRef = useRef(null);
 
     const handleChangeInput = (index, e) => {
         const values = [...inputs];
@@ -17,29 +20,40 @@ function Modal2() {
     }
 
     const handleSubmit = (e) => {
-        e.preventDefault();
+            e.preventDefault();
+            if(e.target.value) {
+            setInputs([{...e.target.value, location: ''}])
+            setArray([...array, inputs]);
+        } 
+
         dispatch({
             type: actionTypes.SET_TERM,
-            term: inputs
+            term: array
         });
-
-    }
-
-    const handleAdd = () => {
-        setInputs([...inputs, {name: '', location: ''}])
     }
 
     const handleRemove = (index) => {
-        if(inputs.length > 1) {
-            const values = [...inputs];
-            values.splice(index, 1);
-            setInputs(values);
+        // if(inputs.length > 1) {
+        //     const values = [...inputs];
+        //     values.splice(index, 1);
+        //     setInputs(values);
+        // }
+
+        if(array.length > 1) {
+            const vals = [...array];
+            vals.splice(index, 1);
+            setArray(vals)
+        }
+
+        if(btnRef.current) {
+            btnRef.current.style.display = 'none';
         }
     }
 
     return (
         <div className="container">
-            <form onSubmit={handleSubmit} >
+            {/* onSubmit={handleSubmit} */}
+            <form>
                 <div className="sidebar-top">
                     <SettingsIcon className="settings-icon-0" />
                     <h2>Settings</h2>
@@ -48,41 +62,44 @@ function Modal2() {
                     <div key={index} className="form">
 
                         <div className="inputs">
-                            <label>Hospital Name</label>
-                            <input
-                                id = "hospital-name-entry"
-                                name="name"
-                                label="Hospital Name: "
-                                value={input.name}
-                                onChange={e => handleChangeInput(index, e)}
-                            />
-
-                            <label>Hospital Location</label>
+                            <label>Hospital Address</label> <br />
                             <input
                                 id = "hospital-location-entry"
                                 name="location"
-                                label="Hospital Location: "
+                                type="text"
                                 value={input.location}
-                                onChange={e => handleChangeInput(index, e)}
+                                onChange={(e) => handleChangeInput(index, e)}
                             />
-                                                    <br /> <br /> <br />
-
-                        </div>
-
-                        <div className="edit">
+                            
                             <button
-                            onClick={()=> handleAdd()}
-                            >+</button>
-                            <button
-                            onClick={() => handleRemove(index)}
-                            >-</button>
-                        </div>
+                                type="submit"
+                                value={input.location}
+                                onClick={handleSubmit}
+                                className="submit-btn"
+                            >Add hospital</button>
                     </div>
+                        </div>
                 ))}
-                <button
-                onClick={handleSubmit}
+                {/* <button
+                value={input.location}
+                onClick={e => handleSubmit(e)}
                 className="submit-btn"
-                >Submit</button>
+                >Add hospital</button> */}
+                
+                <div>
+                            {
+                                array[0]?
+                                <div className="input-list">
+                                    {array.map(e =>
+                                    <button>{e[0].location}</button>
+                                    )}
+                                    
+                                    
+                                </div>
+                                
+                                :null
+                            }
+                        </div>
             </form>
         </div>
     )
