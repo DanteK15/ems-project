@@ -1,49 +1,48 @@
 import React, { useState } from "react";
-// import React, { useState, Component } from 'react'; 
 import "./InputPage.css";
 import isEmpty from 'lodash/isEmpty';
 import { useStateValue } from '../Context/StateProvider';
 import AutoComplete from "../Maps/AutoComplete"
 import { actionTypes } from "../Context/reducer";
 import * as errorMessage from './error.js';
-import renderDirections from "../Maps/Directions";
+import WheelPicker from 'react-simple-wheel-picker';
 
 function InputPage() {
-<<<<<<< HEAD
-  const [{ /*term,*/ gmaps }, dispatch] = useStateValue();
-  // const [address, setAddress] = useState('');
-=======
-  const [{ hospitals, gmaps }, dispatch] = useStateValue();
-  const [address, setAddress] = useState('');
->>>>>>> dev-merge-map
+  const [{ patientLocal, hospitals, helicopters, gmaps }, dispatch] = useStateValue();
   const [displayInput, setDisplayInput] = useState(false)
-  // const [hospital, setHospital] = useState('');
-  // const [helicopter, setHelicopter] = useState('');
-  // const [time, setTime] = useState('');
-  const [{term}] = useStateValue();
-  const [{locations}] = useStateValue();
-  const [address, setAddress] = useState('');
-  const [hospital, setHospital] = useState('');
-  const [helicopter, setHelicopter] = useState('');
-  const [estimatedtime, setEstimatedTime] = useState('');
+  const [hospital, setHospital] = useState();
+  const [helicopter, setHelicopter] = useState();
+  const [estimatedtime, setEstimatedTime] = useState();
+  const timeData = timeIncrements();
 
-  const handleChange = (e) => {
-    setAddress(e.target.value);
+  // Generates granular time data for patient loading wheel scroll
+  function timeIncrements() {
+    const quantity = 10;
+    const granularity = 5;
+    let data = []; 
+    var i = 1;
+    for(i; i<=quantity; i++){
+      let minutes = i*granularity;
+      data.push({id: i, value: minutes + ' minutes'})
+    }
+    return data;
   }
 
-  // const showInput = () => {
-  //   if (document.getElementById('show').style.visibility === 'hidden') {
-  //     document.getElementById('show').style.visibility = 'visible';
-  //   } else {
-  //     document.getElementById('show').style.visibility = 'hidden';
-  //   }
-  // }
-
+  // Set new patient location from geolocation or manual input
   const newPatientLoc = (place) => {
     dispatch({
       type: actionTypes.SET_LOC,
       patientLocal: place
     })
+  }
+
+  const onSubmit = () => {
+    if(patientLocal && hospital && helicopter && estimatedtime) {
+      dispatch({
+        type: actionTypes.SET_CALC,
+        calcParams: {patientLocal, hospital, helicopter, estimatedtime}
+      })
+    }
   }
 
   //Function to check location services access and alert user to enable it.
@@ -66,25 +65,26 @@ function InputPage() {
 
   */
 
-const handleEstimTimeChange = (e) => { 
-  setEstimatedTime(e.target.value); 
-}
+  const handleEstimTimeChange = (e) => {
+    let minutes = e.value.split(' ');
+    setEstimatedTime(minutes[0])
+  }
 
-const handleHospitalSelection = (e) => {
-  setHospital(e.target.value); 
-}
+  const handleHospitalSelection = (e) => {
+    setHospital(hospitals[e.target.value]);
+  }
 
-const handleHelicopterSelection = (e) => {
-  setHelicopter(e.target.value); 
-}
+  const handleHelicopterSelection = (e) => {
+    setHelicopter(helicopters[e.target.value]);
+  }
 
-const showInput = () => {
-  if(document.getElementById('show').style.visibility === 'hidden') {
-    document.getElementById('show').style.visibility = 'visible';
-  } else {
-    document.getElementById('show').style.visibility = 'hidden';
+  const showInput = () => {
+    if (document.getElementById('show').style.visibility === 'hidden') {
+      document.getElementById('show').style.visibility = 'visible';
+    } else {
+      document.getElementById('show').style.visibility = 'hidden';
     }
-}
+  }
 
 
   //  what does update results do ??
@@ -95,7 +95,6 @@ const showInput = () => {
         {/*ToastContainer is placed anywhere to initialize error popups*/}
         <errorMessage.ToastContainer limit={7} autoClose={false}
           transition={errorMessage.Zoom} position={"top-center"} />
-
         <div className="manual-address-input">
           <button className="manual-address-btn"
             onClick={() => setDisplayInput(!displayInput)}
@@ -106,119 +105,47 @@ const showInput = () => {
         </div>
       </div>
       <br />
-{/* 
       <div className="dropdown">
-        <select id="available-hospitals-selection">
+        <select
+          id="available-hospitals-selection"
+          name='hospital-selection'
+          onChange={handleHospitalSelection}
+          required>
           <option value="" disabled selected
             id="available-hospitals">Available Hospitals Nearby</option>
-<<<<<<< HEAD
-          {term[0] ?
-            term.map(e => <option> {e.name}</option>)
-            : null}
-=======
           {!isEmpty(hospitals) &&
-            hospitals.map(e => <option> {e.name}</option>)
-            // <option>{term[0].name}</option>
+            hospitals.map((e, index) => <option key={index} value={index}> {e.name}</option>)
           }
->>>>>>> dev-merge-map
         </select>
 
-        <select id="available-helipads-dropdown">
+        <select
+          id="available-hospitals-selection"
+          name='helicopter-selection'
+          onChange={handleHelicopterSelection}
+          required>
           <option value="" disabled selected
-            id="available-helipads">Helicopter Location</option>
-          <option value="site1">Site 1</option>
-          <option value="site2">Site 2</option>
+            id="available-hospitals">Available Helicopters Nearby</option>
+          {!isEmpty(hospitals) &&
+            helicopters.map((e, index) => <option key={index} value={index}> {e.name}</option>)
+          }
         </select>
 
-        <input
-          type="text"
-          value={address}
-          id="estimated-load-time"
-          placeholder="Estimated Patient Loading Time (minutes)"
-          onChange={handleChange}
-<<<<<<< HEAD
-        />  
-
-      </div> */}
-      <div className = "dropdown">
-            <select 
-              id = "available-hospitals-selection"
-              value = {hospital}
-              onChange = {handleHospitalSelection}
-              required>
-            <option value = "" disabled selected 
-              id = "available-hospitals">Available Hospitals Nearby</option>
-            {/* <option value = "site1">Site 1</option> */}
-            {term[0] ?
-            term.map(e => <option> {e[0].location}</option>)
-            // <option>{term[0].name}</option>
-            : null}
-            </select>
-             {/* {term[0] ? 
-             term.map(e => console.log(e.name))
-              :null} } */}
-
-            {/* <select 
-              id = "available-helipads-dropdown" 
-              value = {helicopter}
-              onChange = {handleHelicopterSelection}
-              required> 
-              <option value = "" disabled selected
-                id = "available-helipads">Available Helipads</option> 
-              <option value = "site1">Site 1</option>
-              <option value = "site2">Site 2</option>
-            </select>  */}
-            
-            <select 
-              id = "available-hospitals-selection"
-              value = {helicopter}
-              onChange = {handleHelicopterSelection}
-              required>
-            <option value = "" disabled selected 
-              id = "available-hospitals">Available Helipads Nearby</option>
-            {locations[0] ?
-            locations.map(e => <option> {e[0].location}</option>)
-            // <option>{term[0].name}</option>
-            : null}
-            </select>
-
-
-
-
-
-
-          {/* <input
-            type = "text"
-            pattern="[0-9]*"
-            id = "estimated-load-time" 
-            value = {estimatedtime}
-            placeholder = "Estimated Patient Loading Time (minutes)"
-            onChange = {handleEstimTimeChange}
-            minlength = "1"
-            required
-          /> */ }
-{/* 
             <h5>Estimated Patient Load Time</h5>
+
             <WheelPicker
-              data={data}
-              onChange={handleOnChange}
+              data={timeData}
+              onChange={handleEstimTimeChange}
               height={100}
               width={600}
               itemHeight={30}
-              selectedID={data[0].id}
+              selectedID={timeData[0].id}
               color="#ccc"
               activeColor="#3232ff"
               backgroundColor="#fff"
-            /> */}
+            />
 
-=======
-        />
-        <br />
-        {gmaps ? 
-            <btn style={{margin:'5px', border:'2px solid black', textAlign: 'center'}} onClick={() => renderDirections(gmaps)}>render directions</btn> 
-            : (<p>Loading... </p>)}
->>>>>>> dev-merge-map
       </div>
+      <btn onClick={onSubmit}>submit</btn>
     </div>
   );
 }

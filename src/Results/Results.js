@@ -1,10 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Results.css";
 import { Icon } from '@iconify/react';
 import helicopterIcon from '@iconify/icons-mdi/helicopter';
 import ambulanceIcon from '@iconify/icons-fa/ambulance';
+import { useStateValue } from '../Context/StateProvider';
 
 function Results() {
+
+  const [{calcParams}] = useStateValue();
+
+  useEffect(() => {
+    console.log(calcParams);
+    // TODO: PERFORM CALCULATION 
+  }, [calcParams])
+
   return (
     <div className="results">
         <h2

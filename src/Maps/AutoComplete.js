@@ -51,6 +51,8 @@ class AutoComplete extends Component {
             this.searchInput = ref;
           }}
           type="text"
+          id={this.props.id}
+          name={this.props.name}
           onFocus={this.clearSearchBox}
           placeholder={this.props.placeHolder}
         />

@@ -5,8 +5,7 @@ export const initialState = {
     helicopters: [],    // List of saved helicopter Places Objects
     gmaps: {},          // Gmaps instance, contains Map instance and Map object   
     patientLocal: {},   // Patient location places object <-- TODO: consider changing just lat/lng object
-    destination: {},    // Destination hosptial places object
-    heliOrigin: {}      // Helicopter origin places object
+    calcParams: {}, // Contains all params needs for calculation: patient, hospital, helicopter, loadtime
 
     // Will need patientLocal, destination, heliOrigin for calculation
 }
@@ -21,8 +20,7 @@ export const actionTypes = {
     DEL_HELI: 'DEL_HELI',
     SET_MAPS: 'SET_MAPS',
     SET_LOC: 'SET_LOC',
-    SET_DEST: 'SET_DEST',
-    SET_HELI: 'SET_HELI'
+    SET_CALC: 'SET_CALC'
 }
 
 // state is state of data layer, action is whatever we're dispatching to 
@@ -38,7 +36,7 @@ const reducer = (state, action) => {
         case actionTypes.DEL_HOSP:
             return {
                 ...state,
-                hospitals: state.hospitals.filter((_,index) => index != action.index)
+                hospitals: state.hospitals.filter((_,index) => index !== action.index)
             }
         case actionTypes.SET_HELIS:
             return {
@@ -48,7 +46,7 @@ const reducer = (state, action) => {
         case actionTypes.DEL_HELI:
             return {
                 ...state,
-                helicopters: state.helicopters.filter((_,index) => index != action.index)
+                helicopters: state.helicopters.filter((_,index) => index !== action.index)
             }
         case actionTypes.SET_MAPS:
             return {
@@ -60,15 +58,10 @@ const reducer = (state, action) => {
                 ...state,
                 patientLocal: action.patientLocal
             }
-        case actionTypes.SET_DEST:
+        case actionTypes.SET_CALC:
             return {
                 ...state,
-                destination: action.destination
-            }
-        case actionTypes.SET_LOC:
-            return {
-                ...state,
-                heliOrigin: action.heliOrigin
+                calcParams: action.calcParams
             }
         default:
             return state;
