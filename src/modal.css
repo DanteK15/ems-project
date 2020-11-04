@@ -1,12 +1,21 @@
 .modal {
     position: fixed;
     top: 0;
-    height: 800px;
-    width: 400px;
-    /* width: 315px; */
+    height: 100vh;
     border-right: 1px solid lightgray;
     margin: 0 auto !important;
-    background-color: white;    
+    background-color: white;
+}
+
+.background { 
+    width: 100%;
+    height: 100%;
+    background: rgba(17, 17, 17, 0.329) !important;
+    position: fixed;
+    top: 0;
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
 }
 
 .MuiSvgIcon-root {
@@ -173,4 +182,15 @@ span > div > h3 {
 .submit-btn:hover {
     opacity: 0.5;
     transition: 1s all ease;
+}
+
+.background {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    position: fixed;
+    top: 0;
+    display: flex;
+    justify-content: left;
+    align-items: center;
 }

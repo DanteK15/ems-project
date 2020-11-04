@@ -15,6 +15,8 @@ import Modal3 from './Modal3'
 function Modal({showModal, setShowModal}) {
     const [{term},dispatch] = useStateValue();
     const divRef = useRef(null);
+    const divRef2 = useRef(null);
+    const divRef3 = useRef(null);
     const [hospital, setHospital] = useState(false);
     const [heli, setHeli] = useState(false);
     // trying something new 
@@ -40,17 +42,32 @@ function Modal({showModal, setShowModal}) {
     }
 
     const goBack = () => {
-        divRef.current.style.display = ''
+        if(divRef.current) {
+            divRef.current.style.display =''
+        }
+        setShowModal(true)
         setHospital(false)
         setHeli(false)
     }
+
+    const closeModal = e => {
+        if (divRef2.current === e.target) {
+            setHospital(false)
+            setHeli(false)
+            setShowModal(false);
+        } if(divRef3.current === e.target) {
+            setHospital(false)
+            setHeli(false)
+            setShowModal(false);
+        }
+    };
 
     return (
         <>
         <div>
         {   showModal ? 
-            <animated.div style={animate}>
-            <div className="modal">
+        <div className="background" onClick={closeModal} ref={divRef2}>
+            <div className="modal" >
                 <CloseIcon onClick={() => setShowModal(prev => !prev)} />
                 <div className="sidebar-top">
                     <SettingsIcon className="settings-icon-0" />
@@ -75,7 +92,7 @@ function Modal({showModal, setShowModal}) {
                     </span>
                 </div>
             </div>
-            </animated.div>            
+            </div>
             :null
         }
         </div>
@@ -84,30 +101,20 @@ function Modal({showModal, setShowModal}) {
         <div>
             {
                 hospital ? 
-                <div className="modal"> 
-                <ArrowBackIosIcon onClick={goBack} />
-                <Modal2 />
-                {/* <div className="modal-2">
-                    <h1>Add Hospital</h1> <br /> <br /> <br />
-                    <label>Hospital Name</label>
-                    <input 
-                    type="text" 
-                    id="name" 
-                    value={name}
-                    placeholder="Add hospital name here"
-                    onChange={handleChange}
-                    />
-                    <button 
-                        className="submit-btn"
-                    onClick={pushData}>Submit</button>
-                </div> */}
-
-                </div> 
+                <div className="background" onClick={closeModal} ref={divRef3}>
+                    <div className="modal"> 
+                        <ArrowBackIosIcon onClick={goBack} />
+                        <Modal2 />
+                    </div> 
+                </div>
                 : heli ? 
-                <div className="modal">
-                    <ArrowBackIosIcon onClick={goBack} />
-                    <Modal3 />
-                </div> : null
+                <div className="background" onClick={closeModal} ref={divRef3}>
+                    <div className="modal">
+                        <ArrowBackIosIcon onClick={goBack} />
+                        <Modal3 />
+                    </div> 
+                </div>
+                : null
                 
             }
         </div>
