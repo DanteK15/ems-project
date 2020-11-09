@@ -1,11 +1,12 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import {useStateValue} from './StateProvider'
 import {actionTypes} from './reducer'
 import './Modal2.css'
 import SettingsIcon from '@material-ui/icons/Settings';
 
 function Modal3() {
-    const [{location},dispatch] = useStateValue();
+    const [{locations},dispatch] = useStateValue();
+    const [array, setArray] = useState([]);
     const [inputs, setInputs] = useState([
         {location: ''}
     ]);
@@ -16,30 +17,38 @@ function Modal3() {
         setInputs(values);
     }
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
+    useEffect(() => {
         dispatch({
             type: actionTypes.SET_LOCATION,
-            locations: inputs
+            locations: array
         });
+    }, [array, inputs])
 
+    const handleSubmit = (e) => {
+            e.preventDefault();
+            if(e.target.value) {
+            setInputs([{...e.target.value, location: ''}])
+            setArray([...array, inputs]);
+        } 
+
+        dispatch({
+            type: actionTypes.SET_LOCATION,
+            locations: array
+        });
     }
 
-    const handleAdd = () => {
-        setInputs([...inputs, {location: ''}])
-    }
-
-    const handleRemove = (index) => {
-        if(inputs.length > 1) {
-            const values = [...inputs];
-            values.splice(index, 1);
-            setInputs(values);
-        }
+    const removeIt = (index, e) => {
+        e.preventDefault();
+        array.splice(index, 1);
+        dispatch({
+            type: actionTypes.SET_LOCATION,
+            locations: array
+        });
     }
 
     return (
         <div className="container">
-            <form onSubmit={handleSubmit} >
+           <form>
                 <div className="sidebar-top">
                     <SettingsIcon className="settings-icon-0" />
                     <h2>Settings</h2>
@@ -48,42 +57,47 @@ function Modal3() {
                     <div key={index} className="form">
 
                         <div className="inputs">
-                            <label>Name</label>
+                            <label>Helicopter Location</label> <br />
                             <input
-                                id = "helipad-name-entry"
-                                name="helipad-name"
-                                label="Location Name: "
+                                id = "hospital-location-entry"
+                                name="location"
+                                type="text"
                                 value={input.location}
-                                onChange={e => handleChangeInput(index, e)}
+                                onChange={(e) => handleChangeInput(index, e)}
                             />
-
-                            <label>Location</label>
-                            <input
-                                id = "helipad-location-entry"
-                                name="helipad-location"
-                                label="Location Address: "
+                            
+                            <button
+                                type="submit"
                                 value={input.location}
-                                onChange={e => handleChangeInput(index, e)}
-                            />
+                                onClick={handleSubmit}
+                                className="submit-btn"
+                            >Add Location</button>
+                            <br /><br />
 
-                            <br /> <br /> <br />
-
-                        </div>
-
-                        <div className="edit">
-                            <button
-                            onClick={()=> handleAdd()}
-                            >+</button>
-                            <button
-                            onClick={() => handleRemove(index)}
-                            >-</button>
-                        </div>
                     </div>
+                        </div>
                 ))}
-                <button
-                onClick={handleSubmit}
-                className="submit-btn"
-                >Submit</button>
+                
+                <div>
+                            {
+                                array[0]?
+                                <div className="input-list">
+                                    {array.map((e, index) =>
+                                    <div 
+                                    key={index}
+                                    className="display-btn">
+                                        <button
+                                        >{e[0].location}</button>
+                                        <button
+                                            onClick={e => removeIt(index,e)}
+                                        >X</button>
+                                    </div>
+                                    )}    
+                                </div>
+                                
+                                :null
+                            }
+                        </div>
             </form>
         </div>
     )

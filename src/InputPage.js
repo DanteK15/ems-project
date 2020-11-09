@@ -99,7 +99,7 @@ function InputPage() {
              term.map(e => console.log(e.name))
               :null} } */}
 
-            <select 
+            {/* <select 
               id = "available-helipads-dropdown" 
               value = {helicopter}
               onChange = {handleHelicopterSelection}
@@ -108,7 +108,25 @@ function InputPage() {
                 id = "available-helipads">Available Helipads</option> 
               <option value = "site1">Site 1</option>
               <option value = "site2">Site 2</option>
-            </select> 
+            </select>  */}
+            
+            <select 
+              id = "available-hospitals-selection"
+              value = {helicopter}
+              onChange = {handleHelicopterSelection}
+              required>
+            <option value = "" disabled selected 
+              id = "available-hospitals">Available Helipads Nearby</option>
+            {locations[0] ?
+            locations.map(e => <option> {e[0].location}</option>)
+            // <option>{term[0].name}</option>
+            : null}
+            </select>
+
+
+
+
+
 
           {/* <input
             type = "text"
