@@ -101,3 +101,19 @@ form {
 .input-list > button {
     margin: 10px;
 }
+
+.display-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 250px;
+    background-color: lightsteelblue;
+    border-radius: 10px;
+    padding: 3px;
+    margin: 10px;
+}
+
+.display-btn > button {
+    background-color: transparent;
+    color: white;
+}

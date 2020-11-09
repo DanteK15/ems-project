@@ -72,6 +72,8 @@ function Modal2() {
                                 onClick={handleSubmit}
                                 className="submit-btn"
                             >Add hospital</button>
+                            <br /><br />
+
                     </div>
                         </div>
                 ))}
@@ -84,7 +86,8 @@ function Modal2() {
                                     <div 
                                     key={index}
                                     className="display-btn">
-                                        <button>{e[0].location}</button>
+                                        <button
+                                        >{e[0].location}</button>
                                         <button
                                             onClick={e => removeIt(index,e)}
                                         >X</button>
