@@ -85,10 +85,10 @@ function Modal({showModal, setShowModal}) {
                 {/* helicopters */}
                     <span>
                         <div className="icon-title">
-                            <AddLocationIcon className=""/>
-                            <h3 onClick={handleHeliClick}>Add Helicopter Locations</h3>
+                            <AddLocationIcon className="icon-1"/>
+                            <h3 onClick={handleHeliClick}>Add Helicopters</h3>
                         </div>
-                        <ArrowForwardIosIcon className="" onClick={handleClick} />
+                        <ArrowForwardIosIcon className="icon-0" onClick={handleClick} />
                     </span>
                 </div>
             </div>
