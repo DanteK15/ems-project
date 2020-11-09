@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+// import React, { useState } from "react";
+import React, { useState, Component } from 'react';
 import "./InputPage.css";
 import {useStateValue} from './StateProvider';
-
+// import {ScrollPicker} from 'react-native-value-picker';
+import WheelPicker from 'react-simple-wheel-picker';
 
 function InputPage() {
   const [{term}] = useStateValue();
@@ -35,6 +37,29 @@ function InputPage() {
       document.getElementById('show').style.visibility = 'hidden';
       }
   }
+
+  const data = [
+    {
+        id: '1',
+        value: '5 minutes'
+    },
+    {
+        id: '2',
+        value: '10 minutes'
+    },
+    {
+        id: '3',
+        value: '20 minutes'
+    },
+    {
+        id: '4',
+        value: '25 minutes'
+    },
+  ];
+
+  const handleOnChange = target => {
+    console.log(target);
+  };
 
   //  what does update results do ??
   return (
@@ -85,7 +110,7 @@ function InputPage() {
               <option value = "site2">Site 2</option>
             </select> 
 
-          <input
+          {/* <input
             type = "text"
             pattern="[0-9]*"
             id = "estimated-load-time" 
@@ -94,11 +119,23 @@ function InputPage() {
             onChange = {handleEstimTimeChange}
             minlength = "1"
             required
+          /> */ }
+
+          <h5>Estimated Patient Load Time</h5>
+          <WheelPicker
+            data={data}
+            onChange={handleOnChange}
+            height={100}
+            width={600}
+            itemHeight={30}
+            selectedID={data[0].id}
+            color="#ccc"
+            activeColor="#3232ff"
+            backgroundColor="#fff"
           />
-          <ul class = "input-requirements">
-              <li>Must only contain numbers.</li>
-          </ul>
+
       </div>
+
     </div>
   );
 }
