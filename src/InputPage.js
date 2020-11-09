@@ -121,21 +121,20 @@ function InputPage() {
             required
           /> */ }
 
-          <h5>Estimated Patient Load Time</h5>
-          <WheelPicker
-            data={data}
-            onChange={handleOnChange}
-            height={100}
-            width={600}
-            itemHeight={30}
-            selectedID={data[0].id}
-            color="#ccc"
-            activeColor="#3232ff"
-            backgroundColor="#fff"
-          />
+            <h5>Estimated Patient Load Time</h5>
+            <WheelPicker
+              data={data}
+              onChange={handleOnChange}
+              height={100}
+              width={600}
+              itemHeight={30}
+              selectedID={data[0].id}
+              color="#ccc"
+              activeColor="#3232ff"
+              backgroundColor="#fff"
+            />
 
       </div>
-
     </div>
   );
 }

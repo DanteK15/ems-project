@@ -96,8 +96,6 @@ function Modal({showModal, setShowModal}) {
             :null
         }
         </div>
-
-{/* add current.focus on the input fields + ability to add more */}
         <div>
             {
                 hospital ? 

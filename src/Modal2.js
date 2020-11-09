@@ -11,13 +11,18 @@ function Modal2() {
         {location: ''}
     ]);
 
-    const btnRef = useRef(null);
-
     const handleChangeInput = (index, e) => {
         const values = [...inputs];
         values[index][e.target.name] = e.target.value;
         setInputs(values);
     }
+
+    useEffect(() => {
+        dispatch({
+            type: actionTypes.SET_TERM,
+            term: array
+        });
+    }, [array, inputs])
 
     const handleSubmit = (e) => {
             e.preventDefault();
@@ -32,27 +37,17 @@ function Modal2() {
         });
     }
 
-    const handleRemove = (index) => {
-        // if(inputs.length > 1) {
-        //     const values = [...inputs];
-        //     values.splice(index, 1);
-        //     setInputs(values);
-        // }
-
-        if(array.length > 1) {
-            const vals = [...array];
-            vals.splice(index, 1);
-            setArray(vals)
-        }
-
-        if(btnRef.current) {
-            btnRef.current.style.display = 'none';
-        }
+    const removeIt = (index, e) => {
+        e.preventDefault();
+        array.splice(index, 1);
+        dispatch({
+            type: actionTypes.SET_TERM,
+            term: array
+        });
     }
 
     return (
         <div className="container">
-            {/* onSubmit={handleSubmit} */}
             <form>
                 <div className="sidebar-top">
                     <SettingsIcon className="settings-icon-0" />
@@ -80,21 +75,21 @@ function Modal2() {
                     </div>
                         </div>
                 ))}
-                {/* <button
-                value={input.location}
-                onClick={e => handleSubmit(e)}
-                className="submit-btn"
-                >Add hospital</button> */}
                 
                 <div>
                             {
                                 array[0]?
                                 <div className="input-list">
-                                    {array.map(e =>
-                                    <button>{e[0].location}</button>
-                                    )}
-                                    
-                                    
+                                    {array.map((e, index) =>
+                                    <div 
+                                    key={index}
+                                    className="display-btn">
+                                        <button>{e[0].location}</button>
+                                        <button
+                                            onClick={e => removeIt(index,e)}
+                                        >X</button>
+                                    </div>
+                                    )}    
                                 </div>
                                 
                                 :null
