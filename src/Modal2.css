@@ -1,9 +1,9 @@
 .container {
     padding: 0px 40px;
     height: 800px;
-    overflow: hidden;
+    /* overflow: hidden;
     overflow-y: scroll;
-    scrollbar-width: none;
+    scrollbar-width: none;    */
 }
 
 .container > form > .sidebar-top {
@@ -84,6 +84,7 @@
     cursor: pointer;
     font-size: 18px;
     font-weight: 400;
+    border-radius: 20px;
 }
 
 form {
@@ -116,4 +117,17 @@ form {
 .display-btn > button {
     background-color: transparent;
     color: white;
+}
+
+#remove-btn {
+    cursor: pointer;
+}
+
+#hospital-location-entry {
+    width: 250px;
+}
+
+#add-btn {
+    display: grid;
+    place-items: center;
 }

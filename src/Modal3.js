@@ -57,7 +57,7 @@ function Modal3() {
                     <div key={index} className="form">
 
                         <div className="inputs">
-                            <label>Helicopter Location</label> <br />
+                            <label>Helicopter Location</label> <br /> <br />
                             <input
                                 id = "hospital-location-entry"
                                 name="location"
@@ -65,13 +65,14 @@ function Modal3() {
                                 value={input.location}
                                 onChange={(e) => handleChangeInput(index, e)}
                             />
-                            
-                            <button
-                                type="submit"
-                                value={input.location}
-                                onClick={handleSubmit}
-                                className="submit-btn"
-                            >Add Location</button>
+                            <div id="add-btn">
+                                <button
+                                    type="submit"
+                                    value={input.location}
+                                    onClick={handleSubmit}
+                                    className="submit-btn"
+                                >Add Location</button>
+                            </div>
                             <br /><br />
 
                     </div>
@@ -89,6 +90,7 @@ function Modal3() {
                                         <button
                                         >{e[0].location}</button>
                                         <button
+                                            id="remove-btn"
                                             onClick={e => removeIt(index,e)}
                                         >X</button>
                                     </div>

@@ -57,7 +57,7 @@ function Modal2() {
                     <div key={index} className="form">
 
                         <div className="inputs">
-                            <label>Hospital Address</label> <br />
+                            <label>Hospital Address</label> <br /> <br/>
                             <input
                                 id = "hospital-location-entry"
                                 name="location"
@@ -65,15 +65,16 @@ function Modal2() {
                                 value={input.location}
                                 onChange={(e) => handleChangeInput(index, e)}
                             />
-                            
+                            <br /><br />
+                            <div id="add-btn">
                             <button
                                 type="submit"
                                 value={input.location}
                                 onClick={handleSubmit}
                                 className="submit-btn"
                             >Add hospital</button>
+                            </div>
                             <br /><br />
-
                     </div>
                         </div>
                 ))}
@@ -89,6 +90,7 @@ function Modal2() {
                                         <button
                                         >{e[0].location}</button>
                                         <button
+                                            id="remove-btn"
                                             onClick={e => removeIt(index,e)}
                                         >X</button>
                                     </div>
