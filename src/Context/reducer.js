@@ -6,8 +6,8 @@ export const initialState = {
     // <--- add for helipads
     gmaps: {},
     patientLocal: {},
-    destination: {}
-
+    destination: {},
+    locations: []
 }
 
 // whenever we change the data layer, we dispatch an action
@@ -16,6 +16,7 @@ export const actionTypes = {
     SET_TERM: 'SET_TERM',
     SET_MAPS: 'SET_MAPS',
     SET_LOC: 'SET_LOC',
+    SET_LOCATION: 'SET_LOCATION'
 }
 
 // state is state of data layer, action is whatever we're dispatching to 
@@ -38,6 +39,11 @@ const reducer = (state, action) => {
                 ...state,
                 patientLocal: action.patientLocal
             }
+        case actionTypes.SET_LOCATION:
+            return {
+                ...state,
+                locations: [...action.locations]
+            };
         default:
             return state;
     }
