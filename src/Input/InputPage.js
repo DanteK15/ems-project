@@ -12,18 +12,19 @@ function InputPage() {
   const [displayInput, setDisplayInput] = useState(false)
   const [hospital, setHospital] = useState();
   const [helicopter, setHelicopter] = useState();
-  const [estimatedtime, setEstimatedTime] = useState();
+  const [estimatedtime, setEstimatedTime] = useState("");
+  const [timeID, setTimeID] = useState(0);
   const timeData = timeIncrements();
 
   // Generates granular time data for patient loading wheel scroll
   function timeIncrements() {
     const quantity = 10;
     const granularity = 5;
-    let data = []; 
-    var i = 1;
-    for(i; i<=quantity; i++){
-      let minutes = i*granularity;
-      data.push({id: i, value: minutes + ' minutes'})
+    let data = [];
+    var i = 0;
+    for (i; i <= quantity; i++) {
+      let minutes = i * granularity;
+      data.push({ id: `${i}`, value: minutes + ' minutes' })
     }
     return data;
   }
@@ -67,6 +68,7 @@ function InputPage() {
 
   const handleEstimTimeChange = (e) => {
     let minutes = e.value.split(' ');
+    setTimeID(parseInt(e.id));
     setEstimatedTime(minutes[0])
   }
 
@@ -78,16 +80,7 @@ function InputPage() {
     setHelicopter(helicopters[e.target.value]);
   }
 
-  const showInput = () => {
-    if (document.getElementById('show').style.visibility === 'hidden') {
-      document.getElementById('show').style.visibility = 'visible';
-    } else {
-      document.getElementById('show').style.visibility = 'hidden';
-    }
-  }
 
-
-  //  what does update results do ??
   return (
     <div className="input-container">
       <div className="location-section">
@@ -130,19 +123,19 @@ function InputPage() {
           }
         </select>
 
-            <h5>Estimated Patient Load Time</h5>
+        <h5>Estimated Patient Load Time</h5>
 
-            <WheelPicker
-              data={timeData}
-              onChange={handleEstimTimeChange}
-              height={100}
-              width={600}
-              itemHeight={30}
-              selectedID={timeData[0].id}
-              color="#ccc"
-              activeColor="#3232ff"
-              backgroundColor="#fff"
-            />
+        <WheelPicker
+          data={timeData}
+          onChange={handleEstimTimeChange}
+          height={75}
+          width={600}
+          itemHeight={30}
+          selectedID={timeData[timeID].id}
+          color="#ccc"
+          activeColor="#3232ff"
+          backgroundColor="#fff"
+        />
 
       </div>
       <btn onClick={onSubmit}>submit</btn>
