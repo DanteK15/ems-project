@@ -3,46 +3,34 @@ import {useStateValue} from '../Context/StateProvider'
 import {actionTypes} from '../Context/reducer'
 import './Modal2.css'
 import SettingsIcon from '@material-ui/icons/Settings';
+import AutoComplete from '../Maps/AutoComplete';
+import isEmpty from 'lodash/isEmpty';
 
 function Modal3() {
-    const [{locations},dispatch] = useStateValue();
-    const [array, setArray] = useState([]);
-    const [inputs, setInputs] = useState([
-        {location: ''}
-    ]);
+    const [{ gmaps, helicopters}, dispatch] = useStateValue();
+    const [helicopter, setHelicopter] = useState();
 
-    const handleChangeInput = (index, e) => {
-        const values = [...inputs];
-        values[index][e.target.name] = e.target.value;
-        setInputs(values);
+    const newHelicopter= (place) => {
+        setHelicopter(place);
     }
 
-    useEffect(() => {
-        dispatch({
-            type: actionTypes.SET_LOCATION,
-            locations: array
-        });
-    }, [array, inputs])
-
     const handleSubmit = (e) => {
-            e.preventDefault();
-            if(e.target.value) {
-            setInputs([{...e.target.value, location: ''}])
-            setArray([...array, inputs]);
-        } 
-
-        dispatch({
-            type: actionTypes.SET_LOCATION,
-            locations: array
-        });
+        e.preventDefault();
+        if (helicopter) {
+            console.log(helicopter.name)
+            dispatch({
+                type: actionTypes.SET_HELIS,
+                helicopter: helicopter 
+            });
+        }
+        // TODO: else throw error, no such helicopter found
     }
 
     const removeIt = (index, e) => {
         e.preventDefault();
-        array.splice(index, 1);
         dispatch({
-            type: actionTypes.SET_LOCATION,
-            locations: array
+            type: actionTypes.DEL_HELI,
+            index: index
         });
     }
 
@@ -53,53 +41,46 @@ function Modal3() {
                     <SettingsIcon className="settings-icon-0" />
                     <h2>Settings</h2>
                 </div>
-                {inputs.map((input, index) => (
-                    <div key={index} className="form">
-
-                        <div className="inputs">
-                            <label>Helicopter Location</label> <br /> <br />
-                            <input
-                                id = "hospital-location-entry"
-                                name="location"
-                                type="text"
-                                value={input.location}
-                                onChange={(e) => handleChangeInput(index, e)}
-                            />
-                            <div id="add-btn">
-                                <button
-                                    type="submit"
-                                    value={input.location}
-                                    onClick={handleSubmit}
-                                    className="submit-btn"
-                                >Add Location</button>
-                            </div>
-                            <br /><br />
-
+                 <div className="form">
+                    <div className="inputs">
+                        <label>Helicopter Address</label> <br /> <br />
+                        {!isEmpty(gmaps) &&
+                            <AutoComplete
+                                map={gmaps.map}
+                                mapApi={gmaps.maps}
+                                newPlace={newHelicopter}
+                                id='hospital-location-entry'
+                                name='helicopter-location'
+                            />}
+                        <br /><br />
+                        <div id="add-btn">
+                            <button
+                                type="submit"
+                                onClick={handleSubmit}
+                                className="submit-btn"
+                            >Add helicopter</button>
+                        </div>
+                        <br /><br />
                     </div>
-                        </div>
-                ))}
-                
-                <div>
-                            {
-                                array[0]?
-                                <div className="input-list">
-                                    {array.map((e, index) =>
-                                    <div 
-                                    key={index}
-                                    className="display-btn">
-                                        <button
-                                        >{e[0].location}</button>
-                                        <button
-                                            id="remove-btn"
-                                            onClick={e => removeIt(index,e)}
-                                        >X</button>
-                                    </div>
-                                    )}    
-                                </div>
-                                
-                                :null
-                            }
-                        </div>
+                </div>
+                {
+                    !isEmpty(helicopters) &&
+                    (<div className="input-list">
+                        {helicopters.map((e, index) =>
+                            <div
+                                key={index}
+                                className="display-btn">
+                                <button
+                                >{e.name}</button>
+                                <button
+                                    id="remove-btn"
+                                    onClick={e => removeIt(index, e)}
+                                >X</button>
+                            </div>
+                        )}
+                    </div>
+                    )
+                }               
             </form>
         </div>
     )

@@ -106,7 +106,7 @@ import Modal3 from './Modal3'
 
 
 function Modal({showModal, setShowModal}) {
-    const [{term},dispatch] = useStateValue();
+    // const [{term},dispatch] = useStateValue();
     const divRef = useRef(null);
     const divRef2 = useRef(null);
     const divRef3 = useRef(null);
@@ -181,7 +181,7 @@ function Modal({showModal, setShowModal}) {
                             <AddLocationIcon className="icon-1"/>
                             <h3 onClick={handleHeliClick}>Add Helicopters</h3>
                         </div>
-                        <ArrowForwardIosIcon className="icon-0" onClick={handleClick} />
+                        <ArrowForwardIosIcon className="icon-0" onClick={handleHeliClick} />
                     </span>
                 </div>
             </div>
