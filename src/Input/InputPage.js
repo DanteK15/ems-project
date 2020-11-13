@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import GoogleMapReact from 'google-map-react';
 import "./InputPage.css";
 import isEmpty from 'lodash/isEmpty';
 import { useStateValue } from '../Context/StateProvider';
@@ -6,6 +7,7 @@ import AutoComplete from "../Maps/AutoComplete"
 import { actionTypes } from "../Context/reducer";
 import * as errorMessage from './error.js';
 import WheelPicker from 'react-simple-wheel-picker';
+import renderDirections from "../Maps/Directions";
 
 function InputPage() {
   const [{ patientLocal, hospitals, helicopters, gmaps }, dispatch] = useStateValue();
@@ -146,6 +148,10 @@ function InputPage() {
 
       </div>
       <btn onClick={onSubmit}>submit</btn>
+      <br />
+      {gmaps ?
+          <btn style={{margin:'5px', border:'2px solid black', textAlign: 'center'}} onClick={() => renderDirections(gmaps, patientLocal, hospital, helicopter)}>render directions</btn>
+          : (<p>Loading... </p>)}
     </div>
   );
 }
