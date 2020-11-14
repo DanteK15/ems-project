@@ -1,17 +1,36 @@
-// initial state is an object
-// TODO: Try changing this to a function that will first load from Local Storage, then return state
-export const initialState = {
-    hospitals: [],      // List of saved hospital Places Objects
-    helicopters: [],    // List of saved helicopter Places Objects
-    gmaps: {},          // Gmaps instance, contains Map instance and Map object   
-    patientLocal: {},   // Patient location places object <-- TODO: consider changing just lat/lng object
-    calcParams: {}, // Contains all params needs for calculation: patient, hospital, helicopter, loadtime
+// TODO: Import error handling and call error handler if local storage fails to load
 
-    // Will need patientLocal, destination, heliOrigin for calculation
+
+const getInitialState = () => {
+    let hospitals, helicopters;
+    if (typeof (Storage)) {
+        // Local storage only accepts strings. 
+        hospitals = JSON.parse(localStorage.getItem('hospitals'));
+        helicopters = JSON.parse(localStorage.getItem('helicopters'));
+    } else {
+        // TODO: call error handler
+    }
+
+    return {
+        hospitals: hospitals ? hospitals : [],      // List of saved hospital Places Objects
+        helicopters: helicopters ? helicopters : [],    // List of saved helicopter Places Objects
+        gmaps: {},          // Gmaps instance, contains Map instance and Map object   
+        patientLocal: {},   // Patient location places object <-- TODO: consider changing just lat/lng object
+        calcParams: {}, // Contains all params needs for calculation: patient, hospital, helicopter, loadtime
+    }
 }
 
+export const initialState = getInitialState();
+// initial state is an object
+// export const initialState = {
+//     hospitals: [],      // List of saved hospital Places Objects
+//     helicopters: [],    // List of saved helicopter Places Objects
+//     gmaps: {},          // Gmaps instance, contains Map instance and Map object   
+//     patientLocal: {},   // Patient location places object <-- TODO: consider changing just lat/lng object
+//     calcParams: {}, // Contains all params needs for calculation: patient, hospital, helicopter, loadtime
+// }
+
 // whenever we change the data layer, we dispatch an action
-// TODO: Add delete actions for Helicopter & Hospitals
 // TODO: Add clear action to reset patientLocal, destination, heliOrigin
 export const actionTypes = {
     SET_HOSP: 'SET_HOSP',
@@ -27,26 +46,35 @@ export const actionTypes = {
 // context api
 // reducer's job is to listen to dispatch action, otherwise it returns default
 const reducer = (state, action) => {
+    let updatedList;
     switch (action.type) {
         case actionTypes.SET_HOSP:
+            updatedList = [...state.hospitals, action.hospital];
+            localStorage.setItem('hospitals', JSON.stringify(updatedList));
             return {
                 ...state,
-                hospitals: [...state.hospitals, action.hospital],
+                hospitals: updatedList
             };
         case actionTypes.DEL_HOSP:
+            updatedList = state.hospitals.filter((_, index) => index !== action.index);
+            localStorage.setItem('hospitals', JSON.stringify(updatedList));
             return {
                 ...state,
-                hospitals: state.hospitals.filter((_,index) => index !== action.index)
+                hospitals: updatedList
             }
         case actionTypes.SET_HELIS:
+            updatedList = [...state.helicopters, action.helicopter];
+            localStorage.setItem('helicopters', JSON.stringify(updatedList));
             return {
                 ...state,
-                helicopters: [...state.helicopters, action.helicopter],
+                helicopters: updatedList
             }
         case actionTypes.DEL_HELI:
+            updatedList = state.helicopters.filter((_, index) => index !== action.index);
+            localStorage.setItem('helicopters', JSON.stringify(updatedList));
             return {
                 ...state,
-                helicopters: state.helicopters.filter((_,index) => index !== action.index)
+                helicopters: updatedList 
             }
         case actionTypes.SET_MAPS:
             return {
