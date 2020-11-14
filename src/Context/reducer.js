@@ -55,7 +55,16 @@ const reducer = (state, action) => {
     let updatedList;
     switch (action.type) {
         case actionTypes.SET_HOSP:
-            updatedList = [...state.hospitals, action.hospital];
+            var hospital = {
+                geometry:
+                {
+                    lat: action.hospital.geometry.location.lat(),
+                    lng: action.hospital.geometry.location.lng()
+                },
+                address: action.hospital.formatted_address,
+                name: action.hospital.name
+            }
+            updatedList = [...state.hospitals, hospital];
             localStorage.setItem('hospitals', JSON.stringify(updatedList));
             return {
                 ...state,
@@ -69,7 +78,16 @@ const reducer = (state, action) => {
                 hospitals: updatedList
             }
         case actionTypes.SET_HELIS:
-            updatedList = [...state.helicopters, action.helicopter];
+            var helicopter = {
+                geometry:
+                {
+                    lat: action.helicopter.geometry.location.lat(),
+                    lng: action.helicopter.geometry.location.lng()
+                },
+                address: action.helicopter.formatted_address,
+                name: action.helicopter.name
+            }
+            updatedList = [...state.helicopters, helicopter];
             localStorage.setItem('helicopters', JSON.stringify(updatedList));
             return {
                 ...state,
@@ -80,7 +98,7 @@ const reducer = (state, action) => {
             localStorage.setItem('helicopters', JSON.stringify(updatedList));
             return {
                 ...state,
-                helicopters: updatedList 
+                helicopters: updatedList
             }
         case actionTypes.SET_MAPS:
             return {
@@ -88,9 +106,18 @@ const reducer = (state, action) => {
                 gmaps: action.gmaps
             }
         case actionTypes.SET_LOC:
+            var patient = {
+                geometry:
+                {
+                    lat: action.patientLocal.geometry.location.lat(),
+                    lng: action.patientLocal.geometry.location.lng()
+                },
+                address: action.patientLocal.formatted_address,
+                name: action.patientLocal.name
+            }
             return {
                 ...state,
-                patientLocal: action.patientLocal
+                patientLocal: patient
             }
         case actionTypes.SET_CALC:
             return {

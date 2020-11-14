@@ -113,8 +113,8 @@ const LocationMap = (props) => {
                     {!isEmpty(patientLocal) && (
                         <LocationPin
                             text="Patient Location"
-                            lat={patientLocal.geometry.location.lat()}
-                            lng={patientLocal.geometry.location.lng()} />
+                            lat={patientLocal.geometry.lat}
+                            lng={patientLocal.geometry.lng} />
 
                     )}
                 </GoogleMapReact>

@@ -15,19 +15,19 @@ const renderDirections = (gmaps, origin, destination, helicopter, polyline, dire
     var helicopterOrigin = {};
     //  Assign Each Location
     if(origin!=null) {
-        patientLocation = {lat: origin.geometry.location.lat(), lng:origin.geometry.location.lng()};
+        patientLocation = {lat: origin.geometry.lat, lng:origin.geometry.lng};
     }
     else {
         patientLocation = { lat: 45.523062, lng: -122.676482 };
     }
     if(destination!=null) {
-        hospital = {lat: destination.geometry.location.lat(), lng:destination.geometry.location.lng()};
+        hospital = {lat: destination.geometry.lat, lng:destination.geometry.lng};
     }
     else {
         hospital = { lat: 47.608013, lng: -122.335167 };
     }
     if(helicopter!=null) {
-        helicopterOrigin = {lat: helicopter.geometry.location.lat(), lng:helicopter.geometry.location.lng()};
+        helicopterOrigin = {lat: helicopter.geometry.lat, lng:helicopter.geometry.lng};
     }
     else {
         helicopterOrigin = { lat: 47.608013, lng: -122.335167 };
