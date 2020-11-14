@@ -11,11 +11,11 @@ function App() {
     return (
         <div className="app">
             <Sidebar />
-            <div className="input-page">
+            <div className="inputPage">
                 <LocationMap />
                 <InputPage />
             </div>
-            <Results />
+             <Results />
         </div>
     );
 }

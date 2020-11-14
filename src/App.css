@@ -5,13 +5,15 @@ body {
 
 .app {
   display: flex;
-  /* display: flex;
-  height: 100vh;
-  max-width: 1400px;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 0 10px; */
-  height: 100vh;
+  justify-items: space-between;
+  margin-top: 20px;
+}
+
+@media only screen and (max-width: 600px) {
+  .app {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
  .input-page {
@@ -20,8 +22,15 @@ body {
    align-items: center;
    justify-content: center;
    padding-top: 10px;
-   flex: 0.7; /* might need to change this */
+   flex: 0.7;
     /* flex: 0.4;
     border-right: 1px solid var(--background);
     min-width: fit-content; */
   }
+
+  /* .map {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 20px;
+  } */

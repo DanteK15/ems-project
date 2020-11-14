@@ -49,6 +49,24 @@ function InputPage() {
     }
   }
 
+  const showResultsOnClick = (e) => {
+    if(patientLocal && hospital && helicopter && estimatedtime) {
+      dispatch({
+        type: actionTypes.SET_CALC,
+        calcParams: {patientLocal, hospital, helicopter, estimatedtime}
+      })
+    }
+
+    // Helicopter ETA to patient
+    document.getElementById("heli-eta-patient").innerHTML = estimatedtime;
+
+    // Helicopter ETA to hospital
+    document.getElementById("heli-eta-hospital").innerHTML = estimatedtime; 
+
+    // Ambulance to hospital 
+    document.getElementById("ambulance-eta-hospital").innerHTML = estimatedtime; 
+  }
+  
   //Function to check location services access and alert user to enable it.
   errorMessage.getLocation();
 
@@ -82,7 +100,6 @@ function InputPage() {
   const handleHelicopterSelection = (e) => {
     setHelicopter(helicopters[e.target.value]);
   }
-
 
   return (
     <div className="input-container">
@@ -120,39 +137,36 @@ function InputPage() {
           onChange={handleHelicopterSelection}
           required>
           <option value="" disabled selected
-            id="available-hospitals">Available Helicopters Nearby</option>
+            id="available-helicopters">Available Helicopters Nearby</option>
           {!isEmpty(hospitals) &&
             helicopters.map((e, index) => <option key={index} value={index}> {e.name}</option>)
           }
         </select>
+        </div>
 
-        <h5>Estimated Patient Load Time</h5>
-
-        <WheelPicker
-          data={timeData}
-          onChange={handleEstimTimeChange}
-          height={75}
-          width={600}
-          itemHeight={30}
-          selectedID={timeData[timeID].id}
-          color="#ccc"
-          activeColor="#3232ff"
-          backgroundColor="#fff"
-        />
-
+        <div className="picker">
+          <h5>Estimated Patient Load Time</h5>
+          <WheelPicker
+            id="wheelpicker"
+            data={timeData}
+            onChange={handleEstimTimeChange}
+            height={75}
+            width={400}
+            itemHeight={30}
+            selectedID={timeData[timeID].id}
+            color="#ccc"
+            activeColor="#3232ff"
+            backgroundColor="#fff"
+          />
+        <btn onClick={onSubmit} className="picker-btn">submit</btn>
+        <div className="submit-section">
+          <button className="submit-btn"
+            type = "submit"
+            onClick = {showResultsOnClick}
+            >Calculate</button>
       </div>
-      <btn onClick={onSubmit}>submit</btn>
-      <br />
-      {gmaps ?
-          <btn style={{margin:'5px', border:'2px solid black', textAlign: 'center'}} onClick={() => renderDirections(
-              gmaps,
-              patientLocal,
-              hospital,
-              helicopter,
-              polyline,
-              directionsRenderer,
-              directionsService)}>render directions</btn>
-          : (<p>Loading... </p>)}
+      </div>
+       
     </div>
   );
 }
