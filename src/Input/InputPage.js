@@ -46,6 +46,27 @@ function InputPage() {
     }
   }
 
+  const showResultsOnClick = (e) => {
+    var results = "hello"; 
+    console.log('Hey'); 
+
+    if(patientLocal && hospital && helicopter && estimatedtime) {
+      dispatch({
+        type: actionTypes.SET_CALC,
+        calcParams: {patientLocal, hospital, helicopter, estimatedtime}
+      })
+    }
+
+    // Helicopter ETA to patient
+    document.getElementById("heli-eta-patient").innerHTML = estimatedtime;
+
+    // Helicopter ETA to hospital
+    document.getElementById("heli-eta-hospital").innerHTML = estimatedtime; 
+
+    // Ambulance to hospital 
+    document.getElementById("ambulance-eta-hospital").innerHTML = estimatedtime; 
+  }
+  
   //Function to check location services access and alert user to enable it.
   errorMessage.getLocation();
 
@@ -79,7 +100,6 @@ function InputPage() {
   const handleHelicopterSelection = (e) => {
     setHelicopter(helicopters[e.target.value]);
   }
-
 
   return (
     <div className="input-container">
@@ -139,6 +159,13 @@ function InputPage() {
 
       </div>
       <btn onClick={onSubmit}>submit</btn>
+
+      <div className="submit-section">
+          <button className="submit-btn"
+            type = "submit"
+            onClick = {showResultsOnClick}
+            >Submit</button>
+      </div>
     </div>
   );
 }
