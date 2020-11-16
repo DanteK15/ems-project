@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import GoogleMapReact from 'google-map-react';
+import { Loader } from "@googlemaps/js-api-loader"
 import "./InputPage.css";
 import isEmpty from 'lodash/isEmpty';
 import { useStateValue } from '../Context/StateProvider';
@@ -10,7 +11,7 @@ import WheelPicker from 'react-simple-wheel-picker';
 import renderDirections from "../Maps/Directions";
 
 function InputPage() {
-  const [{ patientLocal, hospitals, helicopters, gmaps }, dispatch] = useStateValue();
+  const [{ patientLocal, hospitals, helicopters, gmaps, polyline, directionsRenderer, directionsService}, dispatch] = useStateValue();
   const [displayInput, setDisplayInput] = useState(false)
   const [hospital, setHospital] = useState();
   const [helicopter, setHelicopter] = useState();
@@ -143,7 +144,14 @@ function InputPage() {
       <btn onClick={onSubmit}>submit</btn>
       <br />
       {gmaps ?
-          <btn style={{margin:'5px', border:'2px solid black', textAlign: 'center'}} onClick={() => renderDirections(gmaps, patientLocal, hospital, helicopter)}>render directions</btn>
+          <btn style={{margin:'5px', border:'2px solid black', textAlign: 'center'}} onClick={() => renderDirections(
+              gmaps,
+              patientLocal,
+              hospital,
+              helicopter,
+              polyline,
+              directionsRenderer,
+              directionsService)}>render directions</btn>
           : (<p>Loading... </p>)}
     </div>
   );

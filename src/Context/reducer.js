@@ -6,6 +6,9 @@ export const initialState = {
     gmaps: {},          // Gmaps instance, contains Map instance and Map object   
     patientLocal: {},   // Patient location places object <-- TODO: consider changing just lat/lng object
     calcParams: {}, // Contains all params needs for calculation: patient, hospital, helicopter, loadtime
+    Polyline: {}, //Polyline class is a linear overlay of connected line segments on the map.
+    directionsRenderer: {}, //Class to render directions obtained from the DirectionsService
+    directionsService: {}, //Instance of a DirectionsService that sends directions queries to Google servers.
 
     // Will need patientLocal, destination, heliOrigin for calculation
 }
@@ -20,7 +23,10 @@ export const actionTypes = {
     DEL_HELI: 'DEL_HELI',
     SET_MAPS: 'SET_MAPS',
     SET_LOC: 'SET_LOC',
-    SET_CALC: 'SET_CALC'
+    SET_CALC: 'SET_CALC',
+    SET_POLY: 'SET_POLY',
+    SET_REND: 'SET_REND',
+    SET_SERV: 'SET_SERV',
 }
 
 // state is state of data layer, action is whatever we're dispatching to 
@@ -62,6 +68,21 @@ const reducer = (state, action) => {
             return {
                 ...state,
                 calcParams: action.calcParams
+            }
+        case actionTypes.SET_POLY:
+            return {
+                ...state,
+                polyline: action.polyline
+            }
+        case actionTypes.SET_REND:
+            return {
+                ...state,
+                directionsRenderer: action.directionsRenderer
+            }
+        case actionTypes.SET_SERV:
+            return {
+                ...state,
+                directionsService: action.directionsService
             }
         default:
             return state;

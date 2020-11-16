@@ -4,8 +4,11 @@ import React from "react";
 import {useStateValue} from "../Context/StateProvider";
 
 // TODO: Origin, Destination, Helicopter = {lat: #, lng: #}  or Place objects <-- Determine this 
-const renderDirections = (gmaps, origin, destination, helicopter) => {
+const renderDirections = (gmaps, origin, destination, helicopter, polyline, directionsRenderer, directionsService) => {
     const { map, maps } = gmaps;
+    //Clear Previous Routes
+    directionsRenderer.setMap(null);
+    polyline.setMap(null);
     // Initialize Three Locations
     var patientLocation = {};
     var hospital = {};
@@ -29,24 +32,14 @@ const renderDirections = (gmaps, origin, destination, helicopter) => {
     else {
         helicopterOrigin = { lat: 47.608013, lng: -122.335167 };
     }
-    var directionsService = new maps.DirectionsService();
-    var directionsRenderer = new maps.DirectionsRenderer();
     // Helicopter Route
     const flightPlanCoordinates = [
         helicopterOrigin,
         patientLocation,
         hospital,
     ]
-
-    const flightPath = new maps.Polyline({
-        path: flightPlanCoordinates,
-        geodesic: true,
-        strokeColor: "#FF0000",
-        strokeOpacity: 1.0,
-        strokeWeight: 2,
-    })
-    flightPath.setMap(null);
-    flightPath.setMap(map);
+    polyline.setPath(flightPlanCoordinates);
+    polyline.setMap(map);
 
     // Ambulance Route
     directionsRenderer.setMap(map);
@@ -71,7 +64,6 @@ const renderDirections = (gmaps, origin, destination, helicopter) => {
             }
         }
     );
-
 };
 
 
