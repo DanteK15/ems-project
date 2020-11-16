@@ -1,6 +1,7 @@
 // Renders Ambulance and Helicopter Route
 
 import googleMapReact from "google-map-react";
+import { actionTypes } from '../Context/reducer'
 
 // TODO: Origin, Destination, Helicopter = {lat: #, lng: #}  or Place objects <-- Determine this 
 const renderDirections = (gmaps, origin, destination, helicopter) => {
@@ -41,6 +42,11 @@ const renderDirections = (gmaps, origin, destination, helicopter) => {
 
                 console.log('distance: ', distance);
                 console.log('duration: ', duration);
+
+                dispatch({
+                    type: actionTypes.SET_RAW_AMBULANCE,
+                    routeRawAmbulance: duration
+                });
 
             } else {
                 window.alert("Directions request failed due to " + status);

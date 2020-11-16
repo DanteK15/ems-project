@@ -6,7 +6,9 @@ export const initialState = {
     gmaps: {},          // Gmaps instance, contains Map instance and Map object   
     patientLocal: {},   // Patient location places object <-- TODO: consider changing just lat/lng object
     calcParams: {}, // Contains all params needs for calculation: patient, hospital, helicopter, loadtime
-
+    routeRawAmbulance: {}, //Contains the raw ambulance estimate.
+    routeRawHelicopter: {}, //Contains the raw helicopter estimate.
+    patientLoadTime: {},
     // Will need patientLocal, destination, heliOrigin for calculation
 }
 
@@ -20,7 +22,10 @@ export const actionTypes = {
     DEL_HELI: 'DEL_HELI',
     SET_MAPS: 'SET_MAPS',
     SET_LOC: 'SET_LOC',
-    SET_CALC: 'SET_CALC'
+    SET_CALC: 'SET_CALC',
+    SET_RAW_AMBULANCE: 'SET_RAW_AMBULANCE',
+    SET_RAW_HELICOPTER: 'SET_RAW_HELICOPTER',
+    SET_PATIENT_LOAD_TIME: 'SET_PATIENT_LOAD_TIME'
 }
 
 // state is state of data layer, action is whatever we're dispatching to 
@@ -62,6 +67,21 @@ const reducer = (state, action) => {
             return {
                 ...state,
                 calcParams: action.calcParams
+            }
+        case actionTypes.SET_RAW_AMBULANCE:
+            return {
+                ...state,
+                routeRawAmbulance: action.routeRawAmbulance
+            }
+        case actionTypes.SET_RAW_HELICOPTER:
+            return {
+                ...state,
+                routeRawHelicopter: action.routeRawHelicopter
+            }
+        case actionTypes.SET_PATIENT_LOAD_TIME:
+            return {
+                ...state,
+                patientLoadTime: action.patientLoadTime
             }
         default:
             return state;

@@ -7,11 +7,15 @@ import { useStateValue } from '../Context/StateProvider';
 
 function Results() {
 
-  const [{calcParams}] = useStateValue();
+  const [{calcParams, routeRawAmbulance, patientLoadTime, routeRawHelicopter}] = useStateValue();
 
   useEffect(() => {
     console.log(calcParams);
     // TODO: PERFORM CALCULATION 
+    const routeTotalAmbulance = routeRawAmbulance + patientLoadTime;
+    //Break down raw helicopter into arrival and destination times, use patientLoadTime
+    //or arrival time, whichever is bigger
+    const routeTotalHelicopter = routeRawHelicopter + patientLoadTime;
   }, [calcParams])
 
   return (

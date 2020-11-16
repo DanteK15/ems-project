@@ -43,6 +43,10 @@ function InputPage() {
         type: actionTypes.SET_CALC,
         calcParams: {patientLocal, hospital, helicopter, estimatedtime}
       })
+      dispatch({
+        type: actionTypes.SET_PATIENT_LOAD_TIME,
+        patientLoadTime: {estimatedtime}
+      })
     }
   }
 
