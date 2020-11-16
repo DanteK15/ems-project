@@ -14,6 +14,10 @@ function Results() {
     // TODO: PERFORM CALCULATION 
   }, [calcParams])
 
+  const refreshResultsOnClick = () => {
+    // TODO: REFRESH CALCULATIONS
+  }
+
   return (
     <div className="results">
         <h2
@@ -56,6 +60,19 @@ function Results() {
           {/* <input placeholder="Estimated Time" type="text" /> */}
           <h5 id = "ambulance-eta-hospital">time</h5>
         </div>
+
+      </div>
+
+      <br />
+
+      <div className="results__refreshContainer">
+
+        <div className="refresh-results-section">
+          <button className="refresh-btn"
+            onClick = {refreshResultsOnClick}
+            >Refresh Results</button>
+        </div>
+
       </div>
 
     </div>
