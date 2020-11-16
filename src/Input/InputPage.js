@@ -47,9 +47,6 @@ function InputPage() {
   }
 
   const showResultsOnClick = (e) => {
-    var results = "hello"; 
-    console.log('Hey'); 
-
     if(patientLocal && hospital && helicopter && estimatedtime) {
       dispatch({
         type: actionTypes.SET_CALC,
@@ -137,7 +134,7 @@ function InputPage() {
           onChange={handleHelicopterSelection}
           required>
           <option value="" disabled selected
-            id="available-hospitals">Available Helicopters Nearby</option>
+            id="available-helicopters">Available Helicopters Nearby</option>
           {!isEmpty(hospitals) &&
             helicopters.map((e, index) => <option key={index} value={index}> {e.name}</option>)
           }
@@ -146,6 +143,7 @@ function InputPage() {
         <h5>Estimated Patient Load Time</h5>
 
         <WheelPicker
+          id = "estimated-time-selection"
           data={timeData}
           onChange={handleEstimTimeChange}
           height={75}
