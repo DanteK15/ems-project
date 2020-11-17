@@ -64,17 +64,7 @@ function Results() {
       </div>
 
       <br />
-
-      <div className="results__refreshContainer">
-
-        <div className="refresh-results-section">
-          <button className="refresh-btn"
-            onClick = {refreshResultsOnClick}
-            >Refresh Results</button>
-        </div>
-
-      </div>
-
+      
     </div>
   );
 }

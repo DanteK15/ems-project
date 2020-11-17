@@ -162,7 +162,7 @@ function InputPage() {
           <button className="submit-btn"
             type = "submit"
             onClick = {showResultsOnClick}
-            >Submit</button>
+            >Calculate</button>
       </div>
     </div>
   );
