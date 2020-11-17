@@ -141,7 +141,6 @@ function InputPage() {
         </select>
         </div>
 
-<<<<<<< HEAD
         <div className="picker">
           <h5>Estimated Patient Load Time</h5>
           <WheelPicker
@@ -157,9 +156,14 @@ function InputPage() {
             backgroundColor="#fff"
           />
         <btn onClick={onSubmit} className="picker-btn">submit</btn>
+        <div className="submit-section">
+          <button className="submit-btn"
+            type = "submit"
+            onClick = {showResultsOnClick}
+            >Calculate</button>
       </div>
-=======
-        <h5>Estimated Patient Load Time</h5>
+      </div>
+        {/* <h5>Estimated Patient Load Time</h5>
 
         <WheelPicker
           id = "estimated-time-selection"
@@ -182,8 +186,7 @@ function InputPage() {
             type = "submit"
             onClick = {showResultsOnClick}
             >Calculate</button>
-      </div>
->>>>>>> fdca624b94783a10b33997f9487f5bc4e17e781b
+      </div> */}
     </div>
   );
 }
