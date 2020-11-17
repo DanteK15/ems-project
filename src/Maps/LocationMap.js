@@ -69,10 +69,31 @@ const LocationMap = (props) => {
     // Calls dispatch to globally set Maps object
     const apiHasLoaded = (map, maps) => {
         map.setCenter(position);
+        const polyline = new maps.Polyline({
+            geodesic: true,
+            strokeColor: "#FF0000",
+            strokeOpacity: 1.0,
+            strokeWeight: 2,
+        })
+        const directionsRenderer = new maps.DirectionsRenderer();
+        const directionsService = new maps.DirectionsService();
         reverseGeocode(maps);
+        console.log(directionsRenderer);
         dispatch({
             type: actionTypes.SET_MAPS,
             gmaps: { map, maps }
+        })
+        dispatch({
+            type: actionTypes.SET_POLY,
+            polyline: polyline
+        })
+        dispatch({
+            type: actionTypes.SET_REND,
+            directionsRenderer: directionsRenderer
+        })
+        dispatch({
+            type: actionTypes.SET_SERV,
+            directionsService: directionsService
         })
     };
 
@@ -92,8 +113,8 @@ const LocationMap = (props) => {
                     {!isEmpty(patientLocal) && (
                         <LocationPin
                             text="Patient Location"
-                            lat={patientLocal.geometry.location.lat()}
-                            lng={patientLocal.geometry.location.lng()} />
+                            lat={patientLocal.geometry.lat}
+                            lng={patientLocal.geometry.lng} />
 
                     )}
                 </GoogleMapReact>

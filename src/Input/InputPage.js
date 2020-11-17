@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import GoogleMapReact from 'google-map-react';
+import { Loader } from "@googlemaps/js-api-loader"
 import "./InputPage.css";
 import isEmpty from 'lodash/isEmpty';
 import { useStateValue } from '../Context/StateProvider';
@@ -6,9 +8,10 @@ import AutoComplete from "../Maps/AutoComplete"
 import { actionTypes } from "../Context/reducer";
 import * as errorMessage from './error.js';
 import WheelPicker from 'react-simple-wheel-picker';
+import renderDirections from "../Maps/Directions";
 
 function InputPage() {
-  const [{ patientLocal, hospitals, helicopters, gmaps }, dispatch] = useStateValue();
+  const [{ patientLocal, hospitals, helicopters, gmaps, polyline, directionsRenderer, directionsService}, dispatch] = useStateValue();
   const [displayInput, setDisplayInput] = useState(false)
   const [hospital, setHospital] = useState();
   const [helicopter, setHelicopter] = useState();
@@ -163,30 +166,7 @@ function InputPage() {
             >Calculate</button>
       </div>
       </div>
-        {/* <h5>Estimated Patient Load Time</h5>
-
-        <WheelPicker
-          id = "estimated-time-selection"
-          data={timeData}
-          onChange={handleEstimTimeChange}
-          height={75}
-          width={600}
-          itemHeight={30}
-          selectedID={timeData[timeID].id}
-          color="#ccc"
-          activeColor="#3232ff"
-          backgroundColor="#fff"
-        />
-
-      </div>
-      <btn onClick={onSubmit}>submit</btn>
-
-      <div className="submit-section">
-          <button className="submit-btn"
-            type = "submit"
-            onClick = {showResultsOnClick}
-            >Calculate</button>
-      </div> */}
+       
     </div>
   );
 }

@@ -1,35 +1,53 @@
 // Renders Ambulance and Helicopter Route
-
 import googleMapReact from "google-map-react";
+import React from "react";
+import {useStateValue} from "../Context/StateProvider";
 
 // TODO: Origin, Destination, Helicopter = {lat: #, lng: #}  or Place objects <-- Determine this 
-const renderDirections = (gmaps, origin, destination, helicopter) => {
+const renderDirections = (gmaps, origin, destination, helicopter, polyline, directionsRenderer, directionsService) => {
     const { map, maps } = gmaps;
-    const directionsService = new maps.DirectionsService();
-    const directionsRenderer = new maps.DirectionsRenderer();
-
+    //Clear Previous Routes
+    directionsRenderer.setMap(null);
+    polyline.setMap(null);
+    // Initialize Three Locations
+    var patientLocation = {};
+    var hospital = {};
+    var helicopterOrigin = {};
+    //  Assign Each Location
+    if(origin!=null) {
+        patientLocation = {lat: origin.geometry.lat, lng:origin.geometry.lng};
+    }
+    else {
+        patientLocation = { lat: 45.523062, lng: -122.676482 };
+    }
+    if(destination!=null) {
+        hospital = {lat: destination.geometry.lat, lng:destination.geometry.lng};
+    }
+    else {
+        hospital = { lat: 47.608013, lng: -122.335167 };
+    }
+    if(helicopter!=null) {
+        helicopterOrigin = {lat: helicopter.geometry.lat, lng:helicopter.geometry.lng};
+    }
+    else {
+        helicopterOrigin = { lat: 47.608013, lng: -122.335167 };
+    }
     // Helicopter Route
     const flightPlanCoordinates = [
-        { lat: 45.523062, lng: -122.676482 },
-        { lat: 47.608013, lng: -122.335167 },
+        helicopterOrigin,
+        patientLocation,
+        hospital,
     ]
-
-    const flightPath = new maps.Polyline({
-        path: flightPlanCoordinates,
-        geodesic: true,
-        strokeColor: "#FF0000",
-        strokeOpacity: 1.0,
-        strokeWeight: 2,
-    })
-    flightPath.setMap(map);
+    polyline.setPath(flightPlanCoordinates);
+    polyline.setMap(map);
 
     // Ambulance Route
     directionsRenderer.setMap(map);
     directionsService.route(
         {
-            origin: 'Portland'
+            origin: patientLocation
             ,
-            destination: 'Seattle'
+            destination: hospital
             ,
             travelMode: 'DRIVING'
         },
@@ -38,7 +56,6 @@ const renderDirections = (gmaps, origin, destination, helicopter) => {
                 directionsRenderer.setDirections(response);
                 let distance = response.routes[0].legs[0].distance;
                 let duration = response.routes[0].legs[0].duration;
-
                 console.log('distance: ', distance);
                 console.log('duration: ', duration);
 
@@ -47,7 +64,6 @@ const renderDirections = (gmaps, origin, destination, helicopter) => {
             }
         }
     );
-
 };
 
 
