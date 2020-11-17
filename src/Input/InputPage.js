@@ -46,6 +46,24 @@ function InputPage() {
     }
   }
 
+  const showResultsOnClick = (e) => {
+    if(patientLocal && hospital && helicopter && estimatedtime) {
+      dispatch({
+        type: actionTypes.SET_CALC,
+        calcParams: {patientLocal, hospital, helicopter, estimatedtime}
+      })
+    }
+
+    // Helicopter ETA to patient
+    document.getElementById("heli-eta-patient").innerHTML = estimatedtime;
+
+    // Helicopter ETA to hospital
+    document.getElementById("heli-eta-hospital").innerHTML = estimatedtime; 
+
+    // Ambulance to hospital 
+    document.getElementById("ambulance-eta-hospital").innerHTML = estimatedtime; 
+  }
+  
   //Function to check location services access and alert user to enable it.
   errorMessage.getLocation();
 
@@ -79,7 +97,6 @@ function InputPage() {
   const handleHelicopterSelection = (e) => {
     setHelicopter(helicopters[e.target.value]);
   }
-
 
   return (
     <div className="input-container">
@@ -117,13 +134,14 @@ function InputPage() {
           onChange={handleHelicopterSelection}
           required>
           <option value="" disabled selected
-            id="available-hospitals">Available Helicopters Nearby</option>
+            id="available-helicopters">Available Helicopters Nearby</option>
           {!isEmpty(hospitals) &&
             helicopters.map((e, index) => <option key={index} value={index}> {e.name}</option>)
           }
         </select>
         </div>
 
+<<<<<<< HEAD
         <div className="picker">
           <h5>Estimated Patient Load Time</h5>
           <WheelPicker
@@ -140,6 +158,32 @@ function InputPage() {
           />
         <btn onClick={onSubmit} className="picker-btn">submit</btn>
       </div>
+=======
+        <h5>Estimated Patient Load Time</h5>
+
+        <WheelPicker
+          id = "estimated-time-selection"
+          data={timeData}
+          onChange={handleEstimTimeChange}
+          height={75}
+          width={600}
+          itemHeight={30}
+          selectedID={timeData[timeID].id}
+          color="#ccc"
+          activeColor="#3232ff"
+          backgroundColor="#fff"
+        />
+
+      </div>
+      <btn onClick={onSubmit}>submit</btn>
+
+      <div className="submit-section">
+          <button className="submit-btn"
+            type = "submit"
+            onClick = {showResultsOnClick}
+            >Calculate</button>
+      </div>
+>>>>>>> fdca624b94783a10b33997f9487f5bc4e17e781b
     </div>
   );
 }

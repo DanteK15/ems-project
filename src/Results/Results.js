@@ -56,7 +56,10 @@ function Results() {
           {/* <input placeholder="Estimated Time" type="text" /> */}
           <h5 id = "ambulance-eta-hospital">time</h5>
         </div>
+
       </div>
+
+      <br />
 
     </div>
   );
