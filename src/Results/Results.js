@@ -14,10 +14,6 @@ function Results() {
     // TODO: PERFORM CALCULATION 
   }, [calcParams])
 
-  const refreshResultsOnClick = () => {
-    // TODO: REFRESH CALCULATIONS
-  }
-
   return (
     <div className="results">
         <h2
@@ -64,7 +60,7 @@ function Results() {
       </div>
 
       <br />
-      
+
     </div>
   );
 }
