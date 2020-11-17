@@ -122,23 +122,24 @@ function InputPage() {
             helicopters.map((e, index) => <option key={index} value={index}> {e.name}</option>)
           }
         </select>
+        </div>
 
-        <h5>Estimated Patient Load Time</h5>
-
-        <WheelPicker
-          data={timeData}
-          onChange={handleEstimTimeChange}
-          height={75}
-          width={600}
-          itemHeight={30}
-          selectedID={timeData[timeID].id}
-          color="#ccc"
-          activeColor="#3232ff"
-          backgroundColor="#fff"
-        />
-
+        <div className="picker">
+          <h5>Estimated Patient Load Time</h5>
+          <WheelPicker
+            id="wheelpicker"
+            data={timeData}
+            onChange={handleEstimTimeChange}
+            height={75}
+            width={400}
+            itemHeight={30}
+            selectedID={timeData[timeID].id}
+            color="#ccc"
+            activeColor="#3232ff"
+            backgroundColor="#fff"
+          />
+        <btn onClick={onSubmit} className="picker-btn">submit</btn>
       </div>
-      <btn onClick={onSubmit}>submit</btn>
     </div>
   );
 }
