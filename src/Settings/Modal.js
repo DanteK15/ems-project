@@ -103,7 +103,7 @@ import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import {useStateValue} from '../Context/StateProvider'
 import Modal2 from './Modal2';
 import Modal3 from './Modal3'
-
+import Modal4 from './Modal4'
 
 function Modal({showModal, setShowModal}) {
     // const [{term},dispatch] = useStateValue();
@@ -112,6 +112,7 @@ function Modal({showModal, setShowModal}) {
     const divRef3 = useRef(null);
     const [hospital, setHospital] = useState(false);
     const [heli, setHeli] = useState(false);
+    const [param, setParam] = useState(false);
     // trying something new 
     const [inputFields, setInputFields] = useState([{name: ''}]);
 
@@ -134,6 +135,11 @@ function Modal({showModal, setShowModal}) {
         setHeli(true);
     }
 
+    const handleParams = () => {
+        divRef.current.style.display = 'none'
+        setParam(true);
+    }
+
     const goBack = () => {
         if(divRef.current) {
             divRef.current.style.display =''
@@ -141,6 +147,7 @@ function Modal({showModal, setShowModal}) {
         setShowModal(true)
         setHospital(false)
         setHeli(false)
+        setParam(false);
     }
 
     const closeModal = e => {
@@ -148,10 +155,13 @@ function Modal({showModal, setShowModal}) {
             setHospital(false)
             setHeli(false)
             setShowModal(false);
+            // 
+            setParam(false);
         } if(divRef3.current === e.target) {
             setHospital(false)
             setHeli(false)
             setShowModal(false);
+            setParam(false);
         }
     };
 
@@ -183,6 +193,14 @@ function Modal({showModal, setShowModal}) {
                         </div>
                         <ArrowForwardIosIcon className="icon-0" onClick={handleHeliClick} />
                     </span>
+                {/* params */}
+                    <span>
+                        <div className="icon-title">
+                            <AddLocationIcon className="icon-1"/>
+                            <h3 onClick={handleParams}>Add Configurable Parameters</h3>
+                        </div>
+                        <ArrowForwardIosIcon className="icon-0" onClick={handleParams} />
+                    </span>
                 </div>
             </div>
             </div>
@@ -205,8 +223,14 @@ function Modal({showModal, setShowModal}) {
                         <Modal3 />
                     </div> 
                 </div>
+                : param ?
+                <div className="background" onClick={closeModal} ref={divRef3}>
+                    <div className="modal">
+                        <ArrowBackIosIcon onClick={goBack} />
+                        <Modal4 />
+                    </div> 
+                </div>
                 : null
-                
             }
         </div>
 
