@@ -10,12 +10,83 @@ import isEmpty from 'lodash/isEmpty';
 function Results() {
 
   const [{ gmaps, polyline, directionsRenderer, directionsService, calcParams }] = useStateValue();
+  const duration = "time";
+
+  function timeStringParser(parseString){
+    var totalTime;
+
+    if(parseString.includes("hours")){
+      parseString = parseString.split(" hours ");
+
+      if(parseString[1].includes("mins")){
+        parseString[1] = parseString[1].replace(" mins", "");
+      }
+      else if(parseString[1].includes("min")){
+        parseString[1] = parseString[1].replace(" min", "");
+      }
+  
+      parseString[1] = parseInt(parseString[1]);
+  
+      parseString[0] = parseInt(parseString[0]);
+  
+      parseString[0] = (parseString[0] * 60); 
+  
+      totalTime = parseString[0] + parseString[1];
+  
+      return totalTime;
+    }
+    else if(parseString.includes("hour")){
+      parseString = parseString.split(" hour ");
+
+      if(parseString[1].includes("mins")){
+        parseString[1] = parseString[1].replace(" mins", "");
+      }
+      else if(parseString[1].includes("min")){
+        parseString[1] = parseString[1].replace(" min", "");
+      }
+  
+      parseString[1] = parseInt(parseString[1]);
+  
+      parseString[0] = parseInt(parseString[0]);
+  
+      parseString[0] = (parseString[0] * 60); 
+  
+      totalTime = parseString[0] + parseString[1];
+  
+      return totalTime;
+    }
+
+    if(parseString.includes("mins")){
+      parseString = parseString.replace(" mins", "");
+
+      parseString = parseInt(parseString);
+
+      totalTime = parseString;
+  
+      return totalTime;
+    }
+    else if(parseString.includes("min")){
+      parseString = parseString.replace(" min", "");
+
+      parseString = parseInt(parseString);
+
+      totalTime = parseString;
+  
+      return totalTime;
+    }
+
+    return -1;
+  }
 
   useEffect(() => {
     console.log(calcParams);
     const { patientLocal, hospital, helicopter, estimatedtime } = calcParams;
     if (!isEmpty(gmaps)) {
-      renderDirections(gmaps, patientLocal, hospital, helicopter, polyline, directionsRenderer, directionsService)
+      renderDirections(gmaps, patientLocal, hospital, helicopter, polyline, directionsRenderer, directionsService, function(duration) {
+        var parsedTime;
+        parsedTime = timeStringParser(duration.text);
+        document.getElementById("ambulance-eta-hospital").innerHTML = parsedTime + parseInt(estimatedtime); 
+      });
     }
     // TODO: PERFORM CALCULATION 
   }, [calcParams])

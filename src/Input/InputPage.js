@@ -32,6 +32,13 @@ function InputPage() {
     return data;
   }
 
+  function helicopterToHospital(time) {
+    var total = parseInt(time);
+    total = total;
+
+    return total;
+  }
+
   // Set new patient location from geolocation or manual input
   const newPatientLoc = (place) => {
     dispatch({
@@ -64,7 +71,7 @@ function InputPage() {
     document.getElementById("heli-eta-hospital").innerHTML = estimatedtime; 
 
     // Ambulance to hospital 
-    document.getElementById("ambulance-eta-hospital").innerHTML = estimatedtime; 
+//    document.getElementById("ambulance-eta-hospital").innerHTML = estimatedtime; 
   }
   
   //Function to check location services access and alert user to enable it.
