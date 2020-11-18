@@ -9,13 +9,13 @@ import isEmpty from 'lodash/isEmpty';
 
 function Results() {
 
-  const [{ gmaps, polyline, directionsRenderer, directionsService, calcParams }] = useStateValue();
+  const [{ gmaps, polyline, directionsRenderer, directionsService, ambulanceMarker, helicopterMarker, calcParams }] = useStateValue();
 
   useEffect(() => {
     console.log(calcParams);
     const { patientLocal, hospital, helicopter, estimatedtime } = calcParams;
     if (!isEmpty(gmaps)) {
-      renderDirections(gmaps, patientLocal, hospital, helicopter, polyline, directionsRenderer, directionsService)
+      renderDirections(gmaps, patientLocal, hospital, helicopter, ambulanceMarker, helicopterMarker, polyline, directionsRenderer, directionsService)
     }
     // TODO: PERFORM CALCULATION 
   }, [calcParams])
