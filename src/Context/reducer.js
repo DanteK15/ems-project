@@ -20,7 +20,8 @@ const getInitialState = () => {
         Polyline: {}, //Polyline class is a linear overlay of connected line segments on the map.
         directionsRenderer: {}, //Class to render directions obtained from the DirectionsService
         directionsService: {}, //Instance of a DirectionsService that sends directions queries to Google servers.
-        helicopter_speed: {}
+        helicopter_speed: {},
+    
     }
 }
 

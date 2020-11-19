@@ -65,9 +65,10 @@ function InputPage() {
     }
 
     // Helicopter ETA to patient
-    document.getElementById("heli-eta-patient").innerHTML = estimatedtime;
+    // document.getElementById("heli-eta-patient").innerHTML = time;
 
     // Helicopter ETA to hospital
+    var time = helicopterToHospital(estimatedtime);
     document.getElementById("heli-eta-hospital").innerHTML = estimatedtime; 
 
     // Ambulance to hospital 
@@ -165,7 +166,7 @@ function InputPage() {
             activeColor="#3232ff"
             backgroundColor="#fff"
           />
-        <btn onClick={onSubmit} className="picker-btn">submit</btn>
+        {/*<btn onClick={onSubmit} className="picker-btn">submit</btn>*/}
         <div className="submit-section">
           <button className="submit-btn"
             type = "submit"
