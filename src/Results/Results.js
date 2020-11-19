@@ -12,12 +12,18 @@ function Results() {
   const [{ gmaps, polyline, directionsRenderer, directionsService, calcParams }] = useStateValue();
   const duration = "time";
 
-  function timeStringParser(parseString){
+  //Parses Maps time estimate and combines it with patient load time.
+  //Reformats the answer for return.
+  function timeStringParser(estimatedtime, parseString){
     var totalTime;
+    var hourCount;
+    var minuteCount;
 
+    //Parses input string in cases where it's multiple hours
     if(parseString.includes("hours")){
       parseString = parseString.split(" hours ");
 
+      //Removes mins or min from input string.
       if(parseString[1].includes("mins")){
         parseString[1] = parseString[1].replace(" mins", "");
       }
@@ -25,16 +31,18 @@ function Results() {
         parseString[1] = parseString[1].replace(" min", "");
       }
   
+      //Convert parsed strings into ints 
       parseString[1] = parseInt(parseString[1]);
-  
       parseString[0] = parseInt(parseString[0]);
   
+      //Hour values are converted to minutes
       parseString[0] = (parseString[0] * 60); 
   
+      //Total time in minutes is totalled
       totalTime = parseString[0] + parseString[1];
-  
-      return totalTime;
     }
+
+    //Parses input string in cases where it's one hour
     else if(parseString.includes("hour")){
       parseString = parseString.split(" hour ");
 
@@ -46,36 +54,58 @@ function Results() {
       }
   
       parseString[1] = parseInt(parseString[1]);
-  
       parseString[0] = parseInt(parseString[0]);
-  
       parseString[0] = (parseString[0] * 60); 
   
       totalTime = parseString[0] + parseString[1];
-  
-      return totalTime;
     }
 
+    //Parses input string based on cases where it's just minutes
     if(parseString.includes("mins")){
       parseString = parseString.replace(" mins", "");
-
       parseString = parseInt(parseString);
-
       totalTime = parseString;
-  
-      return totalTime;
     }
+
+    //Parses input string in case where there is just 1 min
     else if(parseString.includes("min")){
       parseString = parseString.replace(" min", "");
-
       parseString = parseInt(parseString);
-
       totalTime = parseString;
-  
+    }
+
+    //Adds in patient load time
+    totalTime = totalTime + estimatedtime;
+
+    //Reformats minute value back into hours and minutes
+    if(totalTime > 59){
+      hourCount = (totalTime / 60);
+      hourCount = Math.floor(hourCount);
+
+      if(hourCount > 1){
+        hourCount = hourCount + " hours ";
+      }
+      else{
+        hourCount = hourCount + " hour ";
+      }
+
+      minuteCount = totalTime % 60;
+      minuteCount = minuteCount + " min";
+
+      totalTime = hourCount + minuteCount;
+
       return totalTime;
     }
 
-    return -1;
+    //Reformats minute value
+    else{
+      minuteCount = totalTime % 60;
+      minuteCount = minuteCount + " min";
+
+      totalTime = minuteCount;
+      
+      return totalTime;
+    }
   }
 
   useEffect(() => {
@@ -84,8 +114,11 @@ function Results() {
     if (!isEmpty(gmaps)) {
       renderDirections(gmaps, patientLocal, hospital, helicopter, polyline, directionsRenderer, directionsService, function(duration) {
         var parsedTime;
-        parsedTime = timeStringParser(duration.text);
-        document.getElementById("ambulance-eta-hospital").innerHTML = parsedTime + parseInt(estimatedtime); 
+        
+        //Calls function to take in time estimate string from maps route function output
+        //and patient load time input and combines them and reformats back into x hours y min format.
+        parsedTime = timeStringParser(parseInt(estimatedtime), duration.text);
+        document.getElementById("ambulance-eta-hospital").innerHTML = parsedTime; 
       });
     }
     // TODO: PERFORM CALCULATION 
