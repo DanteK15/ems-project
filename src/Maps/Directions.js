@@ -7,7 +7,8 @@ import {useStateValue} from "../Context/StateProvider";
 // TODO: Origin, Destination, Helicopter = {lat: #, lng: #}  or Place objects <-- Determine this 
 const renderDirections = (gmaps, origin, destination, helicopter, polyline, directionsRenderer, directionsService, callback) => {
     const { map, maps } = gmaps;
-    var returnDuration = "2";
+    var returnDuration = "-1";
+
     //Clear Previous Routes
     directionsRenderer.setMap(null);
     polyline.setMap(null);
