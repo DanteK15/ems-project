@@ -46,7 +46,7 @@
     border: none;
     background-color: var(--background);
   }
-  
+
   .results__resultsContainer {
     margin-top: 15px;
     margin-left: 20px;
@@ -60,7 +60,7 @@
     font-weight: 800;
   }
 
-  .results__helicopterResultsContainer {
+  .results-container {
     margin-top: 15px;
     margin-left: 20px;
     padding: 20px;

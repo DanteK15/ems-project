@@ -133,7 +133,7 @@ function Results() {
         }}
       >Results</h2>
 
-      <div className="results__helicopterResultsContainer">
+      <div className="results-container">
         <div className="icon-container">
           <Icon icon={helicopterIcon} width="40" height="40"
             className="heli"
@@ -154,7 +154,8 @@ function Results() {
         </div>
       </div>
 
-      <div className="results__ambulanceResultsContainer">
+      {/* <div className="results__ambulanceResultsContainer"> */}
+      <div className="results-container">
         <div className="icon-container">
           <Icon icon={ambulanceIcon} width="40" height="40"
             className="ambulance"
