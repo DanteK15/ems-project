@@ -1,11 +1,14 @@
 // Renders Ambulance and Helicopter Route
 import googleMapReact from "google-map-react";
 import React from "react";
+import { isCompositeComponent } from "react-dom/test-utils";
 import {useStateValue} from "../Context/StateProvider";
 
 // TODO: Origin, Destination, Helicopter = {lat: #, lng: #}  or Place objects <-- Determine this 
-const renderDirections = (gmaps, origin, destination, helicopter, polyline, directionsRenderer, directionsService) => {
+const renderDirections = (gmaps, origin, destination, helicopter, polyline, directionsRenderer, directionsService, callback) => {
     const { map, maps } = gmaps;
+    var returnDuration = "-1";
+
     //Clear Previous Routes
     directionsRenderer.setMap(null);
     polyline.setMap(null);
@@ -63,7 +66,8 @@ const renderDirections = (gmaps, origin, destination, helicopter, polyline, dire
                 let duration = response.routes[0].legs[0].duration;
                 console.log('distance: ', distance);
                 console.log('duration: ', duration);
-
+                returnDuration = duration;
+                callback(returnDuration);
             } else {
                 window.alert("Directions request failed due to " + status);
             }
