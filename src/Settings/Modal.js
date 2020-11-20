@@ -183,7 +183,7 @@ function Modal({showModal, setShowModal}) {
                             <LocalHospitalIcon className="icon-1"/>
                             <h3 onClick={handleClick}>Add Hospitals</h3>
                         </div>
-                        <ArrowForwardIosIcon className="icon-0" onClick={handleClick} />
+                        {/* <ArrowForwardIosIcon className="icon-0" onClick={handleClick} /> */}
                     </span>
                 {/* helicopters */}
                     <span>
@@ -191,15 +191,15 @@ function Modal({showModal, setShowModal}) {
                             <AddLocationIcon className="icon-1"/>
                             <h3 onClick={handleHeliClick}>Add Helicopters</h3>
                         </div>
-                        <ArrowForwardIosIcon className="icon-0" onClick={handleHeliClick} />
+                        {/* <ArrowForwardIosIcon className="icon-0" onClick={handleHeliClick} /> */}
                     </span>
                 {/* params */}
                     <span>
                         <div className="icon-title">
                             <AddLocationIcon className="icon-1"/>
-                            <h3 onClick={handleParams}>Add Configurable Parameters</h3>
+                            <h3 onClick={handleParams}>Helicopter Speed</h3>
                         </div>
-                        <ArrowForwardIosIcon className="icon-0" onClick={handleParams} />
+                        {/* <ArrowForwardIosIcon className="icon-0" onClick={handleParams} /> */}
                     </span>
                 </div>
             </div>

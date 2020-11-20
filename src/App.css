@@ -9,6 +9,20 @@ body {
   margin-top: 20px;
 }
 
+@media screen and (max-width: 376px) {
+  * {
+    margin: 0px !important;
+    padding: 0px !important;
+  }
+  .app {
+    margin: 0px !important;
+    padding: 0px !important;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+}
+
 @media only screen and (max-width: 600px) {
   .app {
     display: flex;

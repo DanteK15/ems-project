@@ -216,3 +216,9 @@ form {
     display: grid;
     place-items: center;
 }
+
+@media screen and (max-width: 376px) {
+    .submit-btn {
+        width: 150px !important;
+    }
+}

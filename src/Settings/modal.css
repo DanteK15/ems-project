@@ -357,3 +357,45 @@ span > div > h3 {
     justify-content: left;
     align-items: center;
 }
+
+@media screen and (max-width: 376px) {
+    * {
+        font-size: 16px !important;
+    }
+
+    .modal {
+        width: 280px;
+    }
+
+    .sidebar-top {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 40px !important;
+        margin-bottom: 20px !important;
+    }
+
+    .sidebar-top > .MuiSvgIcon-root {
+        padding-right: 20px !important;
+    }
+
+    /* #inputs {
+        display: flex;
+        flex-direction: column;
+    } */
+    /* .icon-title { */
+        #inputs {
+        display: flex;
+        align-items: center;
+        /* justify-content: space-evenly; */
+        /* width: 100% !important; */
+        flex-wrap: wrap;
+        padding-right: 50px !important;
+        padding: 20px !important;
+        width: 250px !important;
+    }
+    .icon-title > .MuiSvgIcon-root {
+        padding: 20px !important;
+
+    }
+}

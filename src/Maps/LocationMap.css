@@ -3,3 +3,16 @@
     width: 750px;
     height: 500px;
 }
+
+/* mobile screen */
+@media screen and (max-width: 376px) {
+    .map{
+        width: 100%;
+        display: grid !important;
+        place-items: center !important;
+    }
+    .locationContainer {
+        width: 340px;
+        height: 300px;
+    }
+}
