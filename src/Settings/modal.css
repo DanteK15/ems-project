@@ -399,3 +399,9 @@ span > div > h3 {
 
     }
 }
+
+@media screen and (min-width: 414px) {
+    .modal {
+        height: 100% !important;
+    }   
+}

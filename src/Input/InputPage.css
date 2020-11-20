@@ -214,5 +214,44 @@
     .submit-btn {
       margin-top: 20px !important;
     }
+  }
 
+  @media screen and (min-width: 414px) {
+
+    .manual-address-btn {
+      margin-top: 15px !important;
+      width: 500px;
+      display: grid;
+      place-items: center;
+      margin-left: 50px;
+    }
+
+    #available-hospitals-selection {
+      width: 500px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 20px !important;
+      margin-left: 200px;
+    }
+
+    .picker {
+      width: 100%;
+      margin-left: 90px;
+    }
+
+    .picker > h5 {
+      margin-bottom: 15px !important;
+    }
+
+    .picker-btn {
+      margin-bottom: 15px !important;
+      margin-top: 15px !important;
+    }
+    
+    .submit-section {
+    }
+
+    .submit-btn {
+      margin-top: 20px !important;
+    }
   }

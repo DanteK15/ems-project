@@ -133,3 +133,18 @@
       padding: 20px 0px !important;
     }
   }
+
+  @media screen and (min-width: 414px) {
+    .results {
+      display: grid;
+      place-items: center;
+      /* width: 550px; */
+    }
+
+    .results-container {
+      width: 530px;
+      margin-top: 10px !important;
+      margin-bottom: 20px !important;
+      padding: 20px 0px !important;
+    }
+  }
