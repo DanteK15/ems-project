@@ -53,9 +53,9 @@ function Sidebar() {
     document.getElementById("available-helicopters").innerHTML = "Available Helicopters Nearby";
     
     // result section
-    document.getElementById("heli-eta-patient").innerHTML = "time";
-    document.getElementById("heli-eta-hospital").innerHTML = "time";
-    document.getElementById("ambulance-eta-hospital").innerHTML = "time";
+    document.getElementById("heli-eta-patient").innerHTML = "";
+    document.getElementById("heli-eta-hospital").innerHTML = "";
+    document.getElementById("ambulance-eta-hospital").innerHTML = "";
   }
 
   // on click it's going to open the page 
