@@ -168,9 +168,10 @@ function InputPage() {
             backgroundColor="#32424d77"
             shadowColor="none"
           />
-        {/*<btn onClick={onSubmit} className="picker-btn">submit</btn>*/}
         <div className="submit-section">
-          <button className="submit-btn"
+        <btn onClick={onSubmit} type = "submit" className="picker-btn">submit</btn>
+          <button 
+            className="submit-button"
             type = "submit"
             onClick = {showResultsOnClick}
             >Calculate</button>

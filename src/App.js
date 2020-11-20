@@ -15,7 +15,9 @@ function App() {
                 <LocationMap />
                 <InputPage />
             </div>
+            <div className="result-page">
              <Results />
+            </div>
         </div>
     );
 }

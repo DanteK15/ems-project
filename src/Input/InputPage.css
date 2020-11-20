@@ -64,14 +64,23 @@
   }
 
   .picker-btn {
-    /* margin: 20px; */
-    padding: 10px 20px!important;
-    /* width: 100px; */
-    border: 1px solid lightgray;
-    cursor: pointer;
-    display: grid;
-    place-items: center;
-    border-radius: 15px;
+    color: #226F54;
+    border: 1px solid #226F54;
+    border-radius: 15px; 
+    cursor: pointer; 
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    font-weight: 200;
+  }
+
+  .submit-button { 
+    color: white;
+    background: #226F54;
+    border-radius: 15px; 
+    cursor: pointer; 
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    font-weight: 200;
   }
 
   .picker > h5 {
@@ -101,19 +110,6 @@
     padding-top: 20px;
   }
 
-  .submit-btn { 
-    color: white;
-    background: #226F54;
-    width: 300px;
-    height: 35px;
-    border: none; 
-    border-radius: 15px; 
-    cursor: pointer; 
-    font-size: 1.2rem;
-    letter-spacing: 2px;
-    margin-bottom: 5px;
-    font-weight: 200;
-  }
 
   input {
     border: none;
@@ -206,6 +202,7 @@
     .picker-btn {
       margin-bottom: 15px !important;
       margin-top: 15px !important;
+      text-align: center !important;
     }
     
     .submit-section {
@@ -217,7 +214,6 @@
   }
 
   @media screen and (min-width: 414px) {
-
     .manual-address-btn {
       margin-top: 15px !important;
       width: 500px;
@@ -254,4 +250,66 @@
     .submit-btn {
       margin-top: 20px !important;
     }
+  }
+
+  @media screen and (min-width: 1200px) {
+    .manual-address-input {
+    }
+    .manual-address-btn {
+      margin-top: -40px !important;
+      width: 700px;
+      margin-left: -5px;
+    }
+
+    #available-hospitals-selection {
+      width: 700px;
+      margin-left: -5px;
+      margin-top: -12px !important;
+    }
+    
+    .picker {
+      width: 100%;
+      margin-left: -10px;
+    }
+
+    .picker > h5 {
+      margin-top: -10px !important;
+      margin-bottom: 10px !important;
+    }
+
+    .submit-section {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      margin-left: 10px;
+    }
+    .submit-section > * {
+      width: 300px !important;
+      font-size: 14px;
+      text-align: center !important;
+      padding: 5px 10px;
+    }
+    /*     color: #226F54;
+    border: 1px solid #226F54;
+    width: 300px;
+    height: 35px;
+    border: none; 
+    border-radius: 15px; 
+    cursor: pointer; 
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    font-weight: 200; */
+
+    .submit-button {
+
+    }
+
+    /* .submit-button {
+      padding: 3px 10px !important;
+      font-size: 18px;
+      width: 150px;
+      margin-top: -20px !important;
+      margin: 0px 20px;
+    }  */
   }

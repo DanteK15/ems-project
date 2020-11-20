@@ -1,8 +1,8 @@
-.locationContainer {
+/* .locationContainer {
     padding: 20px 50px;
     width: 750px;
     height: 500px;
-}
+} */
 
 /* mobile screen */
 @media screen and (max-width: 376px) {
@@ -27,5 +27,19 @@
     .locationContainer {
         width: 500px;
         height: 300px;
+    }
+}
+
+/* large screens */
+@media screen and (min-width: 1200px) {
+    .map{
+        width: 100%;
+        display: grid !important;
+        place-items: center !important;
+    }
+    .locationContainer {
+        padding: 50px 50px;
+        width: 700px;
+        height: 350px;
     }
 }
