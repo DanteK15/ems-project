@@ -56,7 +56,8 @@ function InputPage() {
     }
   }
 
-  const showResultsOnClick = (e) => {
+  /*
+  const handleSubmit = (e) => {
     if(patientLocal && hospital && helicopter && estimatedtime) {
       dispatch({
         type: actionTypes.SET_CALC,
@@ -68,13 +69,18 @@ function InputPage() {
     // document.getElementById("heli-eta-patient").innerHTML = time;
 
     // Helicopter ETA to hospital
-    var time = helicopterToHospital(estimatedtime);
-    document.getElementById("heli-eta-hospital").innerHTML = estimatedtime; 
+    // var time = helicopterToHospital(estimatedtime);
+    // document.getElementById("heli-eta-hospital").innerHTML = estimatedtime; 
 
     // Ambulance to hospital 
-//    document.getElementById("ambulance-eta-hospital").innerHTML = estimatedtime; 
+    // document.getElementById("ambulance-eta-hospital").innerHTML = estimatedtime; 
   }
+  */
   
+  const handleSubmit = (e) => {
+
+  }
+
   //Function to check location services access and alert user to enable it.
   errorMessage.getLocation();
 
@@ -169,11 +175,11 @@ function InputPage() {
             shadowColor="none"
           />
         <div className="submit-section">
-        <btn onClick={onSubmit} type = "submit" className="picker-btn">submit</btn>
+        {/*<btn onClick={onSubmit} type = "submit" className="picker-btn">submit</btn>*/}
           <button 
             className="submit-button"
             type = "submit"
-            onClick = {showResultsOnClick}
+            onClick = {handleSubmit}
             >Calculate</button>
       </div>
       </div>

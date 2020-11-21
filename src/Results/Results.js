@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./Results.css";
 import { Icon } from '@iconify/react';
 import helicopterIcon from '@iconify/icons-mdi/helicopter';
@@ -11,6 +11,7 @@ function Results() {
 
   const [{ gmaps, polyline, directionsRenderer, directionsService, calcParams }] = useStateValue();
   const duration = "time";
+  const [parseTime, setParseTime] = useState("");
 
   //Parses Maps time estimate and combines it with patient load time.
   //Reformats the answer for return.
@@ -34,7 +35,7 @@ function Results() {
       //Convert parsed strings into ints 
       parseString[1] = parseInt(parseString[1]);
       parseString[0] = parseInt(parseString[0]);
-  
+
       //Hour values are converted to minutes
       parseString[0] = (parseString[0] * 60); 
   
@@ -118,7 +119,8 @@ function Results() {
         //Calls function to take in time estimate string from maps route function output
         //and patient load time input and combines them and reformats back into x hours y min format.
         parsedTime = timeStringParser(parseInt(estimatedtime), duration.text);
-        document.getElementById("ambulance-eta-hospital").innerHTML = parsedTime; 
+        //document.getElementById("ambulance-eta-hospital").innerHTML = parsedTime; 
+        setParseTime(parseTime); 
       });
     }
     // TODO: PERFORM CALCULATION 
@@ -143,14 +145,13 @@ function Results() {
 
         <h3>ETA to Patient</h3>
         <div className="results__input">
-          {/* <input placeholder="Estimated Time" type="text" /> */}
-          <h5 id="heli-eta-patient">{calcParams.estimatedtime}</h5>
+          {/* <h5 id="heli-eta-patient">{calcParams.estimatedtime}</h5> */}
+          <h5 id="heli-eta-patient">{}</h5>
         </div>
         <br />
         <h3>ETA to Hospital</h3>
         <div className="results__input">
-          {/* <input placeholder="Estimated Time" type="text" /> */}
-      <h5 id="heli-eta-hospital"></h5>
+          <h5 id="heli-eta-hospital">{}</h5>
         </div>
       </div>
 
@@ -165,8 +166,7 @@ function Results() {
 
         <h3>ETA to Hospital</h3>
         <div className="results__input">
-          {/* <input placeholder="Estimated Time" type="text" /> */}
-      <h5 id="ambulance-eta-hospital"></h5>
+          <h5 id="ambulance-eta-hospital">{parseTime}</h5>
         </div>
 
       </div>
