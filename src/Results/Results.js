@@ -119,8 +119,7 @@ function Results() {
         //Calls function to take in time estimate string from maps route function output
         //and patient load time input and combines them and reformats back into x hours y min format.
         parsedTime = timeStringParser(parseInt(estimatedtime), duration.text);
-        //document.getElementById("ambulance-eta-hospital").innerHTML = parsedTime; 
-        setParseTime(parseTime); 
+        document.getElementById("ambulance-eta-hospital").innerHTML = parsedTime; 
       });
     }
     // TODO: PERFORM CALCULATION 
@@ -146,12 +145,12 @@ function Results() {
         <h3>ETA to Patient</h3>
         <div className="results__input">
           {/* <h5 id="heli-eta-patient">{calcParams.estimatedtime}</h5> */}
-          <h5 id="heli-eta-patient">{}</h5>
+          <h5 id="heli-eta-patient"></h5>
         </div>
         <br />
         <h3>ETA to Hospital</h3>
         <div className="results__input">
-          <h5 id="heli-eta-hospital">{}</h5>
+          <h5 id="heli-eta-hospital"></h5>
         </div>
       </div>
 
@@ -166,7 +165,7 @@ function Results() {
 
         <h3>ETA to Hospital</h3>
         <div className="results__input">
-          <h5 id="ambulance-eta-hospital">{parseTime}</h5>
+          <h5 id="ambulance-eta-hospital"></h5>
         </div>
 
       </div>

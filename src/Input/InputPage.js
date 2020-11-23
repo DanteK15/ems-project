@@ -56,7 +56,6 @@ function InputPage() {
     }
   }
 
-  /*
   const handleSubmit = (e) => {
     if(patientLocal && hospital && helicopter && estimatedtime) {
       dispatch({
@@ -66,19 +65,13 @@ function InputPage() {
     }
 
     // Helicopter ETA to patient
-    // document.getElementById("heli-eta-patient").innerHTML = time;
+    document.getElementById("heli-eta-patient").innerHTML = estimatedtime;
 
     // Helicopter ETA to hospital
-    // var time = helicopterToHospital(estimatedtime);
-    // document.getElementById("heli-eta-hospital").innerHTML = estimatedtime; 
+    document.getElementById("heli-eta-hospital").innerHTML = estimatedtime; 
 
     // Ambulance to hospital 
-    // document.getElementById("ambulance-eta-hospital").innerHTML = estimatedtime; 
-  }
-  */
-  
-  const handleSubmit = (e) => {
-
+    document.getElementById("ambulance-eta-hospital").innerHTML = estimatedtime; 
   }
 
   //Function to check location services access and alert user to enable it.
