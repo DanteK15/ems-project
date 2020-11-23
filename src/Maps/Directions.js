@@ -42,9 +42,8 @@ const renderDirections = (gmaps, origin, destination, helicopter, polyline, dire
         hospital,
     ]
 	
-	//Commenting this out until I can verify it runs correctly this weekend ~Brandon~
-	//Will figure out how to store this in context API this weekend
-	//var totalHelicopterDistance = getDistance(helicopterOrigin, patientLocation) + getDistance(patientLocation, hospital)
+	//Commenting this out until I can verify it runs correctly ~Brandon~
+	//rawHelicopterDistance = getDistance(helicopterOrigin, patientLocation) + getDistance(patientLocation, hospital)
 	
     polyline.setPath(flightPlanCoordinates);
     polyline.setMap(map);
@@ -74,13 +73,12 @@ const renderDirections = (gmaps, origin, destination, helicopter, polyline, dire
         }
     );
 };
-	//Commenting this out until I can verify it runs correctly this weekend ~Brandon~
+	//Commenting this out until I can verify it runs correctly ~Brandon~
 	/*
 	var rad = function(x) { return x * Math.PI / 180; }; 
-
 	*/
 	
-	//Commenting this out until I can verify it runs correctly this weekend ~Brandon~
+	//Commenting this out until I can verify it runs correctly ~Brandon~
 	/*
 	var getDistance = function(p1, p2) { 
 		var R = 6378137; // Earth’s mean radius in meters 
@@ -88,7 +86,8 @@ const renderDirections = (gmaps, origin, destination, helicopter, polyline, dire
 		var dLong = rad(p2.lng - p1.lng); 
 		var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) + Math.cos(rad(p1.lat)) * Math.cos(rad(p2.lat)) * Math.sin(dLong / 2) * Math.sin(dLong / 2); 
 		var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-		var d = R * c; return d / 1609.34; // returns the distance in miles
+		var d = R * c;
+		return d / 1609.34; // returns the distance in miles
 };
 	*/
 
