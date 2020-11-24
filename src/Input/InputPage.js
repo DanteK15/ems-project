@@ -89,20 +89,12 @@ function InputPage() {
 		    elements[i].style.backgroundColor = "#76ac6d";
 	    }
     }
-    if(ambulanceTime < helicopterTime) {
+    else if(ambulanceTime < helicopterTime) {
       var elements = document.getElementsByClassName('results-container-2'); 
 	    for(var i = 0; i < elements.length; i++){
 		    elements[i].style.backgroundColor = "#76ac6d";
 	    }
     }
-
-    // TESTING (works)
-    /*
-    var elements = document.getElementsByClassName('results-container'); // get all elements
-	  for(var i = 0; i < elements.length; i++){
-		  elements[i].style.backgroundColor = "#76ac6d";
-    }
-    */
   }
 
   //Function to check location services access and alert user to enable it.
