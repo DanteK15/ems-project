@@ -20,8 +20,9 @@ const getInitialState = () => {
         Polyline: {}, //Polyline class is a linear overlay of connected line segments on the map.
         directionsRenderer: {}, //Class to render directions obtained from the DirectionsService
         directionsService: {}, //Instance of a DirectionsService that sends directions queries to Google servers.
+        ambulanceMarker: {},
+        helicopterMarker: {},
         helicopter_speed: {},
-    
     }
 }
 
@@ -48,6 +49,8 @@ export const actionTypes = {
     SET_POLY: 'SET_POLY',
     SET_REND: 'SET_REND',
     SET_SERV: 'SET_SERV',
+    SET_AMARK: 'SET_AMARK',
+    SET_HMARK: 'SET_HMARK'
     SET_PARAMS: 'SET_PARAMS'
 }
 
@@ -142,6 +145,15 @@ const reducer = (state, action) => {
                 ...state,
                 directionsService: action.directionsService
             }
+        case actionTypes.SET_AMARK:
+            return {
+                ...state,
+                ambulanceMarker: action.ambulanceMarker
+            }
+        case actionTypes.SET_HMARK:
+            return {
+                ...state,
+                helicopterMarker: action.helicopterMarker
         case actionTypes.SET_PARAMS:
             return {
                 ...state,
