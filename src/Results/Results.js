@@ -120,6 +120,8 @@ function Results() {
         //and patient load time input and combines them and reformats back into x hours y min format.
         parsedTime = timeStringParser(parseInt(estimatedtime), duration.text);
         document.getElementById("ambulance-eta-hospital").innerHTML = parsedTime; 
+        document.getElementById("ambulance-eta-hospital").value = estimatedtime
+        console.log(document.getElementById("ambulance-eta-hospital").innerHTML);
       });
     }
     // TODO: PERFORM CALCULATION 
@@ -155,7 +157,7 @@ function Results() {
       </div>
 
       {/* <div className="results__ambulanceResultsContainer"> */}
-      <div className="results-container">
+      <div className="results-container-2">
         <div className="icon-container">
           <Icon icon={ambulanceIcon} width="40" height="40"
             className="ambulance"
