@@ -122,6 +122,7 @@ function Results() {
 
     //Calculates minutes
     var minuteCount = minuteParse;
+    minuteCount = parseInt(minuteCount);
     minuteCount = minuteCount / heliSpeed;
     minuteCount = minuteCount.toString();
     minuteCount = minuteCount.split(".");
@@ -129,7 +130,6 @@ function Results() {
     minuteCount = "." + minuteCount;
     minuteCount = minuteCount * 60;
     minuteCount = Math.round(minuteCount);
-    minuteCount = parseInt(minuteCount);
 
     //Reformats hour and minute values back into hours and minutes string format
     if(hourCount >= 1){
@@ -156,14 +156,17 @@ function Results() {
   //Calculates patient-to-hospital time for the helicopter estimate.
   function heliTimeStringParser2(estimatedTime, heliDistance, heliSpeed, heliDistance2, firstRouteTime){
     var heliTime;
-    heliSpeed = parseInt(heliSpeed);
+    heliSpeed = parseFloat(heliSpeed);
     var minuteParse = heliDistance.toFixed(4);
-
+    console.log('First Route Time', firstRouteTime);
     //Turns first route time and patient load time into an int.
-    firstRouteTime.split(' ');
+    firstRouteTime = firstRouteTime.split(' ');
     firstRouteTime = firstRouteTime[0];
-    firstRouteTime = parseInt(firstRouteTime);
-    estimatedTime = parseInt(estimatedTime);
+    console.log('First Route Time', firstRouteTime);
+    firstRouteTime = parseFloat(firstRouteTime);
+    estimatedTime = parseFloat(estimatedTime);
+    console.log('First Route Time', firstRouteTime);
+
 
     //Calculates a time estimate for cases when the patient load time
     //is greater than the first route time. In that case the patient
@@ -175,6 +178,7 @@ function Results() {
   
       //Determines minute value.
       var minuteCount = minuteParse;
+      minuteCount = parseFloat(minuteCount);
       minuteCount = minuteCount / heliSpeed;
       minuteCount = minuteCount.toString();
       minuteCount = minuteCount.split(".");
@@ -186,8 +190,6 @@ function Results() {
       //Subtracts first route time from patient load time
       //Calculates minute value.
       estimatedTime = (estimatedTime - firstRouteTime);
-      minuteCount = parseInt(minuteCount);
-      estimatedTime = parseInt(estimatedTime);
       minuteCount = minuteCount + estimatedTime;
       minuteCount = minuteCount + firstRouteTime;
   
@@ -210,6 +212,7 @@ function Results() {
   
       //Minute value calculated.
       var minuteCount = minuteParse;
+      minuteCount = parseFloat(minuteCount);
       minuteCount = minuteCount / heliSpeed;
       minuteCount = minuteCount.toString();
       minuteCount = minuteCount.split(".");
