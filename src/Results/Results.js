@@ -158,13 +158,22 @@ function Results() {
     var heliTime;
     heliSpeed = parseFloat(heliSpeed);
     var minuteParse = heliDistance.toFixed(4);
+    var minuteParse2;
     console.log('First Route Time', firstRouteTime);
     //Turns first route time and patient load time into an int.
     firstRouteTime = firstRouteTime.split(' ');
-    firstRouteTime = firstRouteTime[0];
-    console.log('First Route Time', firstRouteTime);
-    firstRouteTime = parseFloat(firstRouteTime);
+    if(firstRouteTime[2]){
+      minuteParse2 = parseFloat(firstRouteTime[2]);
+      firstRouteTime = (parseFloat(firstRouteTime[0]) * 60) + parseFloat(firstRouteTime[2]);
+      firstRouteTime = parseFloat(firstRouteTime);
+    }
+    else{
+      minuteParse2 = parseFloat(firstRouteTime[0]);
+      firstRouteTime = parseFloat(firstRouteTime[0]);
+      firstRouteTime = parseFloat(firstRouteTime);
+    }
     estimatedTime = parseFloat(estimatedTime);
+    console.log('patient load time:', estimatedTime);
     console.log('First Route Time', firstRouteTime);
 
 
@@ -172,6 +181,7 @@ function Results() {
     //is greater than the first route time. In that case the patient
     //load time - the first route time is used.
     if(estimatedTime > firstRouteTime){
+      console.log('Patient Load > First Route');
       //Determines hour value. 
       var hourCount = heliDistance / heliSpeed;
       hourCount = Math.floor(hourCount);
@@ -206,9 +216,14 @@ function Results() {
     //time. The first route time is added together with the second
     //helicopter route time.
     else{
+      console.log('Patient Load < First Route');
       //Hour value calculated.
-      var hourCount = ((heliDistance + heliDistance2) / heliSpeed);
+      var hourCount = (heliDistance / heliSpeed);
+      var hourCount2 = (heliDistance2 / heliSpeed);
       hourCount = Math.floor(hourCount);
+      hourCount2 = Math.floor(hourCount2);
+      hourCount = hourCount + hourCount2;
+      console.log('hourCount', hourCount);
   
       //Minute value calculated.
       var minuteCount = minuteParse;
@@ -221,7 +236,9 @@ function Results() {
       minuteCount = minuteCount * 60;
       minuteCount = Math.round(minuteCount);
       minuteCount = parseInt(minuteCount);
-      minuteCount = minuteCount + firstRouteTime;
+      console.log('Minute Count 2nd Route', minuteCount);
+      console.log('Minute Count 1st Route', minuteParse2);
+      minuteCount = minuteCount + minuteParse2;
   
       //Carries over the minutes value into the hours if minutes
       //goes over 60.
