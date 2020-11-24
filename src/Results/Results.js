@@ -318,7 +318,7 @@ function Results() {
       </div>
 
       {/* <div className="results__ambulanceResultsContainer"> */}
-      <div className="results-container">
+      <div className="results-container-2">
         <div className="icon-container">
           <Icon icon={ambulanceIcon} width="40" height="40"
             className="ambulance"

@@ -56,6 +56,16 @@ function Sidebar() {
     document.getElementById("heli-eta-patient").innerHTML = "";
     document.getElementById("heli-eta-hospital").innerHTML = "";
     document.getElementById("ambulance-eta-hospital").innerHTML = "";
+
+    var elements = document.getElementsByClassName('results-container');
+	    for(var i = 0; i < elements.length; i++){
+		    elements[i].style.backgroundColor = "#f5f8fa";
+    }
+    
+    var elements = document.getElementsByClassName('results-container-2'); 
+	    for(var i = 0; i < elements.length; i++){
+		    elements[i].style.backgroundColor = "#f5f8fa";
+	  }
   }
 
   // on click it's going to open the page 
