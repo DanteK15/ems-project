@@ -154,6 +154,7 @@ const reducer = (state, action) => {
             return {
                 ...state,
                 helicopterMarker: action.helicopterMarker
+            }
         case actionTypes.SET_PARAMS:
             return {
                 ...state,
