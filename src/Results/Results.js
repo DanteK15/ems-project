@@ -6,10 +6,11 @@ import ambulanceIcon from '@iconify/icons-fa/ambulance';
 import { useStateValue } from '../Context/StateProvider';
 import renderDirections from "../Maps/Directions";
 import isEmpty from 'lodash/isEmpty';
+import { ContactSupportOutlined } from "@material-ui/icons";
 
 function Results() {
 
-  const [{ gmaps, polyline, directionsRenderer, directionsService, calcParams }] = useStateValue();
+  const [{ gmaps, polyline, directionsRenderer, directionsService, calcParams, helicopter_speed }] = useStateValue();
   const duration = "time";
   const [parseTime, setParseTime] = useState("");
 
@@ -109,6 +110,69 @@ function Results() {
     }
   }
 
+  //Parses Maps time estimate and combines it with patient load time.
+  //Reformats the answer for return.
+  function heliTimeStringParser(estimatedTime, heliDistance, heliSpeed){
+    var heliTime;
+    heliSpeed = parseInt(heliSpeed);
+    var minuteParse = heliDistance.toFixed(4);
+    estimatedTime = estimatedTime / 60;
+
+    var hourCount = heliDistance / heliSpeed;
+    hourCount = Math.floor(hourCount);
+    console.log('hourCount', hourCount);
+
+
+    var minuteCount = minuteParse;
+    minuteCount = minuteCount / heliSpeed;
+    minuteCount = minuteCount.toString();
+    minuteCount = minuteCount.split(".");
+    minuteCount = minuteCount[1];
+
+
+    minuteCount = "." + minuteCount;
+    minuteCount = minuteCount * 60;
+    minuteCount = Math.round(minuteCount);
+
+    estimatedTime = estimatedTime * 60;
+    minuteCount = parseFloat(minuteCount);
+    estimatedTime = parseFloat(estimatedTime);
+    minuteCount = minuteCount + estimatedTime;
+
+
+    if(minuteCount >= 60){
+      minuteCount = minuteCount - 60;
+      hourCount = hourCount + 1;
+    }
+
+    console.log('heliDistance', heliDistance);
+    console.log('heliSpeed', heliSpeed);
+    console.log('minuteCount', minuteCount);
+
+
+    //Reformats minute value back into hours and minutes
+    if(hourCount >= 1){
+      if(hourCount > 1){
+        heliTime = hourCount + " hours ";
+      }
+      else{
+        heliTime = hourCount + " hour ";
+      }
+
+      heliTime = heliTime + minuteCount + " min";
+
+      return heliTime;
+    }
+
+    //Reformats minute value
+    else{
+      heliTime = minuteCount + " min";
+
+      return heliTime;
+    }
+  }
+
+
   useEffect(() => {
     console.log(calcParams);
     const { patientLocal, hospital, helicopter, estimatedtime } = calcParams;
@@ -118,8 +182,12 @@ function Results() {
         
         //Calls function to take in time estimate string from maps route function output
         //and patient load time input and combines them and reformats back into x hours y min format.
-        parsedTime = timeStringParser(parseInt(estimatedtime), duration.text);
+        parsedTime = timeStringParser(parseInt(estimatedtime), duration[0].text);
         document.getElementById("ambulance-eta-hospital").innerHTML = parsedTime; 
+        parsedTime = heliTimeStringParser(estimatedtime, duration[2], helicopter_speed);
+        document.getElementById("heli-eta-hospital").innerHTML = parsedTime;
+        parsedTime = heliTimeStringParser(estimatedtime, duration[1], helicopter_speed);
+        document.getElementById("heli-eta-patient").innerHTML = parsedTime;
       });
     }
     // TODO: PERFORM CALCULATION 

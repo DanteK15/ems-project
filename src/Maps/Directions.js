@@ -7,7 +7,7 @@ import {useStateValue} from "../Context/StateProvider";
 // TODO: Origin, Destination, Helicopter = {lat: #, lng: #}  or Place objects <-- Determine this 
 const renderDirections = (gmaps, origin, destination, helicopter, polyline, directionsRenderer, directionsService, callback) => {
     const { map, maps } = gmaps;
-    var returnDuration = "-1";
+    var returnDuration = [-1,-1,-1];
 
     //Clear Previous Routes
     directionsRenderer.setMap(null);
@@ -41,10 +41,48 @@ const renderDirections = (gmaps, origin, destination, helicopter, polyline, dire
         patientLocation,
         hospital,
     ]
-	
+
+	     //Helicopter Route Distance From Helicopter Origin to Patient
+         var earthRadius = 6371e3; // metres
+         var lat1 = helicopterOrigin.lat * Math.PI/180; // φ, λ in radians
+         var lat2 = patientLocation.lat * Math.PI/180;
+         var changeLat = (patientLocation.lat-helicopterOrigin.lat) * Math.PI/180;
+         var changeLng = (patientLocation.lng-helicopterOrigin.lng) * Math.PI/180;
+    
+         var angle = (Math.sin(changeLat/2) * Math.sin(changeLat/2)) +
+                   (Math.cos(lat1) * Math.cos(lat2) *
+                   Math.sin(changeLng/2) * Math.sin(changeLng/2));
+    
+         var circumference = 2 * Math.atan2(Math.sqrt(angle), Math.sqrt(1-angle));
+    
+         var helicopterDistance1 = earthRadius * circumference; // in metres
+         helicopterDistance1 = helicopterDistance1 / 1609.34; // in miles
+    
+      //   returnDuration[1] = helicopterDistance1;
+         console.log("HeliRoute1", helicopterDistance1);
+    
+          //Helicopter Route Distance from Patient to Hospital
+        lat1 = patientLocation.lat * Math.PI/180; // φ, λ in radians
+        lat2 = hospital.lat * Math.PI/180;
+        changeLat = (hospital.lat-patientLocation.lat) * Math.PI/180;
+        changeLng = (hospital.lng-patientLocation.lng) * Math.PI/180;
+    
+        angle = (Math.sin(changeLat/2) * Math.sin(changeLat/2)) +
+                  (Math.cos(lat1) * Math.cos(lat2) *
+                  Math.sin(changeLng/2) * Math.sin(changeLng/2));
+    
+        circumference = 2 * Math.atan2(Math.sqrt(angle), Math.sqrt(1-angle));
+    
+        var helicopterDistance2 = earthRadius * circumference; // in metres
+        helicopterDistance2 = helicopterDistance2 / 1609.34; // in miles
+    
+     //   returnDuration[2] = helicopterDistance2;
+        console.log("HeliRoute12", helicopterDistance2);
+
 	//Commenting this out until I can verify it runs correctly ~Brandon~
 	//rawHelicopterDistance = getDistance(helicopterOrigin, patientLocation) + getDistance(patientLocation, hospital)
-	
+    //var totalHelicopterDistance = getDistance(helicopterOrigin, patientLocation) + getDistance(patientLocation, hospital)
+    
     polyline.setPath(flightPlanCoordinates);
     polyline.setMap(map);
 
@@ -65,7 +103,7 @@ const renderDirections = (gmaps, origin, destination, helicopter, polyline, dire
                 let duration = response.routes[0].legs[0].duration;
                 console.log('distance: ', distance);
                 console.log('duration: ', duration);
-                returnDuration = duration;
+                returnDuration = [duration, helicopterDistance1, helicopterDistance2];
                 callback(returnDuration);
             } else {
                 window.alert("Directions request failed due to " + status);
