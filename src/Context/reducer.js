@@ -50,7 +50,7 @@ export const actionTypes = {
     SET_REND: 'SET_REND',
     SET_SERV: 'SET_SERV',
     SET_AMARK: 'SET_AMARK',
-    SET_HMARK: 'SET_HMARK'
+    SET_HMARK: 'SET_HMARK',
     SET_PARAMS: 'SET_PARAMS'
 }
 
