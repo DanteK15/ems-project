@@ -46,7 +46,7 @@
     border: none;
     background-color: var(--background);
   }
-  
+
   .results__resultsContainer {
     margin-top: 15px;
     margin-left: 20px;
@@ -60,7 +60,7 @@
     font-weight: 800;
   }
 
-  .results__helicopterResultsContainer {
+  .results-container {
     margin-top: 15px;
     margin-left: 20px;
     padding: 20px;
@@ -117,4 +117,64 @@
     letter-spacing: 2px;
     margin-bottom: 5px;
     font-weight: 200;
+  }
+
+
+  @media screen and (max-width: 376px) {
+    .results {
+      display: grid;
+      place-items: center;
+    }
+
+    .results-container {
+      width: 300px;
+      margin-top: 10px !important;
+      margin-bottom: 20px !important;
+      padding: 20px 0px !important;
+    }
+  }
+
+  @media screen and (min-width: 414px) {
+    .results {
+      display: grid;
+      place-items: center;
+      /* width: 550px; */
+    }
+
+    .results-container {
+      width: 530px;
+      margin-top: 10px !important;
+      margin-bottom: 20px !important;
+      padding: 20px 0px !important;
+    }
+  }
+
+  @media screen and (min-width: 1200px) {
+    .results > h2 {
+      /* display: grid;
+      place-items: center; */
+      margin-left: -90px;
+    }
+
+    .results-container {
+      width: 300px;
+      height: 200px;
+      margin-left: -90px;
+      /* width: 530px;
+      margin-top: 10px !important;
+      margin-bottom: 20px !important;
+      padding: 20px 0px !important; */
+    }
+
+    .icon-container, .results__input, #heli-eta-patient,
+    #heli-eta-hospital, .ambulance, #ambulance-eta-hospital {
+      padding: 8px;
+    }
+    .results__input, #ambulance-eta-hospital,#heli-eta-patient {
+      width: 230px !important;
+    }
+
+    h3 {
+      margin-left: 25px;
+    }
   }

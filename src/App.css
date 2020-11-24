@@ -9,6 +9,34 @@ body {
   margin-top: 20px;
 }
 
+.inputPage {
+  flex: 0.6 !important;
+}
+
+.result-page {
+  flex: 0.4;
+}
+
+@media screen and (min-width: 1200px) {
+  * {
+    margin-top: -2px;
+  }
+}
+
+@media screen and (max-width: 376px) {
+  * {
+    margin: 0px !important;
+    padding: 0px !important;
+  }
+  .app {
+    margin: 0px !important;
+    padding: 0px !important;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+}
+
 @media only screen and (max-width: 600px) {
   .app {
     display: flex;

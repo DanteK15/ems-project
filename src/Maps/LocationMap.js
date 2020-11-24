@@ -124,6 +124,7 @@ const LocationMap = (props) => {
     };
 
     return (
+        <div className="map">
         <div className='locationContainer'>
                 <GoogleMapReact
                     bootstrapURLKeys={{
@@ -144,6 +145,7 @@ const LocationMap = (props) => {
 
                     )}
                 </GoogleMapReact>
+        </div>
         </div>
     );
 };

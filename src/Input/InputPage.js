@@ -32,6 +32,13 @@ function InputPage() {
     return data;
   }
 
+  function helicopterToHospital(time) {
+    var total = parseInt(time);
+    total = total;
+
+    return total;
+  }
+
   // Set new patient location from geolocation or manual input
   const newPatientLoc = (place) => {
     dispatch({
@@ -49,7 +56,7 @@ function InputPage() {
     }
   }
 
-  const showResultsOnClick = (e) => {
+  const handleSubmit = (e) => {
     if(patientLocal && hospital && helicopter && estimatedtime) {
       dispatch({
         type: actionTypes.SET_CALC,
@@ -66,7 +73,7 @@ function InputPage() {
     // Ambulance to hospital 
     document.getElementById("ambulance-eta-hospital").innerHTML = estimatedtime; 
   }
-  
+
   //Function to check location services access and alert user to enable it.
   errorMessage.getLocation();
 
@@ -104,7 +111,6 @@ function InputPage() {
   return (
     <div className="input-container">
       <div className="location-section">
-
         {/*ToastContainer is placed anywhere to initialize error popups*/}
         <errorMessage.ToastContainer limit={7} autoClose={false}
           transition={errorMessage.Zoom} position={"top-center"} />
@@ -151,18 +157,22 @@ function InputPage() {
             data={timeData}
             onChange={handleEstimTimeChange}
             height={75}
-            width={400}
+            width={300}
             itemHeight={30}
             selectedID={timeData[timeID].id}
-            color="#ccc"
-            activeColor="#3232ff"
-            backgroundColor="#fff"
+            // color="#ccc"
+            color="black"
+            activeColor="white"
+            // backgroundColor="#fff"
+            backgroundColor="#32424d77"
+            shadowColor="none"
           />
-        <btn onClick={onSubmit} className="picker-btn">submit</btn>
         <div className="submit-section">
-          <button className="submit-btn"
+        {/*<btn onClick={onSubmit} type = "submit" className="picker-btn">submit</btn>*/}
+          <button 
+            className="submit-button"
             type = "submit"
-            onClick = {showResultsOnClick}
+            onClick = {handleSubmit}
             >Calculate</button>
       </div>
       </div>

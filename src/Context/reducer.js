@@ -22,6 +22,7 @@ const getInitialState = () => {
         directionsService: {}, //Instance of a DirectionsService that sends directions queries to Google servers.
         ambulanceMarker: {},
         helicopterMarker: {},
+        helicopter_speed: {},
     }
 }
 
@@ -50,6 +51,7 @@ export const actionTypes = {
     SET_SERV: 'SET_SERV',
     SET_AMARK: 'SET_AMARK',
     SET_HMARK: 'SET_HMARK'
+    SET_PARAMS: 'SET_PARAMS'
 }
 
 // state is state of data layer, action is whatever we're dispatching to 
@@ -152,6 +154,10 @@ const reducer = (state, action) => {
             return {
                 ...state,
                 helicopterMarker: action.helicopterMarker
+        case actionTypes.SET_PARAMS:
+            return {
+                ...state,
+                helicopter_speed: action.helicopter_speed
             }
         default:
             return state;
