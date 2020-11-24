@@ -5,6 +5,8 @@ import { LocationPin, HospitalPin, HelicopterPin } from './Icons'
 import { useStateValue } from '../Context/StateProvider'
 import { actionTypes } from '../Context/reducer'
 import './LocationMap.css';
+import helicopterIcon from '@iconify/icons-mdi/helicopter';
+import hospitalMarker from '@iconify/icons-mdi/hospital-marker';
 
 // Initial map location
 const PORTLAND = { lat: 45.523062, lng: -122.676482 };
@@ -69,13 +71,29 @@ const LocationMap = (props) => {
     // Calls dispatch to globally set Maps object
     const apiHasLoaded = (map, maps) => {
         map.setCenter(position);
+        const ambulanceMarker = new maps.Marker({
+            map,
+            label: {
+                text:'Hospital',
+                fontSize: '25px',
+                fontWeight: '30px'
+            },
+        });
+        const helicopterMarker = new maps.Marker({
+            map,
+            label: {
+                text:'Helicopter',
+                fontSize: '25px',
+                fontWeight: '30px'
+            },
+        });
         const polyline = new maps.Polyline({
             geodesic: true,
             strokeColor: "#FF0000",
             strokeOpacity: 1.0,
             strokeWeight: 2,
         })
-        const directionsRenderer = new maps.DirectionsRenderer();
+        const directionsRenderer = new maps.DirectionsRenderer({ suppressMarkers: true });
         const directionsService = new maps.DirectionsService();
         reverseGeocode(maps);
         console.log(directionsRenderer);
@@ -94,6 +112,14 @@ const LocationMap = (props) => {
         dispatch({
             type: actionTypes.SET_SERV,
             directionsService: directionsService
+        })
+        dispatch({
+            type: actionTypes.SET_AMARK,
+            ambulanceMarker: ambulanceMarker
+        })
+        dispatch({
+            type: actionTypes.SET_HMARK,
+            helicopterMarker: helicopterMarker
         })
     };
 

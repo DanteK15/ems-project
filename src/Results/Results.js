@@ -10,7 +10,7 @@ import { ContactSupportOutlined } from "@material-ui/icons";
 
 function Results() {
 
-  const [{ gmaps, polyline, directionsRenderer, directionsService, calcParams, helicopter_speed }] = useStateValue();
+  const [{ gmaps, polyline, directionsRenderer, directionsService, ambulanceMarker, helicopterMarker, calcParams, helicopter_speed }] = useStateValue();
   const duration = "time";
   const [parseTime, setParseTime] = useState("");
 
@@ -177,7 +177,7 @@ function Results() {
     console.log(calcParams);
     const { patientLocal, hospital, helicopter, estimatedtime } = calcParams;
     if (!isEmpty(gmaps)) {
-      renderDirections(gmaps, patientLocal, hospital, helicopter, polyline, directionsRenderer, directionsService, function(duration) {
+      renderDirections(gmaps, patientLocal, hospital, helicopter, ambulanceMarker, helicopterMarker, polyline, directionsRenderer, directionsService, function(duration) {
         var parsedTime;
 
         console.log('helicopter_speed', helicopter_speed);

@@ -5,7 +5,8 @@ import { isCompositeComponent } from "react-dom/test-utils";
 import {useStateValue} from "../Context/StateProvider";
 
 // TODO: Origin, Destination, Helicopter = {lat: #, lng: #}  or Place objects <-- Determine this 
-const renderDirections = (gmaps, origin, destination, helicopter, polyline, directionsRenderer, directionsService, callback) => {
+
+const renderDirections = (gmaps, origin, destination, helicopter, ambulanceMarker, helicopterMarker, polyline, directionsRenderer, directionsService, callback) => {
     const { map, maps } = gmaps;
     var returnDuration = [-1,-1,-1];
 
@@ -41,6 +42,13 @@ const renderDirections = (gmaps, origin, destination, helicopter, polyline, dire
         patientLocation,
         hospital,
     ]
+    //Convert location to latlng object that setPosition method would accept
+    const ambulanceLatlng = new maps.LatLng(hospital.lat, hospital.lng);
+    const helicopterLatlng = new maps.LatLng(helicopterOrigin.lat, helicopterOrigin.lng);
+    //Set positon of both marker
+    ambulanceMarker.setPosition(ambulanceLatlng);
+    helicopterMarker.setPosition(helicopterLatlng);
+    //Set the polyline
 
 	     //Helicopter Route Distance From Helicopter Origin to Patient
          var earthRadius = 6371e3; // metres
