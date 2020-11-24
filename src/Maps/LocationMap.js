@@ -74,7 +74,7 @@ const LocationMap = (props) => {
         const ambulanceMarker = new maps.Marker({
             map,
             label: {
-                text:'Ambulance',
+                text:'Hospital',
                 fontSize: '25px',
                 fontWeight: '30px'
             },
