@@ -93,10 +93,9 @@ const LocationMap = (props) => {
             strokeOpacity: 1.0,
             strokeWeight: 2,
         })
-        const directionsRenderer = new maps.DirectionsRenderer({ suppressMarkers: true });
+        const directionsRenderer = new maps.DirectionsRenderer({ suppressMarkers: true, preserveViewport: true });
         const directionsService = new maps.DirectionsService();
         reverseGeocode(maps);
-        console.log(directionsRenderer);
         dispatch({
             type: actionTypes.SET_MAPS,
             gmaps: { map, maps }

@@ -101,12 +101,13 @@ import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import SettingsIcon from '@material-ui/icons/Settings';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import {useStateValue} from '../Context/StateProvider'
+import isEmpty from 'lodash/isEmpty';
 import Modal2 from './Modal2';
 import Modal3 from './Modal3'
 import Modal4 from './Modal4'
 
 function Modal({showModal, setShowModal}) {
-    // const [{term},dispatch] = useStateValue();
+    const [{gmaps, patientLocal}] = useStateValue();
     const divRef = useRef(null);
     const divRef2 = useRef(null);
     const divRef3 = useRef(null);
@@ -151,6 +152,9 @@ function Modal({showModal, setShowModal}) {
     }
 
     const closeModal = e => {
+        if(!isEmpty(gmaps) && !isEmpty(patientLocal)){
+            gmaps.map.setCenter(patientLocal.geometry);
+        }
         if (divRef2.current === e.target) {
             setHospital(false)
             setHeli(false)

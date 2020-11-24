@@ -273,27 +273,25 @@ function Results() {
 
 
   useEffect(() => {
-    console.log(calcParams);
     const { patientLocal, hospital, helicopter, estimatedtime } = calcParams;
     if (!isEmpty(gmaps)) {
       renderDirections(gmaps, patientLocal, hospital, helicopter, ambulanceMarker, helicopterMarker, polyline, directionsRenderer, directionsService, function(duration) {
         var parsedTime;
         var parsedTime2;
 
-        var helicopter_speed2;
-        helicopter_speed2 = parseInt(helicopter_speed);
+        // var helicopter_speed2;
+        // helicopter_speed2 = parseInt(helicopter_speed);
+        // //Calls the route times with a default value of 100mph for helicopter speed.
+        // if(!helicopter_speed2){
+        //   parsedTime = timeStringParser(parseInt(estimatedtime), duration[0].text);
+        //   document.getElementById("ambulance-eta-hospital").innerHTML = parsedTime; 
+        //   parsedTime2 = heliTimeStringParser(duration[1], "100");
+        //   document.getElementById("heli-eta-patient").innerHTML = parsedTime2;
+        //   parsedTime = heliTimeStringParser2(estimatedtime, duration[2], "100", duration[1], parsedTime2);
+        //   document.getElementById("heli-eta-hospital").innerHTML = parsedTime;
+        // }
 
-        //Calls the route times with a default value of 100mph for helicopter speed.
-        if(!helicopter_speed2){
-          parsedTime = timeStringParser(parseInt(estimatedtime), duration[0].text);
-          document.getElementById("ambulance-eta-hospital").innerHTML = parsedTime; 
-          parsedTime2 = heliTimeStringParser(duration[1], "100");
-          document.getElementById("heli-eta-patient").innerHTML = parsedTime2;
-          parsedTime = heliTimeStringParser2(estimatedtime, duration[2], "100", duration[1], parsedTime2);
-          document.getElementById("heli-eta-hospital").innerHTML = parsedTime;
-        }
-
-        else{
+        // else{
         //Calls function to take in time estimate string from maps route function output
         //and patient load time input and combines them and reformats back into x hours y min format.
           parsedTime = timeStringParser(parseInt(estimatedtime), duration[0].text);
@@ -302,10 +300,9 @@ function Results() {
           document.getElementById("heli-eta-patient").innerHTML = parsedTime2;
           parsedTime = heliTimeStringParser2(estimatedtime, duration[2], helicopter_speed, duration[1], parsedTime2);
           document.getElementById("heli-eta-hospital").innerHTML = parsedTime;
-        }
+        // }
       });
     }
-    // TODO: PERFORM CALCULATION 
   }, [calcParams])
 
   return (

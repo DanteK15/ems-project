@@ -1,12 +1,14 @@
 // TODO: Import error handling and call error handler if local storage fails to load
 
+const helicopterDefaultSpeed = '150';
 
 const getInitialState = () => {
-    let hospitals, helicopters;
-    if (typeof (Storage)) {
+    let hospitals, helicopters, helicopter_speed;
+    if (typeof (Storage) !== "undefined") {
         // Local storage only accepts strings. 
         hospitals = JSON.parse(localStorage.getItem('hospitals'));
         helicopters = JSON.parse(localStorage.getItem('helicopters'));
+        helicopter_speed = localStorage.getItem('helicopter_speed');
     } else {
         // TODO: call error handler
     }
@@ -22,7 +24,7 @@ const getInitialState = () => {
         directionsService: {}, //Instance of a DirectionsService that sends directions queries to Google servers.
         ambulanceMarker: {},
         helicopterMarker: {},
-        helicopter_speed: {},
+        helicopter_speed: helicopter_speed ? helicopter_speed : helicopterDefaultSpeed,
     }
 }
 
@@ -156,6 +158,7 @@ const reducer = (state, action) => {
                 helicopterMarker: action.helicopterMarker
             }
         case actionTypes.SET_PARAMS:
+                localStorage.setItem('helicopter_speed', action.helicopter_speed);
             return {
                 ...state,
                 helicopter_speed: action.helicopter_speed

@@ -17,6 +17,7 @@ const renderDirections = (gmaps, origin, destination, helicopter, ambulanceMarke
     var patientLocation = {};
     var hospital = {};
     var helicopterOrigin = {};
+
     //  Assign Each Location
     if(origin!=null) {
         patientLocation = {lat: origin.geometry.lat, lng:origin.geometry.lng};
@@ -36,6 +37,13 @@ const renderDirections = (gmaps, origin, destination, helicopter, ambulanceMarke
     else {
         helicopterOrigin = { lat: 47.608013, lng: -122.335167 };
     }
+
+    // Create boundry for map
+    var bounds = new maps.LatLngBounds();
+    bounds.extend(patientLocation);
+    bounds.extend(hospital);
+    bounds.extend(helicopterOrigin);
+
     // Helicopter Route
     const flightPlanCoordinates = [
         helicopterOrigin,
@@ -99,6 +107,7 @@ const renderDirections = (gmaps, origin, destination, helicopter, ambulanceMarke
         (response, status) => {
             if (status === "OK") {
                 directionsRenderer.setDirections(response);
+                map.fitBounds(bounds)
                 let distance = response.routes[0].legs[0].distance;
                 let duration = response.routes[0].legs[0].duration;
                 returnDuration = [duration, helicopterDistance1, helicopterDistance2];
@@ -106,6 +115,7 @@ const renderDirections = (gmaps, origin, destination, helicopter, ambulanceMarke
             } else {
                 window.alert("Directions request failed due to " + status);
             }
+
         }
     );
 };
