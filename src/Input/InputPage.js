@@ -140,7 +140,7 @@ function InputPage() {
         <div className="manual-address-input">
           <button className="manual-address-btn"
             onClick={() => setDisplayInput(!displayInput)}
-          >Edit Current Address</button>
+          >Update Patient's Address</button>
           {displayInput &&
             (gmaps && <AutoComplete map={gmaps.map} mapApi={gmaps.maps} newPlace={newPatientLoc} />
             )}
@@ -173,8 +173,9 @@ function InputPage() {
         </select>
         </div>
 
+        <br />
         <div className="picker">
-          <h5>Estimated Patient Load Time</h5>
+          <h5>Time Until Ready for Transport</h5>
           <WheelPicker
             id="wheelpicker"
             data={timeData}
