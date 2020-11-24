@@ -65,13 +65,13 @@ function InputPage() {
     }
 
     // Helicopter ETA to patient
-    document.getElementById("heli-eta-patient").innerHTML = estimatedtime;
+    //document.getElementById("heli-eta-patient").innerHTML = estimatedtime;
 
     // Helicopter ETA to hospital
-    document.getElementById("heli-eta-hospital").innerHTML = estimatedtime; 
+    //document.getElementById("heli-eta-hospital").innerHTML = estimatedtime; 
 
     // Ambulance to hospital 
-    document.getElementById("ambulance-eta-hospital").innerHTML = estimatedtime; 
+    //document.getElementById("ambulance-eta-hospital").innerHTML = estimatedtime; 
   }
 
   //Function to check location services access and alert user to enable it.

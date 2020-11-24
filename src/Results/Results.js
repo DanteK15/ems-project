@@ -110,47 +110,28 @@ function Results() {
     }
   }
 
-  //Parses Maps time estimate and combines it with patient load time.
-  //Reformats the answer for return.
-  function heliTimeStringParser(estimatedTime, heliDistance, heliSpeed){
+  //Calculates helicopter-to-patient time.
+  function heliTimeStringParser(heliDistance, heliSpeed){
     var heliTime;
     heliSpeed = parseInt(heliSpeed);
     var minuteParse = heliDistance.toFixed(4);
- //   estimatedTime = estimatedTime / 60;
 
+    //Calculates hours
     var hourCount = heliDistance / heliSpeed;
     hourCount = Math.floor(hourCount);
-    console.log('hourCount', hourCount);
 
-
+    //Calculates minutes
     var minuteCount = minuteParse;
     minuteCount = minuteCount / heliSpeed;
     minuteCount = minuteCount.toString();
     minuteCount = minuteCount.split(".");
     minuteCount = minuteCount[1];
-
-
     minuteCount = "." + minuteCount;
     minuteCount = minuteCount * 60;
     minuteCount = Math.round(minuteCount);
+    minuteCount = parseInt(minuteCount);
 
-    estimatedTime = estimatedTime * 60;
-    minuteCount = parseFloat(minuteCount);
-//    estimatedTime = parseFloat(estimatedTime);
-//    minuteCount = minuteCount + estimatedTime;
-
-
-    if(minuteCount >= 60){
-      minuteCount = minuteCount - 60;
-      hourCount = hourCount + 1;
-    }
-
-    console.log('heliDistance', heliDistance);
-    console.log('heliSpeed', heliSpeed);
-    console.log('minuteCount', minuteCount);
-
-
-    //Reformats minute value back into hours and minutes
+    //Reformats hour and minute values back into hours and minutes string format
     if(hourCount >= 1){
       if(hourCount > 1){
         heliTime = hourCount + " hours ";
@@ -164,7 +145,7 @@ function Results() {
       return heliTime;
     }
 
-    //Reformats minute value
+    //Reformats back to string format for cases with only minute values
     else{
       heliTime = minuteCount + " min";
 
@@ -172,44 +153,80 @@ function Results() {
     }
   }
 
-  //Parses Maps time estimate and combines it with patient load time.
-  //Reformats the answer for return.
+  //Calculates patient-to-hospital time for the helicopter estimate.
   function heliTimeStringParser2(estimatedTime, heliDistance, heliSpeed, heliDistance2, firstRouteTime){
     var heliTime;
     heliSpeed = parseInt(heliSpeed);
     var minuteParse = heliDistance.toFixed(4);
-    estimatedTime = estimatedTime / 60;
 
-    var hourCount = heliDistance / heliSpeed;
-    hourCount = Math.floor(hourCount);
-    console.log('hourCount', hourCount);
+    //Turns first route time and patient load time into an int.
+    firstRouteTime.split(' ');
+    firstRouteTime = firstRouteTime[0];
+    firstRouteTime = parseInt(firstRouteTime);
+    estimatedTime = parseInt(estimatedTime);
 
-
-    var minuteCount = minuteParse;
-    minuteCount = minuteCount / heliSpeed;
-    minuteCount = minuteCount.toString();
-    minuteCount = minuteCount.split(".");
-    minuteCount = minuteCount[1];
-
-
-    minuteCount = "." + minuteCount;
-    minuteCount = minuteCount * 60;
-    minuteCount = Math.round(minuteCount);
-
-    estimatedTime = estimatedTime * 60;
-    minuteCount = parseFloat(minuteCount);
-    estimatedTime = parseFloat(estimatedTime);
-    minuteCount = minuteCount + estimatedTime;
-
-
-    if(minuteCount >= 60){
-      minuteCount = minuteCount - 60;
-      hourCount = hourCount + 1;
+    //Calculates a time estimate for cases when the patient load time
+    //is greater than the first route time. In that case the patient
+    //load time - the first route time is used.
+    if(estimatedTime > firstRouteTime){
+      //Determines hour value. 
+      var hourCount = heliDistance / heliSpeed;
+      hourCount = Math.floor(hourCount);
+  
+      //Determines minute value.
+      var minuteCount = minuteParse;
+      minuteCount = minuteCount / heliSpeed;
+      minuteCount = minuteCount.toString();
+      minuteCount = minuteCount.split(".");
+      minuteCount = minuteCount[1];
+      minuteCount = "." + minuteCount;
+      minuteCount = minuteCount * 60;
+      minuteCount = Math.round(minuteCount);
+  
+      //Subtracts first route time from patient load time
+      //Calculates minute value.
+      estimatedTime = (estimatedTime - firstRouteTime);
+      minuteCount = parseInt(minuteCount);
+      estimatedTime = parseInt(estimatedTime);
+      minuteCount = minuteCount + estimatedTime;
+      minuteCount = minuteCount + firstRouteTime;
+  
+      //This will carry over the minutes value into the hours value
+      //if the minutes value went over 60 minutes.
+      if(minuteCount >= 60){
+        minuteCount = minuteCount - 60;
+        hourCount = hourCount + 1;
+      }
     }
 
-    console.log('heliDistance', heliDistance);
-    console.log('heliSpeed', heliSpeed);
-    console.log('minuteCount', minuteCount);
+    //Calculates the helicopter route time for cases when the
+    //patient load time is less than the first helicopter route 
+    //time. The first route time is added together with the second
+    //helicopter route time.
+    else{
+      //Hour value calculated.
+      var hourCount = ((heliDistance + heliDistance2) / heliSpeed);
+      hourCount = Math.floor(hourCount);
+  
+      //Minute value calculated.
+      var minuteCount = minuteParse;
+      minuteCount = minuteCount / heliSpeed;
+      minuteCount = minuteCount.toString();
+      minuteCount = minuteCount.split(".");
+      minuteCount = minuteCount[1];
+      minuteCount = "." + minuteCount;
+      minuteCount = minuteCount * 60;
+      minuteCount = Math.round(minuteCount);
+      minuteCount = parseInt(minuteCount);
+      minuteCount = minuteCount + firstRouteTime;
+  
+      //Carries over the minutes value into the hours if minutes
+      //goes over 60.
+      if(minuteCount >= 60){
+        minuteCount = minuteCount - 60;
+        hourCount = hourCount + 1;
+      }
+    }
 
 
     //Reformats minute value back into hours and minutes
@@ -226,7 +243,7 @@ function Results() {
       return heliTime;
     }
 
-    //Reformats minute value
+    //Reformats minute value if hours < 1.
     else{
       heliTime = minuteCount + " min";
 
@@ -243,25 +260,27 @@ function Results() {
         var parsedTime;
         var parsedTime2;
 
-        console.log('helicopter_speed', helicopter_speed);
         var helicopter_speed2;
         helicopter_speed2 = parseInt(helicopter_speed);
+
+        //Calls the route times with a default value of 100mph for helicopter speed.
         if(!helicopter_speed2){
           parsedTime = timeStringParser(parseInt(estimatedtime), duration[0].text);
           document.getElementById("ambulance-eta-hospital").innerHTML = parsedTime; 
-          parsedTime2 = heliTimeStringParser(estimatedtime, duration[1], "100");
+          parsedTime2 = heliTimeStringParser(duration[1], "100");
           document.getElementById("heli-eta-patient").innerHTML = parsedTime2;
-          parsedTime = heliTimeStringParser2(estimatedtime, duration[2], "100","","");
+          parsedTime = heliTimeStringParser2(estimatedtime, duration[2], "100", duration[1], parsedTime2);
           document.getElementById("heli-eta-hospital").innerHTML = parsedTime;
         }
+
         else{
         //Calls function to take in time estimate string from maps route function output
         //and patient load time input and combines them and reformats back into x hours y min format.
           parsedTime = timeStringParser(parseInt(estimatedtime), duration[0].text);
           document.getElementById("ambulance-eta-hospital").innerHTML = parsedTime; 
-          parsedTime2 = heliTimeStringParser(estimatedtime, duration[1], helicopter_speed);
+          parsedTime2 = heliTimeStringParser(duration[1], helicopter_speed);
           document.getElementById("heli-eta-patient").innerHTML = parsedTime2;
-          parsedTime = heliTimeStringParser2(estimatedtime, duration[2], helicopter_speed,"","");
+          parsedTime = heliTimeStringParser2(estimatedtime, duration[2], helicopter_speed, duration[1], parsedTime2);
           document.getElementById("heli-eta-hospital").innerHTML = parsedTime;
         }
       });
