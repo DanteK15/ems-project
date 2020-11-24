@@ -179,15 +179,28 @@ function Results() {
     if (!isEmpty(gmaps)) {
       renderDirections(gmaps, patientLocal, hospital, helicopter, polyline, directionsRenderer, directionsService, function(duration) {
         var parsedTime;
-        
+
+        console.log('helicopter_speed', helicopter_speed);
+        var helicopter_speed2;
+        helicopter_speed2 = parseInt(helicopter_speed);
+        if(!helicopter_speed2){
+          parsedTime = timeStringParser(parseInt(estimatedtime), duration[0].text);
+          document.getElementById("ambulance-eta-hospital").innerHTML = parsedTime; 
+          parsedTime = heliTimeStringParser(estimatedtime, duration[2], "100");
+          document.getElementById("heli-eta-hospital").innerHTML = parsedTime;
+          parsedTime = heliTimeStringParser(estimatedtime, duration[1], "100");
+          document.getElementById("heli-eta-patient").innerHTML = parsedTime;
+        }
+        else{
         //Calls function to take in time estimate string from maps route function output
         //and patient load time input and combines them and reformats back into x hours y min format.
-        parsedTime = timeStringParser(parseInt(estimatedtime), duration[0].text);
-        document.getElementById("ambulance-eta-hospital").innerHTML = parsedTime; 
-        parsedTime = heliTimeStringParser(estimatedtime, duration[2], helicopter_speed);
-        document.getElementById("heli-eta-hospital").innerHTML = parsedTime;
-        parsedTime = heliTimeStringParser(estimatedtime, duration[1], helicopter_speed);
-        document.getElementById("heli-eta-patient").innerHTML = parsedTime;
+          parsedTime = timeStringParser(parseInt(estimatedtime), duration[0].text);
+          document.getElementById("ambulance-eta-hospital").innerHTML = parsedTime; 
+          parsedTime = heliTimeStringParser(estimatedtime, duration[2], helicopter_speed);
+          document.getElementById("heli-eta-hospital").innerHTML = parsedTime;
+          parsedTime = heliTimeStringParser(estimatedtime, duration[1], helicopter_speed);
+          document.getElementById("heli-eta-patient").innerHTML = parsedTime;
+        }
       });
     }
     // TODO: PERFORM CALCULATION 
