@@ -11,6 +11,7 @@ import WheelPicker from 'react-simple-wheel-picker';
 import renderDirections from "../Maps/Directions";
 
 function InputPage() {
+
   const [{ patientLocal, hospitals, helicopters, gmaps, polyline, directionsRenderer, directionsService}, dispatch] = useStateValue();
   const [displayInput, setDisplayInput] = useState(false)
   const [hospital, setHospital] = useState();
@@ -67,18 +68,19 @@ function InputPage() {
     // Helicopter ETA to patient
     document.getElementById("heli-eta-patient").innerHTML = estimatedtime;
     document.getElementById("heli-eta-patient").value = estimatedtime;
-    console.log(document.getElementById("heli-eta-patient").innerHTML);
+    // console.log(document.getElementById("heli-eta-patient").innerHTML);
 
     // Helicopter ETA to hospital
     document.getElementById("heli-eta-hospital").innerHTML = estimatedtime; 
     document.getElementById("heli-eta-hospital").value = estimatedtime;
-    console.log(document.getElementById("heli-eta-hospital").innerHTML);
+    // console.log(document.getElementById("heli-eta-hospital").innerHTML);
 
     // Ambulance to hospital 
     document.getElementById("ambulance-eta-hospital").innerHTML = estimatedtime; 
     document.getElementById("ambulance-eta-hospital").value = estimatedtime;
-    console.log(document.getElementById("ambulance-eta-hospital").innerHTML);
+    // console.log(document.getElementById("ambulance-eta-hospital").innerHTML);
 
+    /*
     var helicopterTime = document.getElementById("heli-eta-patient").value
       + document.getElementById("heli-eta-hospital").value; 
     var ambulanceTime = document.getElementById("ambulance-eta-hospital").value; 
@@ -95,6 +97,7 @@ function InputPage() {
 		    elements[i].style.backgroundColor = "#76ac6d";
 	    }
     }
+    */
   }
 
   //Function to check location services access and alert user to enable it.
@@ -147,6 +150,7 @@ function InputPage() {
         </div>
       </div>
       <br />
+      <br />
       <div className="dropdown">
         <select
           id="available-hospitals-selection"
@@ -160,6 +164,7 @@ function InputPage() {
           }
         </select>
 
+        <br />
         <select
           id="available-hospitals-selection"
           name='helicopter-selection'

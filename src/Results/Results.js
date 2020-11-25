@@ -176,7 +176,6 @@ function Results() {
     console.log('patient load time:', estimatedTime);
     console.log('First Route Time', firstRouteTime);
 
-
     //Calculates a time estimate for cases when the patient load time
     //is greater than the first route time. In that case the patient
     //load time - the first route time is used.
@@ -271,6 +270,67 @@ function Results() {
     }
   }
 
+  // from the above code for determining the time estimate, but used to reformat
+  // the parsed string
+  function reformatvalue(parseString) {
+    var totalTime; 
+    //Parses input string in cases where it's multiple hours
+    if(parseString.includes("hours")){
+      parseString = parseString.split(" hours ");
+
+      //Removes mins or min from input string.
+      if(parseString[1].includes("mins")){
+        parseString[1] = parseString[1].replace(" mins", "");
+      }
+      else if(parseString[1].includes("min")){
+        parseString[1] = parseString[1].replace(" min", "");
+      }
+  
+      //Convert parsed strings into ints 
+      parseString[1] = parseInt(parseString[1]);
+      parseString[0] = parseInt(parseString[0]);
+
+      //Hour values are converted to minutes
+      parseString[0] = (parseString[0] * 60); 
+  
+      //Total time in minutes is totalled
+      totalTime = parseString[0] + parseString[1];
+    }
+
+    //Parses input string in cases where it's one hour
+    else if(parseString.includes("hour")){
+      parseString = parseString.split(" hour ");
+
+      if(parseString[1].includes("mins")){
+        parseString[1] = parseString[1].replace(" mins", "");
+      }
+      else if(parseString[1].includes("min")){
+        parseString[1] = parseString[1].replace(" min", "");
+      }
+  
+      parseString[1] = parseInt(parseString[1]);
+      parseString[0] = parseInt(parseString[0]);
+      parseString[0] = (parseString[0] * 60); 
+  
+      totalTime = parseString[0] + parseString[1];
+    }
+
+    //Parses input string based on cases where it's just minutes
+    if(parseString.includes("mins")){
+      parseString = parseString.replace(" mins", "");
+      parseString = parseInt(parseString);
+      totalTime = parseString;
+    }
+
+    //Parses input string in case where there is just 1 min
+    else if(parseString.includes("min")){
+      parseString = parseString.replace(" min", "");
+      parseString = parseInt(parseString);
+      totalTime = parseString;
+    }
+
+    return totalTime; 
+  }
 
   useEffect(() => {
     const { patientLocal, hospital, helicopter, estimatedtime } = calcParams;
@@ -278,6 +338,11 @@ function Results() {
       renderDirections(gmaps, patientLocal, hospital, helicopter, ambulanceMarker, helicopterMarker, polyline, directionsRenderer, directionsService, function(duration) {
         var parsedTime;
         var parsedTime2;
+
+        // used for reformatting the value to get the raw minute format
+        var ambulanceToHosp;
+        var heliToPatient; 
+        var heliToHosp; 
 
         // var helicopter_speed2;
         // helicopter_speed2 = parseInt(helicopter_speed);
@@ -294,13 +359,58 @@ function Results() {
         // else{
         //Calls function to take in time estimate string from maps route function output
         //and patient load time input and combines them and reformats back into x hours y min format.
+
+          // ambulance to hospital 
           parsedTime = timeStringParser(parseInt(estimatedtime), duration[0].text);
           document.getElementById("ambulance-eta-hospital").innerHTML = parsedTime; 
+          console.log(parsedTime);
+
+          // the minutes for the time estimate
+          ambulanceToHosp = reformatvalue(parsedTime);
+          console.log(ambulanceToHosp);
+
+          // helicopter to patient 
           parsedTime2 = heliTimeStringParser(duration[1], helicopter_speed);
           document.getElementById("heli-eta-patient").innerHTML = parsedTime2;
+          console.log(parsedTime2);
+
+          // the minutes for the time estimate
+          heliToPatient = reformatvalue(parsedTime2);
+          console.log(heliToPatient);
+
+          // helicopter to hospital 
           parsedTime = heliTimeStringParser2(estimatedtime, duration[2], helicopter_speed, duration[1], parsedTime2);
           document.getElementById("heli-eta-hospital").innerHTML = parsedTime;
+          console.log(parsedTime);
+
+          // the minutes for the time estimate
+          heliToHosp = reformatvalue(parsedTime); 
+          console.log(heliToHosp); 
         // }
+
+        var helicopterTime = heliToPatient + heliToHosp; 
+        console.log(helicopterTime); 
+
+        var ambulanceTime = ambulanceToHosp; 
+        console.log(ambulanceTime); 
+
+        // visual cue for the fastest mode of transportation
+        if(helicopterTime < ambulanceTime) {
+          var elements = document.getElementsByClassName('results-container'); 
+	        for(var i = 0; i < elements.length; i++){
+            elements[i].style.backgroundColor = "#76ac6d";
+          }
+          console.log("Helicopter is faster.");
+	      }
+    
+        else if(ambulanceTime < helicopterTime) {
+          var elements = document.getElementsByClassName('results-container-2'); 
+	        for(var i = 0; i < elements.length; i++){
+		        elements[i].style.backgroundColor = "#76ac6d";
+          }
+          console.log("Ambulance is faster."); 
+        }
+
       });
     }
   }, [calcParams])
