@@ -388,7 +388,7 @@ function Results() {
           console.log(heliToHosp); 
         // }
 
-        var helicopterTime = heliToPatient + heliToHosp; 
+        var helicopterTime = heliToHosp; 
         console.log(helicopterTime); 
 
         var ambulanceTime = ambulanceToHosp; 
@@ -432,13 +432,14 @@ function Results() {
           <h2>Helicopter</h2>
         </div>
 
-        <h3>ETA to Patient</h3>
+        <div>
+          <h3>Route Time to Patient</h3>
+        </div>
         <div className="results__input">
-          {/* <h5 id="heli-eta-patient">{calcParams.estimatedtime}</h5> */}
           <h5 id="heli-eta-patient"></h5>
         </div>
         <br />
-        <h3>ETA to Hospital</h3>
+        <h3>Route Time to Hospital</h3>
         <div className="results__input">
           <h5 id="heli-eta-hospital"></h5>
         </div>
@@ -453,7 +454,7 @@ function Results() {
           <h2>Ambulance</h2>
         </div>
 
-        <h3>ETA to Hospital</h3>
+        <h3>Route Time to Hospital</h3>
         <div className="results__input">
           <h5 id="ambulance-eta-hospital"></h5>
         </div>

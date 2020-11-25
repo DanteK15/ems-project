@@ -193,7 +193,7 @@ function Modal({showModal, setShowModal}) {
                     <span>
                         <div className="icon-title">
                             <AddLocationIcon className="icon-1"/>
-                            <h3 onClick={handleHeliClick}>Add Helicopters</h3>
+                            <h3 onClick={handleHeliClick}>Add Helicopter Locations</h3>
                         </div>
                         {/* <ArrowForwardIosIcon className="icon-0" onClick={handleHeliClick} /> */}
                     </span>

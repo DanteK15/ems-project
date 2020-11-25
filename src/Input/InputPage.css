@@ -254,10 +254,13 @@
 
   @media screen and (min-width: 1200px) {
     .manual-address-input {
+      padding-top: 30px; 
+      width: 190px; 
+      margin-left: 85px; 
     }
     .manual-address-btn {
       margin-top: -40px !important;
-      width: 700px;
+      width: 710px;
       margin-left: -5px;
     }
 

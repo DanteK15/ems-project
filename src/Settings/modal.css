@@ -386,7 +386,7 @@ span > div > h3 {
     /* .icon-title { */
         #inputs {
         display: flex;
-        align-items: center;
+        align-items: left;
         /* justify-content: space-evenly; */
         /* width: 100% !important; */
         flex-wrap: wrap;
