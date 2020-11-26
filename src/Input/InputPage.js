@@ -9,6 +9,7 @@ import { actionTypes } from "../Context/reducer";
 import * as errorMessage from './error.js';
 import WheelPicker from 'react-simple-wheel-picker';
 import renderDirections from "../Maps/Directions";
+import LocationMap from "../Maps/LocationMap";
 
 function InputPage() {
 
@@ -140,6 +141,8 @@ function InputPage() {
         {/*ToastContainer is placed anywhere to initialize error popups*/}
         <errorMessage.ToastContainer limit={7} autoClose={false}
           transition={errorMessage.Zoom} position={"top-center"} />
+
+        <LocationMap /> 
         <div className="manual-address-input">
           <button className="manual-address-btn"
             onClick={() => setDisplayInput(!displayInput)}

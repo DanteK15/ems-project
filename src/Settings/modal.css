@@ -233,7 +233,7 @@ span > div > h3 {
 span {
     display: flex;
     align-items: center;
-    /* justify-content: space-around; */
+    /* justify-content: space-between; */
 }
 
 span > div > h3 {
