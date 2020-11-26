@@ -10,7 +10,7 @@ function Modal3() {
     const [{ gmaps, helicopters}, dispatch] = useStateValue();
     const [helicopter, setHelicopter] = useState();
 
-    const newHelicopter= (place) => {
+    const newHelicopter = (place) => {
         setHelicopter(place);
     }
 
@@ -36,7 +36,6 @@ function Modal3() {
 
     return (
         <div className="container">
-           <form>
                 <div className="sidebar-top">
                     <SettingsIcon className="settings-icon-0" />
                     <h2>Settings</h2>
@@ -81,7 +80,6 @@ function Modal3() {
                     </div>
                     )
                 }               
-            </form>
         </div>
     )
 }

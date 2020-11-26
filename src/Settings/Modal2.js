@@ -36,7 +36,6 @@ function Modal2() {
 
     return (
         <div className="container">
-            <form>
                 <div className="sidebar-top">
                     <SettingsIcon className="settings-icon-0" />
                     <h2>Settings</h2>
@@ -70,7 +69,7 @@ function Modal2() {
                             <div
                                 key={index}
                                 className="display-btn">
-                                <button
+                                <button 
                                 >{e.name}</button>
                                 <button
                                     id="remove-btn"
@@ -81,7 +80,6 @@ function Modal2() {
                     </div>
                     )
                 }
-            </form>
         </div>
     )
 }
