@@ -66,18 +66,18 @@ function InputPage() {
     }
 
     // Helicopter ETA to patient
-    document.getElementById("heli-eta-patient").innerHTML = estimatedtime;
-    document.getElementById("heli-eta-patient").value = estimatedtime;
+    //document.getElementById("heli-eta-patient").innerHTML = estimatedtime;
+    //document.getElementById("heli-eta-patient").value = estimatedtime;
     // console.log(document.getElementById("heli-eta-patient").innerHTML);
 
     // Helicopter ETA to hospital
-    document.getElementById("heli-eta-hospital").innerHTML = estimatedtime; 
-    document.getElementById("heli-eta-hospital").value = estimatedtime;
+    //document.getElementById("heli-eta-hospital").innerHTML = estimatedtime; 
+    //document.getElementById("heli-eta-hospital").value = estimatedtime;
     // console.log(document.getElementById("heli-eta-hospital").innerHTML);
 
     // Ambulance to hospital 
-    document.getElementById("ambulance-eta-hospital").innerHTML = estimatedtime; 
-    document.getElementById("ambulance-eta-hospital").value = estimatedtime;
+    //document.getElementById("ambulance-eta-hospital").innerHTML = estimatedtime; 
+    //document.getElementById("ambulance-eta-hospital").value = estimatedtime;
     // console.log(document.getElementById("ambulance-eta-hospital").innerHTML);
 
     /*
