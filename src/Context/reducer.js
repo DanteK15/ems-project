@@ -1,6 +1,6 @@
 // TODO: Import error handling and call error handler if local storage fails to load
 
-const helicopterDefaultSpeed = '150';
+const helicopterDefaultSpeed = '120';
 
 const getInitialState = () => {
     let hospitals, helicopters, helicopter_speed;
