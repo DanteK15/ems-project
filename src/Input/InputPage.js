@@ -158,7 +158,7 @@ function InputPage() {
           onChange={handleHospitalSelection}
           required>
           <option value="" disabled selected
-            id="available-hospitals">Available Hospitals Nearby</option>
+            id="available-hospitals">Available Hospitals</option>
           {!isEmpty(hospitals) &&
             hospitals.map((e, index) => <option key={index} value={index}> {e.name}</option>)
           }
@@ -171,7 +171,7 @@ function InputPage() {
           onChange={handleHelicopterSelection}
           required>
           <option value="" disabled selected
-            id="available-helicopters">Available Helicopters Nearby</option>
+            id="available-helicopters">Available Helicopters</option>
           {!isEmpty(hospitals) &&
             helicopters.map((e, index) => <option key={index} value={index}> {e.name}</option>)
           }

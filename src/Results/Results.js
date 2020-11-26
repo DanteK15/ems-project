@@ -433,13 +433,13 @@ function Results() {
         </div>
 
         <div>
-          <h3>Route Time to Patient</h3>
+          <h3>Time to Patient</h3>
         </div>
         <div className="results__input">
           <h5 id="heli-eta-patient"></h5>
         </div>
         <br />
-        <h3>Route Time to Hospital</h3>
+        <h3>Time to Hospital</h3>
         <div className="results__input">
           <h5 id="heli-eta-hospital"></h5>
         </div>
@@ -454,7 +454,7 @@ function Results() {
           <h2>Ambulance</h2>
         </div>
 
-        <h3>Route Time to Hospital</h3>
+        <h3>Time to Hospital</h3>
         <div className="results__input">
           <h5 id="ambulance-eta-hospital"></h5>
         </div>
