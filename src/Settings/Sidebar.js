@@ -39,11 +39,14 @@ import LocalHospitalIcon from '@material-ui/icons/LocalHospital';
 import AddLocationIcon from '@material-ui/icons/AddLocation';
 import CreateIcon from '@material-ui/icons/Create';
 import Modal from './Modal';
+import {useStateValue} from "../Context/StateProvider";
 
 function Sidebar() {
   const [openSettings, setOpenSettings] = useState(false);
+  const [{ gmaps, patientLocal, polyline, directionsRenderer, ambulanceMarker, helicopterMarker}] = useStateValue();
 
-  const showModal = () => {
+
+    const showModal = () => {
     setOpenSettings(prev => !prev)
   }
 
@@ -66,6 +69,21 @@ function Sidebar() {
 	    for(var i = 0; i < elements.length; i++){
 		    elements[i].style.backgroundColor = "#f5f8fa";
 	  }
+    //reset the LocationMap
+    var recenter = {};
+    if(patientLocal!=null) {
+      recenter = {lat: patientLocal.geometry.lat, lng:patientLocal.geometry.lng};
+    }
+    //Default center set to Portland
+    else {
+      recenter = { lat: 45.523062, lng: -122.676482 };
+    }
+    polyline.setMap(null);
+    directionsRenderer.setMap(null);
+    ambulanceMarker.setPosition(null);
+    helicopterMarker.setPosition(null);
+    gmaps.map.setZoom(10);
+    gmaps.map.setCenter(recenter);
   }
 
   // on click it's going to open the page 
