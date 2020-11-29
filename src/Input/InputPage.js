@@ -143,6 +143,8 @@ function InputPage() {
           transition={errorMessage.Zoom} position={"top-center"} />
 
         <LocationMap /> 
+    
+        {/*
         <div className="manual-address-input">
           <button className="manual-address-btn"
             onClick={() => setDisplayInput(!displayInput)}
@@ -150,10 +152,20 @@ function InputPage() {
           {displayInput &&
             (gmaps && <AutoComplete map={gmaps.map} mapApi={gmaps.maps} newPlace={newPatientLoc} />
             )}
-        </div>
+        </div>*/}
+      </div>
+      <div className = "manual-add-section">
+        <button 
+          className = "manual-add-btn"
+          onClick = {() => setDisplayInput(!displayInput)}>Update Patient's Address
+        </button>
+        {displayInput &&
+          (gmaps && <AutoComplete map={gmaps.map} mapApi={gmaps.maps} newPlace={newPatientLoc} />
+        )}
       </div>
       <br />
       <br />
+      
       <div className="dropdown">
         <select
           id="available-hospitals-selection"

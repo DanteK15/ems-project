@@ -58,7 +58,7 @@
     width: 600px; 
   }
    
-  .manual-address-input, .dropdown, .picker{ 
+  .dropdown, .picker, .manual-add-section{ 
     display: grid;
     place-items: center;
   }
@@ -74,6 +74,16 @@
   }
 
   .submit-button { 
+    color: white;
+    background: #226F54;
+    border-radius: 15px; 
+    cursor: pointer; 
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    font-weight: 200;
+  }
+
+  .manual-add-button { 
     color: white;
     background: #226F54;
     border-radius: 15px; 
@@ -104,6 +114,20 @@
     font-weight: 200;
   }
 
+  .manual-add-btn {
+    color: white;
+    background: #32424d;
+    width: 600px; 
+    height: 26px;
+    border: none;
+    border-radius: 15px; 
+    cursor: pointer; 
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+    font-weight: 200;
+  }
+
   .submit-section { 
     display: grid;
     place-items: center;
@@ -114,11 +138,11 @@
   input {
     border: none;
     outline: none;
-    width: 100%;
+    width: 50%;
     border-bottom: 1px solid lightgray;
    }
 
-  .dropdown, .picker {
+  .dropdown, .picker, .manual-add-section {
     display: flex;
     flex-direction: column;
   }
@@ -193,6 +217,13 @@
       display: flex;
       flex-direction: column;
       margin-bottom: 15px !important;
+    }
+
+    .manual-add-section {
+      display: flex; 
+      flex-direction: column; 
+      margin-bottom: 15px !important;
+      width: 100px;
     }
 
     .picker > h5 {
@@ -305,6 +336,10 @@
     font-weight: 200; */
 
     .submit-button {
+
+    }
+
+    .manual-add-btn {
 
     }
 
