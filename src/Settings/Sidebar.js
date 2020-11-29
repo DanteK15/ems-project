@@ -52,8 +52,8 @@ function Sidebar() {
 
   const resetPage = () => {
     // input section
-    document.getElementById("available-hospitals").innerHTML = "Available Hospitals Nearby";
-    document.getElementById("available-helicopters").innerHTML = "Available Helicopters Nearby";
+    document.getElementById("available-hospitals").innerHTML = "Available Hospitals";
+    document.getElementById("available-helicopters").innerHTML = "Available Helicopters";
     
     // result section
     document.getElementById("heli-eta-patient").innerHTML = "";
