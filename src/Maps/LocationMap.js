@@ -7,6 +7,7 @@ import { actionTypes } from '../Context/reducer'
 import './LocationMap.css';
 import helicopterIcon from '@iconify/icons-mdi/helicopter';
 import hospitalMarker from '@iconify/icons-mdi/hospital-marker';
+import * as errorMessage from '../Input/error.js';
 
 // Initial map location
 const PORTLAND = { lat: 45.523062, lng: -122.676482 };
@@ -49,20 +50,37 @@ const LocationMap = (props) => {
     };
 
     // Reverse geocode user location to get place object
-    // TODO: consider just using Lat/Lng for patient instead of Place object. Will need to change context
     const reverseGeocode = (maps) => {
+        // Back up patient location if reverse geocode lookup fails
+        let newPlace = {
+            geometry: {
+                location: {
+                    lat: function () { return position.lat },
+                    lng: function () { return position.lng }
+                }
+            },
+            address: '',
+            name: '',
+        }
+
         const geocoder = new maps.Geocoder();
         geocoder.geocode({ location: position }, (results, status) => {
+            // Reverse geocode sucessful API call 
             if (status === "OK") {
+                // Reverse look up result available, set patient location to result
                 if (results[0]) {
                     setPlace(results[0]);
+                
+                // No results, set patient location to backup patient location.
                 } else {
-                    // TODO: use general error handler
-                    window.alert("No results found");
+                    errorMessage.toast.error(
+                        "could not reverse geocode current location",
+                        errorMessage.errorOptions);
+                    setPlace(newPlace);
                 }
             } else {
-                // TODO: use general error handler
-                window.alert("Geocoder failed due to: " + status);
+                errorMessage.toast.error(
+                    "Geocoder failed due to: " + status, errorMessage.errorOptions);
             }
         })
     };
@@ -74,7 +92,7 @@ const LocationMap = (props) => {
         const ambulanceMarker = new maps.Marker({
             map,
             label: {
-                text:'Hospital',
+                text: 'Hospital',
                 fontSize: '25px',
                 fontWeight: '30px'
             },
@@ -82,7 +100,7 @@ const LocationMap = (props) => {
         const helicopterMarker = new maps.Marker({
             map,
             label: {
-                text:'Helicopter',
+                text: 'Helicopter',
                 fontSize: '25px',
                 fontWeight: '30px'
             },
@@ -124,7 +142,7 @@ const LocationMap = (props) => {
 
     return (
         <div className="map">
-        <div className='locationContainer'>
+            <div className='locationContainer'>
                 <GoogleMapReact
                     bootstrapURLKeys={{
                         key: process.env.REACT_APP_MAP_KEY,
@@ -144,7 +162,7 @@ const LocationMap = (props) => {
 
                     )}
                 </GoogleMapReact>
-        </div>
+            </div>
         </div>
     );
 };

@@ -5,6 +5,7 @@ import './Modal2.css'
 import SettingsIcon from '@material-ui/icons/Settings';
 import AutoComplete from '../Maps/AutoComplete';
 import isEmpty from 'lodash/isEmpty';
+import * as errorMessage from '../Input/error.js';
 
 function Modal2() {
     const [{ gmaps, hospitals }, dispatch] = useStateValue();
@@ -23,7 +24,12 @@ function Modal2() {
                 hospital: hospital
             });
         }
-        // TODO: else throw error, no such hospital found
+        // no such hospital found or bad address input, show toast error message
+        else {
+            errorMessage.toast.error(
+                "No such hospital location found, Verify correct location input and select location from the drop down", 
+                errorMessage.errorOptions);
+        }
     }
 
     const removeIt = (index, e) => {

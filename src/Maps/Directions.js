@@ -4,8 +4,6 @@ import React from "react";
 import { isCompositeComponent } from "react-dom/test-utils";
 import {useStateValue} from "../Context/StateProvider";
 
-// TODO: Origin, Destination, Helicopter = {lat: #, lng: #}  or Place objects <-- Determine this 
-
 const renderDirections = (gmaps, origin, destination, helicopter, ambulanceMarker, helicopterMarker, polyline, directionsRenderer, directionsService, callback) => {
     const { map, maps } = gmaps;
     var returnDuration = [-1,-1,-1];
