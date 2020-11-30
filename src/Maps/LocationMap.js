@@ -70,8 +70,8 @@ const LocationMap = (props) => {
                 // Reverse look up result available, set patient location to result
                 if (results[0]) {
                     setPlace(results[0]);
-                
-                // No results, set patient location to backup patient location.
+
+                    // No results, set patient location to backup patient location.
                 } else {
                     errorMessage.toast.error(
                         "could not reverse geocode current location",
@@ -91,19 +91,19 @@ const LocationMap = (props) => {
         map.setCenter(position);
         const ambulanceMarker = new maps.Marker({
             map,
-            label: {
-                text: 'Hospital',
-                fontSize: '25px',
-                fontWeight: '30px'
+            icon: {
+                url: process.env.PUBLIC_URL + 'images/hospital-marker.svg',
+                scaledSize: new maps.Size(40,40) 
             },
+            title: "hospital marker"
         });
         const helicopterMarker = new maps.Marker({
             map,
-            label: {
-                text: 'Helicopter',
-                fontSize: '25px',
-                fontWeight: '30px'
+            icon: {
+                url: process.env.PUBLIC_URL + 'images/helicopter.svg',
+                scaledSize: new maps.Size(40,40) 
             },
+            title: "helicopter",
         });
         const polyline = new maps.Polyline({
             geodesic: true,
