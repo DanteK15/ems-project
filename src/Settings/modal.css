@@ -257,7 +257,7 @@ span > div > h3 {
 span {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    /* justify-content: space-between; */
 }
 
 span > div > h3 {
@@ -410,7 +410,7 @@ span > div > h3 {
     /* .icon-title { */
         #inputs {
         display: flex;
-        align-items: center;
+        align-items: left;
         /* justify-content: space-evenly; */
         /* width: 100% !important; */
         flex-wrap: wrap;

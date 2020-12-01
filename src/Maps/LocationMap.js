@@ -5,6 +5,9 @@ import { LocationPin, HospitalPin, HelicopterPin } from './Icons'
 import { useStateValue } from '../Context/StateProvider'
 import { actionTypes } from '../Context/reducer'
 import './LocationMap.css';
+import helicopterIcon from '@iconify/icons-mdi/helicopter';
+import hospitalMarker from '@iconify/icons-mdi/hospital-marker';
+import * as errorMessage from '../Input/error.js';
 
 // Initial map location
 const PORTLAND = { lat: 45.523062, lng: -122.676482 };
@@ -47,20 +50,37 @@ const LocationMap = (props) => {
     };
 
     // Reverse geocode user location to get place object
-    // TODO: consider just using Lat/Lng for patient instead of Place object. Will need to change context
     const reverseGeocode = (maps) => {
+        // Back up patient location if reverse geocode lookup fails
+        let newPlace = {
+            geometry: {
+                location: {
+                    lat: function () { return position.lat },
+                    lng: function () { return position.lng }
+                }
+            },
+            address: '',
+            name: '',
+        }
+
         const geocoder = new maps.Geocoder();
         geocoder.geocode({ location: position }, (results, status) => {
+            // Reverse geocode sucessful API call 
             if (status === "OK") {
+                // Reverse look up result available, set patient location to result
                 if (results[0]) {
                     setPlace(results[0]);
+
+                    // No results, set patient location to backup patient location.
                 } else {
-                    // TODO: use general error handler
-                    window.alert("No results found");
+                    errorMessage.toast.error(
+                        "could not reverse geocode current location",
+                        errorMessage.errorOptions);
+                    setPlace(newPlace);
                 }
             } else {
-                // TODO: use general error handler
-                window.alert("Geocoder failed due to: " + status);
+                errorMessage.toast.error(
+                    "Geocoder failed due to: " + status, errorMessage.errorOptions);
             }
         })
     };
@@ -69,16 +89,31 @@ const LocationMap = (props) => {
     // Calls dispatch to globally set Maps object
     const apiHasLoaded = (map, maps) => {
         map.setCenter(position);
+        const ambulanceMarker = new maps.Marker({
+            map,
+            icon: {
+                url: process.env.PUBLIC_URL + 'images/hospital-marker.svg',
+                scaledSize: new maps.Size(40,40) 
+            },
+            title: "hospital marker"
+        });
+        const helicopterMarker = new maps.Marker({
+            map,
+            icon: {
+                url: process.env.PUBLIC_URL + 'images/helicopter.svg',
+                scaledSize: new maps.Size(40,40) 
+            },
+            title: "helicopter",
+        });
         const polyline = new maps.Polyline({
             geodesic: true,
             strokeColor: "#FF0000",
             strokeOpacity: 1.0,
             strokeWeight: 2,
         })
-        const directionsRenderer = new maps.DirectionsRenderer();
+        const directionsRenderer = new maps.DirectionsRenderer({ suppressMarkers: true, preserveViewport: true });
         const directionsService = new maps.DirectionsService();
         reverseGeocode(maps);
-        console.log(directionsRenderer);
         dispatch({
             type: actionTypes.SET_MAPS,
             gmaps: { map, maps }
@@ -95,11 +130,19 @@ const LocationMap = (props) => {
             type: actionTypes.SET_SERV,
             directionsService: directionsService
         })
+        dispatch({
+            type: actionTypes.SET_AMARK,
+            ambulanceMarker: ambulanceMarker
+        })
+        dispatch({
+            type: actionTypes.SET_HMARK,
+            helicopterMarker: helicopterMarker
+        })
     };
 
     return (
         <div className="map">
-        <div className='locationContainer'>
+            <div className='locationContainer'>
                 <GoogleMapReact
                     bootstrapURLKeys={{
                         key: process.env.REACT_APP_MAP_KEY,
@@ -119,7 +162,7 @@ const LocationMap = (props) => {
 
                     )}
                 </GoogleMapReact>
-        </div>
+            </div>
         </div>
     );
 };
