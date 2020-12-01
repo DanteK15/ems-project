@@ -20,3 +20,8 @@
   .reset-icon:hover {
     opacity: 0.75;
   }
+
+  /*  should i change it back??  */
+  .settings-icon {
+    z-index: 1;
+  }

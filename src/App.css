@@ -6,10 +6,18 @@ body {
 .app {
   display: flex;
   justify-items: space-between;
-  margin-top: 20px;
+  margin-top: 10px;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  margin-right: -40px; 
 }
 
 .inputPage {
+  margin-top: -32px;
+  margin-right: -120px; 
   flex: 0.6 !important;
 }
 

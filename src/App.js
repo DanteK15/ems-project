@@ -10,7 +10,7 @@ function App() {
 
     return (
         <div className="app">
-            <Sidebar />
+            <Sidebar className="sidebar"/>
             <div className="inputPage">
                 <LocationMap />
                 <InputPage />

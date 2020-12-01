@@ -204,11 +204,20 @@ span > div > h3 {
     margin-top: 20px;
 } */
 
+.icon {
+    width: 20px !important;
+}
+
 .icon-title {
     display: flex;
     align-items: center;
-    justify-items: space-around;
-    margin-right: 145px;
+    justify-content: center;
+    width: 100%;
+}
+
+.icon-title  > * {
+    width: 100%;
+    margin: 0px 60px;
 }
 
 .icon-title-1 {
@@ -222,6 +231,21 @@ span > div > h3 {
     font-size: 18px;
 }
 
+.modal-options {
+    flex-direction: column;
+    display: flex;
+    justify-content: space-evenly;
+    margin-left: 10px;
+    padding: 100px 40px;
+}
+
+.modal-options > * {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-left: -10px;
+}
 
 .icon-title-2 {
     display: flex;
@@ -290,7 +314,7 @@ span > div > h3 {
 .sidebar-top {
     display: flex;
     align-items: center;
-    justify-content: left;
+    margin-bottom: -20px;
 }
 
 .sidebar-top > .MuiSvgIcon-root {

@@ -176,31 +176,32 @@ function Modal({showModal, setShowModal}) {
                     <SettingsIcon className="settings-icon-0" />
                     <h2>Settings</h2>
                 </div>
-                {/* hospitals */}
-                <div ref={divRef} className={`modal-icons ${"modal-icons--active"}`} id="inputs">
-                    <span>
-                        <div className="icon-title">
-                            <LocalHospitalIcon className="icon-1"/>
+                {/* className={`modal-icons ${"modal-icons--active"}`}  */}
+                <div ref={divRef} className='modal-options' id="inputs">
+                    {/* <span> */}
+                        <div className="icon-title-1">
+                            <LocalHospitalIcon 
+                            className="icon"
+                            />
                             <h3 onClick={handleClick}>Add Hospitals</h3>
                         </div>
-                        {/* <ArrowForwardIosIcon className="icon-0" onClick={handleClick} /> */}
-                    </span>
+{/* x                    </span> */}
                 {/* helicopters */}
-                    <span>
-                        <div className="icon-title">
-                            <AddLocationIcon className="icon-1"/>
+                    {/* <span> */}
+                        <div className="icon-title-1">
+                            <AddLocationIcon className="icon"/>
                             <h3 onClick={handleHeliClick}>Add Helicopters</h3>
                         </div>
                         {/* <ArrowForwardIosIcon className="icon-0" onClick={handleHeliClick} /> */}
-                    </span>
+                    {/* </span> */}
                 {/* params */}
-                    <span>
-                        <div className="icon-title">
-                            <AddLocationIcon className="icon-1"/>
+                    {/* <span> */}
+                        <div className="icon-title-2">
+                            <AddLocationIcon className="icon"/>
                             <h3 onClick={handleParams}>Helicopter Speed</h3>
                         </div>
                         {/* <ArrowForwardIosIcon className="icon-0" onClick={handleParams} /> */}
-                    </span>
+                    {/* </span> */}
                 </div>
             </div>
             </div>
