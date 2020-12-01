@@ -3,7 +3,7 @@ body {
   --icons-color: #32424d;
 }
 
-.app {
+.app > div {
   display: flex;
   justify-items: space-between;
   margin-top: 10px;
