@@ -10,7 +10,7 @@ import { ContactSupportOutlined } from "@material-ui/icons";
 
 function Results() {
 
-  const [{ gmaps, polyline, directionsRenderer, directionsService, ambulanceMarker, helicopterMarker, calcParams, helicopter_speed }] = useStateValue();
+  const [{ gmaps, polyline, directionsRenderer, directionsService, ambulanceMarker, helicopterMarker, calcParams, helicopter_speed, handoverTime, reactionTime }] = useStateValue();
   const duration = "time";
   const [parseTime, setParseTime] = useState("");
 
@@ -111,7 +111,7 @@ function Results() {
   }
 
   //Calculates helicopter-to-patient time.
-  function heliTimeStringParser(heliDistance, heliSpeed){
+  function heliTimeStringParser(heliDistance, heliSpeed, reactionTime){
     var heliTime;
     heliSpeed = parseInt(heliSpeed);
     var minuteParse = heliDistance.toFixed(4);
@@ -130,6 +130,15 @@ function Results() {
     minuteCount = "." + minuteCount;
     minuteCount = minuteCount * 60;
     minuteCount = Math.round(minuteCount);
+
+    //Reaction Time Modifier
+    //minuteCount = minuteCount + reactionTime;
+    minuteCount = minuteCount + 8;
+
+    if((minuteCount / 60) >= 1){
+      minuteCount = minuteCount - 60;
+      hourCount++;
+    }
 
     //Reformats hour and minute values back into hours and minutes string format
     if(hourCount >= 1){
@@ -154,7 +163,7 @@ function Results() {
   }
 
   //Calculates patient-to-hospital time for the helicopter estimate.
-  function heliTimeStringParser2(estimatedTime, heliDistance, heliSpeed, heliDistance2, firstRouteTime){
+  function heliTimeStringParser2(estimatedTime, heliDistance, heliSpeed, heliDistance2, firstRouteTime, handoverTime){
     var heliTime;
     heliSpeed = parseFloat(heliSpeed);
     var minuteParse = heliDistance.toFixed(4);
@@ -196,6 +205,10 @@ function Results() {
       minuteCount = minuteCount * 60;
       minuteCount = Math.round(minuteCount);
   
+      //Handover Time Modifier
+      //minuteCount = minuteCount + handoverTime;
+      minuteCount = minuteCount + 15;
+
       //Subtracts first route time from patient load time
       //Calculates minute value.
       estimatedTime = (estimatedTime - firstRouteTime);
@@ -238,6 +251,10 @@ function Results() {
       console.log('Minute Count 2nd Route', minuteCount);
       console.log('Minute Count 1st Route', minuteParse2);
       minuteCount = minuteCount + minuteParse2;
+
+      //Handover Time Modifier
+      //minuteCount = minuteCount + handoverTime;
+      minuteCount = minuteCount + 15;
   
       //Carries over the minutes value into the hours if minutes
       //goes over 60.

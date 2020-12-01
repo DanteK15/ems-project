@@ -27,6 +27,8 @@ const getInitialState = () => {
         ambulanceMarker: {},  // Marker for Ambulance
         helicopterMarker: {}, // Marker for Helicopter
         helicopter_speed: helicopter_speed ? helicopter_speed : helicopterDefaultSpeed, // Helicopter speed
+        handoverTime: {},
+        reactionTime: {}
     }
 }
 
@@ -46,7 +48,9 @@ export const actionTypes = {
     SET_SERV: 'SET_SERV',
     SET_AMARK: 'SET_AMARK',
     SET_HMARK: 'SET_HMARK',
-    SET_PARAMS: 'SET_PARAMS'
+    SET_PARAMS: 'SET_PARAMS',
+    SET_HANDOVERTIME: 'SET_HANDOVERTIME',
+    SET_REACTIONTIME: 'SET_REACTIONTIME'
 }
 
 // state is state of data layer, action is whatever we're dispatching to 
@@ -155,6 +159,16 @@ const reducer = (state, action) => {
             return {
                 ...state,
                 helicopter_speed: action.helicopter_speed
+            }
+        case actionTypes.SET_HANDOVERTIME:
+            return {
+                ...state,
+                handoverTime: action.handoverTime
+            }
+        case actionTypes.SET_REACTIONTIME:
+            return {
+                ...state,
+                reactionTime: action.reactionTime
             }
         default:
             return state;
