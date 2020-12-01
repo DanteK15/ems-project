@@ -3,6 +3,16 @@ body {
   --icons-color: #32424d;
 }
 
+.app {
+  display: flex;
+  flex-direction: column;
+}
+
+/* .input-page {
+  margin-top: 30px !important;
+  background-color: black;
+} */
+
 .app > div {
   display: flex;
   justify-items: space-between;
