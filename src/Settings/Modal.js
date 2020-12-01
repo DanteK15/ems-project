@@ -180,7 +180,6 @@ function Modal({showModal, setShowModal}) {
                     <SettingsIcon className="settings-icon-0" />
                     <h2>Settings</h2>
                 </div>
-<<<<<<< HEAD
                 {/* className={`modal-icons ${"modal-icons--active"}`}  */}
                 <div ref={divRef} className='modal-options' id="inputs">
                     {/* <span> */}
@@ -189,28 +188,13 @@ function Modal({showModal, setShowModal}) {
                             className="icon"
                             />
                             <h3 onClick={handleClick}>Add Hospitals</h3>
-=======
-                {/* hospitals */}
-                <div ref={divRef} className={`modal-icons ${"modal-icons--active"}`} id="inputs">
-                    <span>
-                        <div className="icon-title">
-                            <LocalHospitalIcon className="icon-1"/>
-                            <h3 onClick={handleClick}>Add Hospital Locations</h3>
->>>>>>> 693998a35b50b115db52be741685205fb2045ca5
                         </div>
 {/* x                    </span> */}
                 {/* helicopters */}
-<<<<<<< HEAD
                     {/* <span> */}
                         <div className="icon-title-1">
                             <AddLocationIcon className="icon"/>
                             <h3 onClick={handleHeliClick}>Add Helicopters</h3>
-=======
-                    <span>
-                        <div className="icon-title">
-                            <AddLocationIcon className="icon-1"/>
-                            <h3 onClick={handleHeliClick}>Add Helicopter Locations</h3>
->>>>>>> 693998a35b50b115db52be741685205fb2045ca5
                         </div>
                         {/* <ArrowForwardIosIcon className="icon-0" onClick={handleHeliClick} /> */}
                     {/* </span> */}
