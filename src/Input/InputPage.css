@@ -117,14 +117,15 @@
   .manual-add-btn {
     color: white;
     background: #32424d;
-    width: 600px; 
+    width: 500px; 
     height: 26px;
     border: none;
     border-radius: 15px; 
     cursor: pointer; 
     font-size: 1.2rem;
     letter-spacing: 2px;
-    margin-bottom: 8px;
+    margin-top: 4px;
+    margin-bottom: 4px;
     font-weight: 200;
   }
 
@@ -245,6 +246,10 @@
   }
 
   @media screen and (min-width: 414px) {
+    .dropdown {
+      margin-left: -200px;
+    }
+
     .manual-address-btn {
       margin-top: 15px !important;
       width: 500px;
@@ -284,6 +289,9 @@
   }
 
   @media screen and (min-width: 1200px) {
+    .dropdown {
+      margin-right: -200px;
+    }
     .manual-address-input {
       padding-top: 30px; 
       width: 190px; 

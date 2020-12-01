@@ -110,7 +110,7 @@ function InputPage() {
       </div>
       <div className = "manual-add-section">
         <button 
-          className = "manual-add-btn"
+          className ="manual-add-btn"
           onClick = {() => setDisplayInput(!displayInput)}>Update Patient's Address
         </button>
         {displayInput &&
