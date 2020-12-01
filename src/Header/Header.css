@@ -1,7 +1,7 @@
 .header {
     position: sticky;
     top: 0;
-    background-color: rgba(211, 211, 211, 0.726);
+    background-color: lightgray;
     height: 60px;
     margin: 0 !important;
     z-index: 1;
