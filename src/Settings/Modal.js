@@ -184,9 +184,7 @@ function Modal({showModal, setShowModal}) {
                 <div ref={divRef} className='modal-options' id="inputs">
                     {/* <span> */}
                         <div className="icon-title-1">
-                            <LocalHospitalIcon 
-                            className="icon"
-                            />
+                            <AddLocationIcon className="icon"/>
                             <h3 onClick={handleClick}>Add Hospitals</h3>
                         </div>
 {/* x                    </span> */}
@@ -200,7 +198,7 @@ function Modal({showModal, setShowModal}) {
                     {/* </span> */}
                 {/* params */}
                     {/* <span> */}
-                        <div className="icon-title-2">
+                        <div className="icon-title-1">
                             <AddLocationIcon className="icon"/>
                             <h3 onClick={handleParams}>Helicopter Speed</h3>
                         </div>

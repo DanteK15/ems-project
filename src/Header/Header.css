@@ -22,10 +22,10 @@ ul {
 }
 
 .nav-brand {
-    font-family: lato, serif;
+    font-family: "Lao UI", serif;
     padding-left: 10px;
     font-size: 40px;
-    color: #226e54;
+    color: #4f768f;
     font-weight: bold;
     text-decoration: none;
 }
@@ -36,7 +36,6 @@ li {
     /*padding-left: 40px;*/
     /*padding-right: 40px;*/
 
-    color: #2C7776;
     text-decoration: none;
     letter-spacing: 3px;
     font-weight: bold;
@@ -45,7 +44,7 @@ li {
 }
 
 li > a {
-    color: #5e5d5d;
+    color: #32414d;
     text-decoration: none;
     text-transform: capitalize;
     letter-spacing: 1px;
