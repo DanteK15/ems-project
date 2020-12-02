@@ -47,6 +47,18 @@ function InputPage() {
   }
 
   const handleSubmit = (e) => {
+
+    let elements1 = document.getElementsByClassName('results-container');
+    let elements2 = document.getElementsByClassName('results-container-2');
+
+    for(let i = 0; i < elements1.length; i++){
+      elements1[i].style.backgroundColor = "#f5f8fa";
+    }
+
+    for(let j = 0;j < elements2.length; j++){
+      elements2[j].style.backgroundColor = "#f5f8fa";
+    }
+
     if(patientLocal && hospital && helicopter && estimatedtime) {
       dispatch({
         type: actionTypes.SET_CALC,
