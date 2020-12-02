@@ -101,12 +101,13 @@ import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import SettingsIcon from '@material-ui/icons/Settings';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import {useStateValue} from '../Context/StateProvider'
+import isEmpty from 'lodash/isEmpty';
 import Modal2 from './Modal2';
 import Modal3 from './Modal3'
 import Modal4 from './Modal4'
 
 function Modal({showModal, setShowModal}) {
-    // const [{term},dispatch] = useStateValue();
+    const [{gmaps, patientLocal}] = useStateValue();
     const divRef = useRef(null);
     const divRef2 = useRef(null);
     const divRef3 = useRef(null);
@@ -151,6 +152,9 @@ function Modal({showModal, setShowModal}) {
     }
 
     const closeModal = e => {
+        if(!isEmpty(gmaps) && !isEmpty(patientLocal)){
+            gmaps.map.setCenter(patientLocal.geometry);
+        }
         if (divRef2.current === e.target) {
             setHospital(false)
             setHeli(false)
@@ -176,31 +180,32 @@ function Modal({showModal, setShowModal}) {
                     <SettingsIcon className="settings-icon-0" />
                     <h2>Settings</h2>
                 </div>
-                {/* hospitals */}
-                <div ref={divRef} className={`modal-icons ${"modal-icons--active"}`} id="inputs">
-                    <span>
-                        <div className="icon-title">
-                            <LocalHospitalIcon className="icon-1"/>
+                {/* className={`modal-icons ${"modal-icons--active"}`}  */}
+                <div ref={divRef} className='modal-options' id="inputs">
+                    {/* <span> */}
+                        <div className="icon-title-1">
+                            <LocalHospitalIcon 
+                            className="icon"
+                            />
                             <h3 onClick={handleClick}>Add Hospitals</h3>
                         </div>
-                        <ArrowForwardIosIcon className="icon-0" onClick={handleClick} />
-                    </span>
+{/* x                    </span> */}
                 {/* helicopters */}
-                    <span>
-                        <div className="icon-title">
-                            <AddLocationIcon className="icon-1"/>
+                    {/* <span> */}
+                        <div className="icon-title-1">
+                            <AddLocationIcon className="icon"/>
                             <h3 onClick={handleHeliClick}>Add Helicopters</h3>
                         </div>
-                        <ArrowForwardIosIcon className="icon-0" onClick={handleHeliClick} />
-                    </span>
+                        {/* <ArrowForwardIosIcon className="icon-0" onClick={handleHeliClick} /> */}
+                    {/* </span> */}
                 {/* params */}
-                    <span>
-                        <div className="icon-title">
-                            <AddLocationIcon className="icon-1"/>
-                            <h3 onClick={handleParams}>Add Configurable Parameters</h3>
+                    {/* <span> */}
+                        <div className="icon-title-2">
+                            <AddLocationIcon className="icon"/>
+                            <h3 onClick={handleParams}>Helicopter Speed</h3>
                         </div>
-                        <ArrowForwardIosIcon className="icon-0" onClick={handleParams} />
-                    </span>
+                        {/* <ArrowForwardIosIcon className="icon-0" onClick={handleParams} /> */}
+                    {/* </span> */}
                 </div>
             </div>
             </div>

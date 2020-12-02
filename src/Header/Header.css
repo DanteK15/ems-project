@@ -1,0 +1,36 @@
+.header {
+    position: sticky;
+    top: 0;
+    background-color: lightgray;
+    height: 60px;
+    margin: 0 !important;
+    z-index: 1;
+}
+
+ul {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding-top: 20px;
+}
+
+li {
+    list-style: none;
+}
+
+li > a {
+    color: black;
+    text-decoration: none;
+    text-transform: capitalize;
+    letter-spacing: 1px;
+}
+
+.about {
+    display: grid;
+    place-items: center;
+}
+
+.instructions {
+    display: grid;
+    place-items: center;
+}

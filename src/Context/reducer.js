@@ -1,40 +1,40 @@
-// TODO: Import error handling and call error handler if local storage fails to load
+import * as errorMessage from '../Input/error.js';
 
+const helicopterDefaultSpeed = '120';
 
 const getInitialState = () => {
-    let hospitals, helicopters;
-    if (typeof (Storage)) {
+    let hospitals, helicopters, helicopter_speed;
+    if (typeof (Storage) !== "undefined") {
         // Local storage only accepts strings. 
         hospitals = JSON.parse(localStorage.getItem('hospitals'));
         helicopters = JSON.parse(localStorage.getItem('helicopters'));
+        helicopter_speed = localStorage.getItem('helicopter_speed');
     } else {
-        // TODO: call error handler
+        errorMessage.toast.error(
+            "Failed to access local storage or no Storage object available",
+            errorMessage.errorOptions);
     }
 
     return {
         hospitals: hospitals ? hospitals : [],      // List of saved hospital Places Objects
         helicopters: helicopters ? helicopters : [],    // List of saved helicopter Places Objects
         gmaps: {},          // Gmaps instance, contains Map instance and Map object   
-        patientLocal: {},   // Patient location places object <-- TODO: consider changing just lat/lng object
+        patientLocal: {},   // Patient location places object 
         calcParams: {}, // Contains all params needs for calculation: patient, hospital, helicopter, loadtime
         Polyline: {}, //Polyline class is a linear overlay of connected line segments on the map.
         directionsRenderer: {}, //Class to render directions obtained from the DirectionsService
         directionsService: {}, //Instance of a DirectionsService that sends directions queries to Google servers.
+        ambulanceMarker: {},  // Marker for Ambulance
+        helicopterMarker: {}, // Marker for Helicopter
+        helicopter_speed: helicopter_speed ? helicopter_speed : helicopterDefaultSpeed, // Helicopter speed
+        handoverTime: {},
+        reactionTime: {}
     }
 }
 
 export const initialState = getInitialState();
-// initial state is an object
-// export const initialState = {
-//     hospitals: [],      // List of saved hospital Places Objects
-//     helicopters: [],    // List of saved helicopter Places Objects
-//     gmaps: {},          // Gmaps instance, contains Map instance and Map object   
-//     patientLocal: {},   // Patient location places object <-- TODO: consider changing just lat/lng object
-//     calcParams: {}, // Contains all params needs for calculation: patient, hospital, helicopter, loadtime
-// }
 
 // whenever we change the data layer, we dispatch an action
-// TODO: Add clear action to reset patientLocal, destination, heliOrigin
 export const actionTypes = {
     SET_HOSP: 'SET_HOSP',
     DEL_HOSP: 'DEL_HOSP',
@@ -45,7 +45,12 @@ export const actionTypes = {
     SET_CALC: 'SET_CALC',
     SET_POLY: 'SET_POLY',
     SET_REND: 'SET_REND',
-    SET_SERV: 'SET_SERV'
+    SET_SERV: 'SET_SERV',
+    SET_AMARK: 'SET_AMARK',
+    SET_HMARK: 'SET_HMARK',
+    SET_PARAMS: 'SET_PARAMS',
+    SET_HANDOVERTIME: 'SET_HANDOVERTIME',
+    SET_REACTIONTIME: 'SET_REACTIONTIME'
 }
 
 // state is state of data layer, action is whatever we're dispatching to 
@@ -138,6 +143,32 @@ const reducer = (state, action) => {
             return {
                 ...state,
                 directionsService: action.directionsService
+            }
+        case actionTypes.SET_AMARK:
+            return {
+                ...state,
+                ambulanceMarker: action.ambulanceMarker
+            }
+        case actionTypes.SET_HMARK:
+            return {
+                ...state,
+                helicopterMarker: action.helicopterMarker
+            }
+        case actionTypes.SET_PARAMS:
+            localStorage.setItem('helicopter_speed', action.helicopter_speed);
+            return {
+                ...state,
+                helicopter_speed: action.helicopter_speed
+            }
+        case actionTypes.SET_HANDOVERTIME:
+            return {
+                ...state,
+                handoverTime: action.handoverTime
+            }
+        case actionTypes.SET_REACTIONTIME:
+            return {
+                ...state,
+                reactionTime: action.reactionTime
             }
         default:
             return state;

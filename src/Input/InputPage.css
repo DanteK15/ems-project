@@ -58,19 +58,39 @@
     width: 600px; 
   }
    
-  .manual-address-input, .dropdown, .picker{ 
+  .dropdown, .picker, .manual-add-section{ 
     display: grid;
     place-items: center;
   }
 
   .picker-btn {
-    margin: 20px;
-    padding: 15px;
-    width: 100px;
-    border: 1px solid lightgray;
-    cursor: pointer;
-    display: grid;
-    place-items: center;
+    color: #226F54;
+    border: 1px solid #226F54;
+    border-radius: 15px; 
+    cursor: pointer; 
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    font-weight: 200;
+  }
+
+  .submit-button { 
+    color: white;
+    background: #226F54;
+    border-radius: 15px; 
+    cursor: pointer; 
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    font-weight: 200;
+  }
+
+  .manual-add-button { 
+    color: white;
+    background: #226F54;
+    border-radius: 15px; 
+    cursor: pointer; 
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    font-weight: 200;
   }
 
   .picker > h5 {
@@ -86,11 +106,26 @@
     width: 600px;
     height: 35px;
     border: none; 
-    border-radius: 3px; 
+    border-radius: 15px; 
     cursor: pointer; 
     font-size: 1.2rem;
     letter-spacing: 2px;
     margin-bottom: 5px;
+    font-weight: 200;
+  }
+
+  .manual-add-btn {
+    color: white;
+    background: #32424d;
+    width: 500px; 
+    height: 26px;
+    border: none;
+    border-radius: 15px; 
+    cursor: pointer; 
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    margin-top: 4px;
+    margin-bottom: 4px;
     font-weight: 200;
   }
 
@@ -100,28 +135,15 @@
     padding-top: 20px;
   }
 
-  .submit-btn { 
-    color: white;
-    background: #226F54;
-    width: 300px;
-    height: 35px;
-    border: none; 
-    border-radius: 3px; 
-    cursor: pointer; 
-    font-size: 1.2rem;
-    letter-spacing: 2px;
-    margin-bottom: 5px;
-    font-weight: 200;
-  }
 
   input {
     border: none;
     outline: none;
-    width: 100%;
+    width: 50%;
     border-bottom: 1px solid lightgray;
    }
 
-  .dropdown, .picker {
+  .dropdown, .picker, .manual-add-section {
     display: flex;
     flex-direction: column;
   }
@@ -132,7 +154,7 @@
     border: none;
     border-bottom: 1px solid lightgray;
     letter-spacing: 2px;
-    color: gray;
+    color: #525252;
     cursor: pointer;
     outline: none;
     height: 38px;
@@ -168,4 +190,172 @@
     letter-spacing: 1px;
     text-transform: capitalize;
     /* color: white; */
+  }
+
+
+  /* mobile screen */
+  @media screen and (max-width: 376px) {
+    .manual-address-input {
+      width: 100%;
+    }
+
+    .manual-address-btn {
+      margin-top: 15px !important;
+      width: 300px;
+      display: grid;
+      place-items: center;
+    }
+
+    #available-hospitals-selection {
+      /* margin-right: 15px; */
+      width: 300px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 20px !important;
+    }
+
+    .picker {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 15px !important;
+    }
+
+    .manual-add-section {
+      display: flex; 
+      flex-direction: column; 
+      margin-bottom: 15px !important;
+      width: 100px;
+    }
+
+    .picker > h5 {
+      margin-bottom: 15px !important;
+    }
+
+    .picker-btn {
+      margin-bottom: 15px !important;
+      margin-top: 15px !important;
+      text-align: center !important;
+    }
+    
+    .submit-section {
+    }
+
+    .submit-btn {
+      margin-top: 20px !important;
+    }
+  }
+
+  @media screen and (min-width: 414px) {
+    .dropdown {
+      margin-left: -200px;
+    }
+
+    .manual-address-btn {
+      margin-top: 15px !important;
+      width: 500px;
+      display: grid;
+      place-items: center;
+      margin-left: 50px;
+    }
+
+    #available-hospitals-selection {
+      width: 500px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 20px !important;
+      margin-left: 200px;
+    }
+
+    .picker {
+      width: 100%;
+      margin-left: 90px;
+    }
+
+    .picker > h5 {
+      margin-bottom: 15px !important;
+    }
+
+    .picker-btn {
+      margin-bottom: 15px !important;
+      margin-top: 15px !important;
+    }
+    
+    .submit-section {
+    }
+
+    .submit-btn {
+      margin-top: 20px !important;
+    }
+  }
+
+  @media screen and (min-width: 1200px) {
+    .dropdown {
+      margin-right: -200px;
+    }
+    .manual-address-input {
+      padding-top: 30px; 
+      width: 190px; 
+      margin-left: 85px; 
+    }
+    .manual-address-btn {
+      margin-top: -40px !important;
+      width: 710px;
+      margin-left: -5px;
+    }
+
+    #available-hospitals-selection {
+      width: 700px;
+      margin-left: -5px;
+      margin-top: -12px !important;
+    }
+    
+    .picker {
+      width: 100%;
+      margin-left: -10px;
+    }
+
+    .picker > h5 {
+      margin-top: -10px !important;
+      margin-bottom: 10px !important;
+    }
+
+    .submit-section {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      margin-left: 10px;
+    }
+    .submit-section > * {
+      width: 300px !important;
+      font-size: 14px;
+      text-align: center !important;
+      padding: 5px 10px;
+    }
+    /*     color: #226F54;
+    border: 1px solid #226F54;
+    width: 300px;
+    height: 35px;
+    border: none; 
+    border-radius: 15px; 
+    cursor: pointer; 
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    font-weight: 200; */
+
+    .submit-button {
+
+    }
+
+    .manual-add-btn {
+
+    }
+
+    /* .submit-button {
+      padding: 3px 10px !important;
+      font-size: 18px;
+      width: 150px;
+      margin-top: -20px !important;
+      margin: 0px 20px;
+    }  */
   }

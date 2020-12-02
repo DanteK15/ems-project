@@ -5,8 +5,54 @@ body {
 
 .app {
   display: flex;
+  flex-direction: column;
+}
+
+/* .input-page {
+  margin-top: 30px !important;
+  background-color: black;
+} */
+
+.app > div {
+  display: flex;
   justify-items: space-between;
-  margin-top: 20px;
+  margin-top: 10px;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  margin-right: -40px; 
+}
+
+.inputPage {
+  margin-top: -32px;
+  margin-right: -120px; 
+  flex: 0.6 !important;
+}
+
+.result-page {
+  flex: 0.4;
+}
+
+@media screen and (min-width: 1200px) {
+  * {
+    margin-top: -2px;
+  }
+}
+
+@media screen and (max-width: 376px) {
+  * {
+    margin: 0px !important;
+    padding: 0px !important;
+  }
+  .app {
+    margin: 0px !important;
+    padding: 0px !important;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
 }
 
 @media only screen and (max-width: 600px) {

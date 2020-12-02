@@ -5,12 +5,13 @@ import './Modal2.css'
 import SettingsIcon from '@material-ui/icons/Settings';
 import AutoComplete from '../Maps/AutoComplete';
 import isEmpty from 'lodash/isEmpty';
+import * as errorMessage from '../Input/error.js';
 
 function Modal3() {
     const [{ gmaps, helicopters}, dispatch] = useStateValue();
     const [helicopter, setHelicopter] = useState();
 
-    const newHelicopter= (place) => {
+    const newHelicopter = (place) => {
         setHelicopter(place);
     }
 
@@ -23,7 +24,12 @@ function Modal3() {
                 helicopter: helicopter 
             });
         }
-        // TODO: else throw error, no such helicopter found
+        // no such helicopter location found or bad address input, show toast error message
+        else {
+            errorMessage.toast.error(
+                "No such helicopter location found, Verify correct location input and select location from the drop down", 
+                errorMessage.errorOptions);
+        }
     }
 
     const removeIt = (index, e) => {
@@ -36,7 +42,6 @@ function Modal3() {
 
     return (
         <div className="container">
-           <form>
                 <div className="sidebar-top">
                     <SettingsIcon className="settings-icon-0" />
                     <h2>Settings</h2>
@@ -81,7 +86,6 @@ function Modal3() {
                     </div>
                     )
                 }               
-            </form>
         </div>
     )
 }

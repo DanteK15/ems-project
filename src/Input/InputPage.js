@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import GoogleMapReact from 'google-map-react';
-import { Loader } from "@googlemaps/js-api-loader"
 import "./InputPage.css";
 import isEmpty from 'lodash/isEmpty';
 import { useStateValue } from '../Context/StateProvider';
@@ -8,9 +6,10 @@ import AutoComplete from "../Maps/AutoComplete"
 import { actionTypes } from "../Context/reducer";
 import * as errorMessage from './error.js';
 import WheelPicker from 'react-simple-wheel-picker';
-import renderDirections from "../Maps/Directions";
+import LocationMap from "../Maps/LocationMap";
 
 function InputPage() {
+
   const [{ patientLocal, hospitals, helicopters, gmaps, polyline, directionsRenderer, directionsService}, dispatch] = useStateValue();
   const [displayInput, setDisplayInput] = useState(false)
   const [hospital, setHospital] = useState();
@@ -32,6 +31,13 @@ function InputPage() {
     return data;
   }
 
+  function helicopterToHospital(time) {
+    var total = parseInt(time);
+    total = total;
+
+    return total;
+  }
+
   // Set new patient location from geolocation or manual input
   const newPatientLoc = (place) => {
     dispatch({
@@ -40,7 +46,7 @@ function InputPage() {
     })
   }
 
-  const onSubmit = () => {
+  const handleSubmit = (e) => {
     if(patientLocal && hospital && helicopter && estimatedtime) {
       dispatch({
         type: actionTypes.SET_CALC,
@@ -49,24 +55,6 @@ function InputPage() {
     }
   }
 
-  const showResultsOnClick = (e) => {
-    if(patientLocal && hospital && helicopter && estimatedtime) {
-      dispatch({
-        type: actionTypes.SET_CALC,
-        calcParams: {patientLocal, hospital, helicopter, estimatedtime}
-      })
-    }
-
-    // Helicopter ETA to patient
-    document.getElementById("heli-eta-patient").innerHTML = estimatedtime;
-
-    // Helicopter ETA to hospital
-    document.getElementById("heli-eta-hospital").innerHTML = estimatedtime; 
-
-    // Ambulance to hospital 
-    document.getElementById("ambulance-eta-hospital").innerHTML = estimatedtime; 
-  }
-  
   //Function to check location services access and alert user to enable it.
   errorMessage.getLocation();
 
@@ -104,20 +92,34 @@ function InputPage() {
   return (
     <div className="input-container">
       <div className="location-section">
-
         {/*ToastContainer is placed anywhere to initialize error popups*/}
         <errorMessage.ToastContainer limit={7} autoClose={false}
           transition={errorMessage.Zoom} position={"top-center"} />
+
+        <LocationMap /> 
+    
+        {/*
         <div className="manual-address-input">
           <button className="manual-address-btn"
             onClick={() => setDisplayInput(!displayInput)}
-          >Edit Current Address</button>
+          >Update Patient's Address</button>
           {displayInput &&
             (gmaps && <AutoComplete map={gmaps.map} mapApi={gmaps.maps} newPlace={newPatientLoc} />
             )}
-        </div>
+        </div>*/}
+      </div>
+      <div className = "manual-add-section">
+        <button 
+          className ="manual-add-btn"
+          onClick = {() => setDisplayInput(!displayInput)}>Update Patient's Address
+        </button>
+        {displayInput &&
+          (gmaps && <AutoComplete map={gmaps.map} mapApi={gmaps.maps} newPlace={newPatientLoc} />
+        )}
       </div>
       <br />
+      <br />
+      
       <div className="dropdown">
         <select
           id="available-hospitals-selection"
@@ -125,44 +127,50 @@ function InputPage() {
           onChange={handleHospitalSelection}
           required>
           <option value="" disabled selected
-            id="available-hospitals">Available Hospitals Nearby</option>
+            id="available-hospitals">Available Hospitals</option>
           {!isEmpty(hospitals) &&
             hospitals.map((e, index) => <option key={index} value={index}> {e.name}</option>)
           }
         </select>
 
+        <br />
         <select
           id="available-hospitals-selection"
           name='helicopter-selection'
           onChange={handleHelicopterSelection}
           required>
           <option value="" disabled selected
-            id="available-helicopters">Available Helicopters Nearby</option>
+            id="available-helicopters">Available Helicopters</option>
           {!isEmpty(hospitals) &&
             helicopters.map((e, index) => <option key={index} value={index}> {e.name}</option>)
           }
         </select>
         </div>
 
+        <br />
         <div className="picker">
-          <h5>Estimated Patient Load Time</h5>
+          <h5>Time Until Ready for Transport</h5>
           <WheelPicker
             id="wheelpicker"
             data={timeData}
             onChange={handleEstimTimeChange}
             height={75}
-            width={400}
+            width={300}
             itemHeight={30}
             selectedID={timeData[timeID].id}
-            color="#ccc"
-            activeColor="#3232ff"
-            backgroundColor="#fff"
+            // color="#ccc"
+            color="black"
+            activeColor="white"
+            // backgroundColor="#fff"
+            backgroundColor="#32424d77"
+            shadowColor="none"
           />
-        <btn onClick={onSubmit} className="picker-btn">submit</btn>
         <div className="submit-section">
-          <button className="submit-btn"
+        {/*<btn onClick={onSubmit} type = "submit" className="picker-btn">submit</btn>*/}
+          <button 
+            className="submit-button"
             type = "submit"
-            onClick = {showResultsOnClick}
+            onClick = {handleSubmit}
             >Calculate</button>
       </div>
       </div>

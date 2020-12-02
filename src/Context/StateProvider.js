@@ -4,7 +4,7 @@ import React, { createContext, useContext, useReducer } from 'react';
 export const StateContext = createContext();
 
 // higher order 
-// initialState --> what data layer looks like when app laods
+// initialState --> what data layer looks like when app loads
 // reducer --> listen to changes
 export const StateProvider = ({reducer, initialState, children}) => (
     <StateContext.Provider value={useReducer(reducer, initialState)}>
