@@ -344,7 +344,11 @@
     font-weight: 200; */
 
     .submit-button {
+      background-color: #32414d;
+    }
 
+    .submit-button:hover {
+      background-color: #4f6780;
     }
 
     .manual-add-btn {
