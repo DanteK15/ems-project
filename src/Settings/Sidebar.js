@@ -96,9 +96,9 @@ function Sidebar() {
       onClick = {resetPage}
       />
  
-       <Modal showModal={openSettings} 
-       setShowModal={setOpenSettings}
-       />
+      <Modal showModal={openSettings} 
+      setShowModal={setOpenSettings}
+      />
     </div>
   );
 }
