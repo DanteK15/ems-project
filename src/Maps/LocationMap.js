@@ -17,7 +17,7 @@ const PORTLAND = { lat: 45.523062, lng: -122.676482 };
 const LocationMap = (props) => {
 
     const [{ patientLocal }, dispatch] = useStateValue();
-    const [position, setPosition] = useState(PORTLAND);
+    const [position, setPosition] = useState();
     const [place, setPlace] = useState();
 
     useEffect(() => {
@@ -143,12 +143,13 @@ const LocationMap = (props) => {
     return (
         <div className="map">
             <div className='locationContainer'>
+                {position ? (
                 <GoogleMapReact
                     bootstrapURLKeys={{
                         key: process.env.REACT_APP_MAP_KEY,
                         libraries: ['places', 'geometry']
                     }}
-                    defaultCenter={position ? position : PORTLAND}
+                    defaultCenter={PORTLAND}
                     defaultZoom={10}
                     yesIWantToUseGoogleMapApiInternals
                     onGoogleApiLoaded={({ map, maps }) => apiHasLoaded(map, maps)}
@@ -162,6 +163,9 @@ const LocationMap = (props) => {
 
                     )}
                 </GoogleMapReact>
+                    
+                ) :
+                <div>... loading current address</div>}
             </div>
         </div>
     );
