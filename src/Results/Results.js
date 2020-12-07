@@ -413,19 +413,36 @@ function Results() {
 
         // visual cue for the fastest mode of transportation
         if(helicopterTime < ambulanceTime) {
-          var elements = document.getElementsByClassName('results-container'); 
-	        for(var i = 0; i < elements.length; i++){
-            elements[i].style.backgroundColor = "#76ac6d";
+          // green in helicopter results section if helicopter is faster
+          var heliElements = document.getElementsByClassName('results-container'); 
+	        for(var i = 0; i < heliElements.length; i++){
+            heliElements[i].style.backgroundColor = "#76ac6d";
           }
           console.log("Helicopter is faster.");
 	      }
     
         else if(ambulanceTime < helicopterTime) {
-          var elements = document.getElementsByClassName('results-container-2'); 
-	        for(var i = 0; i < elements.length; i++){
-		        elements[i].style.backgroundColor = "#76ac6d";
+          // green in ambulance results section if ambulance is faster
+          var ambuElements = document.getElementsByClassName('results-container-2'); 
+	        for(var i = 0; i < ambuElements.length; i++){
+		        ambuElements[i].style.backgroundColor = "#76ac6d";
           }
           console.log("Ambulance is faster."); 
+        }
+
+        else if(helicopterTime == ambulanceTime) {
+          // yellow in helicopter and ambulance results section if both methods have
+          // the same time
+          var heliElements = document.getElementsByClassName('results-container');
+          for(var i = 0; i < heliElements.length; i++){
+            heliElements[i].style.backgroundColor = "#FEDC56";
+          }
+          
+          var ambuElements = document.getElementsByClassName('results-container-2');
+          for(var i = 0; i < ambuElements.length; i++){
+            ambuElements[i].style.backgroundColor = "#FEDC56";
+          }
+          console.log("Helicopter and ambulance have the same time.");
         }
 
       });

@@ -14,6 +14,7 @@ function Modal4() {
                 type: actionTypes.SET_PARAMS,
                 helicopter_speed: helicopter_speed 
             });
+            document.getElementById("submitSpeedNotif").innerHTML = "Helicopter speed successfully updated.";
         }
     }
 
@@ -24,10 +25,16 @@ function Modal4() {
                     <h2>Settings</h2>
                 </div>
                 <label>Helicopter speed (miles/hr) </label>
-                <input type="number" onChange={e => setHelicopter_speed(e.target.value)} required/>
+                <br />
+                <br />
+                <input type="number" placeholder = "120" onChange={e => setHelicopter_speed(e.target.value)} required/>
                 <button type="submit"
                 onClick={handleSubmit}
                 >Submit</button>
+                <br />
+                <br />
+                <br />
+                <label id = "submitSpeedNotif"></label>
         </div>
     )
 }
