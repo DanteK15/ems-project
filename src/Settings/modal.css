@@ -1,0 +1,286 @@
+.modal {
+    position: fixed;
+    top: 0;
+    height: 100vh;
+    border-right: 1px solid lightgray;
+    margin: 0 auto !important;
+    background-color: white;
+}
+
+.modal, .background {
+    width: 400px;
+}
+
+.background { 
+    width: 100%;
+    height: 100%;
+    background: rgba(17, 17, 17, 0.329) !important;
+    position: fixed;
+    top: 0;
+    z-index: 1;
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+}
+
+.MuiSvgIcon-root {
+    cursor: pointer;
+    padding-top: 15px;
+    padding-left: 15px;
+}
+
+.modal-icons {
+    display: grid;
+    place-items: center;
+    padding-top: 100px;
+}
+
+.modal-icons > span > div > .MuiSvgIcon-root {
+    margin: 10px;
+}
+
+/* span {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+} */
+
+/*.icon {*/
+/*    width: 20px !important;*/
+/*}*/
+
+.icon-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.icon-title  > * {
+    width: 100%;
+    margin: 0px 60px;
+}
+
+.icon-title-1 {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding-bottom: 4rem;
+    /*align-items: flex-end;*/
+    /*justify-content: space-around;*/
+    /*margin-right: 12px;*/
+}
+
+.icon-title-1 > h3 {
+    font-size: 18px;
+}
+
+.modal-options {
+    flex-direction: column;
+    display: flex;
+    justify-content: space-evenly;
+    margin-left: 10px;
+    padding: 100px 40px;
+}
+
+/*.modal-options > * {*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    justify-content: space-between;*/
+/*    width: 100%;*/
+/*    margin-left: -10px;*/
+/*    margin-bottom: 40px;*/
+/*}*/
+
+.icon {
+    margin-top: -20px;
+    margin-right: 2rem;
+}
+
+/*.icon-title-2 {*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    justify-items: space-around;*/
+/*    margin-right: 130px;*/
+/*}*/
+
+span {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+span > div > h3 {
+    margin-top: 10px;
+    font-weight: 600;
+    text-transform: capitalize;
+    letter-spacing: 1px;
+    font-size: 18px;
+    color: rgba(17, 17, 17, 0.74);
+}
+
+.icon-title:hover > h3, .icon-title:hover > .MuiSvgIcon-root ,span:hover >.MuiSvgIcon-root {
+    /* transform: scale(1.1); */
+    transition: color 100ms ease-out;
+    color: rgba(255, 0, 0, 0.603) !important;
+    cursor: pointer;
+    transition: 1s all ease;
+}
+
+.icon-title-1:hover > h3, .icon-title-1:hover > .MuiSvgIcon-root ,span:hover >.MuiSvgIcon-root {
+    /* transform: scale(1.1); */
+    transition: color 100ms ease-out;
+    color: rgba(255, 0, 0, 0.603) !important;
+    cursor: pointer;
+    transition: 1s all ease;
+}
+
+.icon-title-2:hover > h3, .icon-title-2:hover > .MuiSvgIcon-root ,span:hover >.MuiSvgIcon-root {
+    /* transform: scale(1.1); */
+    transition: color 100ms ease-out;
+    color: rgba(255, 0, 0, 0.603) !important;
+    cursor: pointer;
+    transition: 1s all ease;
+}
+
+
+.icon-0 {
+    font-size: 15px !important;
+    margin-bottom: 4px;
+}
+
+.icon-1 {
+    font-size: 32px !important;
+}
+
+.icon-2 {
+    font-size: 36px !important;
+}
+
+.icon-1, .icon-2, .icon-3 {
+    color: lightgray !important;
+}
+
+.sidebar-top {
+    display: flex;
+    align-items: center;
+    margin-bottom: -20px;
+}
+
+.sidebar-top > .MuiSvgIcon-root {
+    padding: 40px;
+    color: gray !important;
+    margin-top: 7px;
+    cursor: auto;
+}
+
+.sidebar-top > h2 {
+    letter-spacing: 1px;
+    color: rgba(0, 0, 0, 0.822);
+    margin-top: 4px;
+}
+
+.modal-2 {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: left;
+    padding-top: 80px;
+    margin: 20px;
+    overflow: visible !important;
+}
+
+
+.modal-2 > label {
+    color: red;
+    font-weight: 600;
+}
+
+.modal-2 > label {
+    margin-bottom: 20px;
+}
+
+.modal > .MuiSvgIcon-root:hover {
+    transform: scale(1.1);
+    transition: 1s all ease-in;
+}
+
+/* .submit-btn {
+    background: transparent;
+    cursor: pointer;
+    border: 1px solid black;
+    margin-top: 20px;
+    width: 100px;
+    display: grid;
+    place-items: center;
+    font-weight: 200;
+} */
+
+.submit-btn:hover {
+    opacity: 0.5;
+    transition: 1s all ease;
+}
+
+.background {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    position: fixed;
+    top: 0;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+@media screen and (max-width: 376px) {
+    * {
+        font-size: 16px !important;
+    }
+
+    .modal {
+        width: 280px;
+    }
+
+    .sidebar-top {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 40px !important;
+        margin-bottom: 20px !important;
+    }
+
+    .sidebar-top > .MuiSvgIcon-root {
+        padding-right: 20px !important;
+    }
+
+    /* #inputs {
+        display: flex;
+        flex-direction: column;
+    } */
+    /* .icon-title { */
+        #inputs {
+        display: flex;
+        align-items: center;
+        /* justify-content: space-evenly; */
+        /* width: 100% !important; */
+        flex-wrap: wrap;
+        padding-right: 50px !important;
+        padding: 20px !important;
+        width: 250px !important;
+    }
+    .icon-title > .MuiSvgIcon-root {
+        padding: 20px !important;
+
+    }
+}
+
+@media screen and (min-width: 414px) {
+    .modal {
+        height: 100% !important;
+    }   
+}
+
+@media screen and (min-width: 1200px) {
+    
+}

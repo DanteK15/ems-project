@@ -1,0 +1,31 @@
+/* .sidebar {
+    border-right: 1px solid var(--background);
+    flex: 0.3;
+    margin-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+  } */
+  
+  .MuiSvgIcon-root {
+    color: var(--icons-color);
+    font-size: 30px !important;
+    /* margin-left: 20px;
+    margin-bottom: 20px; */
+  }
+
+  .settings-icon:hover {
+    opacity: 0.75;
+  }
+
+  .reset-icon:hover {
+    opacity: 0.75;
+  }
+
+  /*  should i change it back??  */
+  .settings-icon {
+    z-index: 1;
+  }
+
+  .reset-icon {
+    z-index: 1;
+  }

@@ -1,38 +1,82 @@
-.App {
-  text-align: center;
+body {
+  --background: #e6ecf0;
+  --icons-color: #32424d;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.app {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+/* .input-page {
+  margin-top: 30px !important;
+  background-color: black;
+} */
+
+.app > div {
+  display: flex;
+  justify-items: space-between;
+  margin-top: 10px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  margin-right: -40px; 
+}
+
+.inputPage {
+  margin-top: -32px;
+  margin-right: -120px; 
+  flex: 0.6 !important;
+}
+
+.result-page {
+  flex: 0.4;
+}
+
+@media screen and (min-width: 1200px) {
+  * {
+    margin-top: -2px;
   }
 }
+
+@media screen and (max-width: 376px) {
+  * {
+    margin: 0px !important;
+    padding: 0px !important;
+  }
+  .app {
+    margin: 0px !important;
+    padding: 0px !important;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .app {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+ .input-page {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   padding-top: 10px;
+   flex: 0.7;
+    /* flex: 0.4;
+    border-right: 1px solid var(--background);
+    min-width: fit-content; */
+  }
+
+  /* .map {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 20px;
+  } */

@@ -1,0 +1,61 @@
+.header {
+    position: sticky;
+    top: 0;
+    background-color: #f4f4f4;
+    height: 60px;
+    font-weight: bold;
+    /*margin: 0 !important;*/
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom: 50px;
+}
+
+ul {
+    /*display: flex;*/
+    /*align-items: center;*/
+    /*justify-content: space-evenly;*/
+    display: flex;
+    justify-content: space-around;
+    width: 40%;
+}
+
+.nav-brand {
+    font-family: "Lao UI", serif;
+    padding-left: 10px;
+    font-size: 40px;
+    color: #4f768f;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+li {
+    /*list-style: none;*/
+    /*font-size: 20px;*/
+    /*padding-left: 40px;*/
+    /*padding-right: 40px;*/
+
+    text-decoration: none;
+    letter-spacing: 3px;
+    font-weight: bold;
+    font-size: 22px;
+    list-style: none;
+}
+
+li > a {
+    color: #32414d;
+    text-decoration: none;
+    text-transform: capitalize;
+    letter-spacing: 1px;
+}
+
+.about {
+    display: grid;
+    place-items: center;
+}
+
+.instructions {
+    display: grid;
+    place-items: center;
+}
